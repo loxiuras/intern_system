@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @include media-breakpoint-up(lg) {
   .dropdown,
   .dropup,
@@ -13,7 +15,7 @@
     .dropdown-toggle {
       &:after{
         content: "\f107";
-        font: normal normal normal 14px/1 FontAwesome;
+        font: normal normal normal math.div(14px, 1) FontAwesome;
         border: none;
         vertical-align: middle;
         font-weight: $font-weight-bold;
