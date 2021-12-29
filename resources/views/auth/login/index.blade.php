@@ -42,7 +42,7 @@
                                                 class="btn btn-primary w-100 my-4 mb-2">{{ __("general.sign-in") }}</button>
                                     </div>
                                     <div class="text-center text-sm mt-2">
-                                        {!! __("general.forget-password", [ "link" => "<a href='". Route('forget-password') ."'>". __("general.click-here") ."</a>" ]) !!}
+                                        {!! __("general.forget-password", [ "link" => "<a class='text-bold text-dark' href='". Route('forget-password') ."'>". __("general.click-here") ."</a>" ]) !!}
                                     </div>
                                 </form>
                             </div>
