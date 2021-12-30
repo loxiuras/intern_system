@@ -15,7 +15,9 @@
 
     <link id="pagestyle" href="{{ URL::asset('css/argon-dashboard.css') }}" rel="stylesheet" />
 
-    @yield('css')
+    <style type="text/css">
+        @yield('css')
+    </style>
 </head>
 <body class="@yield('bodyClass')">
 
