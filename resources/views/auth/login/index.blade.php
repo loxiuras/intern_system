@@ -9,11 +9,11 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-7">
-                        <div class="card border-0 mb-0">
-                            <div class="card-body px-lg-5 pt-0">
-                                <h5 class="text-dark text-center mt-4">Sign in</h5>
+                        <div class="card z-index-0">
+                            <div class="card-body">
+                                <h5 class="text-dark text-center mt-4">{!! __("pages/login.title") !!}</h5>
                                 <div class="text-center text-muted mb-4">
-                                    <small>Enter your email and password to sign in</small>
+                                    <small>{!! __("pages/login.description") !!}</small>
                                 </div>
                                 <form role="form" class="text-start">
                                     <div class="mb-3">
@@ -42,7 +42,7 @@
                                                 class="btn btn-primary w-100 my-4 mb-2">{{ __("general.sign-in") }}</button>
                                     </div>
                                     <div class="text-center text-sm mt-2">
-                                        {!! __("general.forget-password", [ "link" => "<a class='text-bold text-dark' href='". Route('forget-password') ."'>". __("general.click-here") ."</a>" ]) !!}
+                                        {!! __("general.forget-password", [ "link" => "<a class='text-bold text-dark' href='". Route('forgot-password') ."'>". __("general.click-here") ."</a>" ]) !!}
                                     </div>
                                 </form>
                             </div>

@@ -11,9 +11,9 @@
                     <div class="col-lg-4 col-md-7">
                         <div class="card z-index-0">
                             <div class="card-body">
-                                <h5 class="text-dark text-center mt-4">Forget password</h5>
+                                <h5 class="text-dark text-center mt-4">{!! __("pages/forgot-password.title") !!}</h5>
                                 <div class="text-center text-muted mb-4">
-                                    <small>Enter your e-mailaddress to receive a password reset e-mail within 5 minutes.</small>
+                                    <small>{!! __("pages/forgot-password.description") !!}</small>
                                 </div>
 
                                 <form role="form">
