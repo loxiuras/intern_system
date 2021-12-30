@@ -21,6 +21,12 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot-password.index', []);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request)
     {
         $this->validate($request,[

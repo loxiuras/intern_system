@@ -15,10 +15,13 @@
                                 <p class="mb-0">{!! __("pages/login.description") !!}</p>
                             </div>
                             <div class="card-body">
-                                <form role="form" class="text-start">
+                                <form role="form" class="text-start" method="POST" action="{{ route('login') }}">
+                                    @csrf
+
                                     <div class="mb-3">
                                         <label for="email">{{ __("general.email") }}</label>
                                         <input type="email"
+                                               name="email"
                                                class="form-control"
                                                placeholder="{{ __("general.email") }}"
                                                aria-label="{{ __("general.email") }}">
@@ -26,9 +29,16 @@
                                     <div class="mb-3">
                                         <label for="password">{{ __("general.password") }}</label>
                                         <input type="password"
+                                               name="password"
                                                class="form-control"
                                                placeholder="password"
                                                aria-label="password">
+
+                                        @if($errors->any())
+                                            <p class="text-danger small text- mt-2 mb-1">
+                                                {!! $errors->first() !!}
+                                            </p>
+                                        @endif
                                     </div>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input"
@@ -38,7 +48,7 @@
                                                for="rememberMe">{{ __("general.remember-me") }}</label>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button"
+                                        <button type="submit"
                                                 class="btn btn-primary w-100 my-4 mb-2">{{ __("general.sign-in") }}</button>
                                     </div>
                                     <div class="text-center text-sm mt-2">
