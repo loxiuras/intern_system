@@ -10,12 +10,11 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-7">
                         <div class="card z-index-0">
+                            <div class="card-header text-center pt-4 pb-1">
+                                <h4 class="font-weight-bolder mb-1">{!! __("pages/forgot-password.title") !!}</h4>
+                                <p class="mb-0">{!! __("pages/forgot-password.description") !!}</p>
+                            </div>
                             <div class="card-body">
-                                <h5 class="text-dark text-center mt-4">{!! __("pages/forgot-password.title") !!}</h5>
-                                <div class="text-center text-muted mb-4">
-                                    <small>{!! __("pages/forgot-password.description") !!}</small>
-                                </div>
-
                                 <form role="form" method="POST" action="{{ route('forgot-password') }}">
                                     @csrf
 

@@ -4,6 +4,7 @@ return [
 
     "email"               => "E-mailaddress",
     "password"            => "Password",
+    "confirm-password"    => "Confirm password",
     "remember-me"         => "Remember me",
     "sign-in"             => "Sign in",
     "forget-password"     => "Lost your password? :link",
