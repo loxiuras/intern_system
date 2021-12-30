@@ -13,4 +13,6 @@ const mix = require('laravel-mix');
 
 mix.postCss('resources/css/argon-dashboard.css', 'public/css', [])
    .postCss('resources/css/nucleo-icons.css', 'public/css', [])
-   .postCss('resources/css/nucleo-svg.css', 'public/css', [])
+   .postCss('resources/css/nucleo-svg.css', 'public/css', []);
+
+mix.js('resources/js/plugins/**.js', 'public/js/plugins');

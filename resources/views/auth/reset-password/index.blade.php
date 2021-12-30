@@ -32,7 +32,7 @@
                                         <label for="password">{{ __("general.password") }}</label>
                                         <input type="password"
                                                name="password"
-                                               class="form-control @error('password') border-danger @enderror"
+                                               class="form-control NovaPasswordViewer @error('password') border-danger @enderror"
                                                placeholder="{{ __("general.password") }}"
                                                aria-label="{{ __("general.password") }}">
 
@@ -46,7 +46,7 @@
                                         <label for="password_confirmation">{{ __("general.confirm-password") }}</label>
                                         <input type="password"
                                                name="password_confirmation"
-                                               class="form-control"
+                                               class="form-control NovaPasswordViewer"
                                                placeholder="{{ __("general.confirm-password") }}"
                                                aria-label="{{ __("general.confirm-password") }}">
                                     </div>
@@ -66,5 +66,11 @@
             </div>
         </div>
     </main>
+
+@endsection
+
+@section('js')
+
+    <script src="{{ url('js/plugins/NovaPasswordViewer.js') }}"></script>
 
 @endsection

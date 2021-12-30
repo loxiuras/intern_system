@@ -38,9 +38,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="password">{{ __("general.password") }}</label>
+
                                         <input type="password"
                                                name="password"
-                                               class="form-control"
+                                               class="form-control NovaPasswordViewer"
                                                placeholder="password"
                                                aria-label="password">
 
@@ -72,5 +73,11 @@
             </div>
         </div>
     </main>
+
+@endsection
+
+@section('js')
+
+    <script src="{{ url('js/plugins/NovaPasswordViewer.js') }}"></script>
 
 @endsection
