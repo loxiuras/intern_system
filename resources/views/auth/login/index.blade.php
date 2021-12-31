@@ -36,6 +36,12 @@
                                                class="form-control"
                                                placeholder="{{ __("general.email") }}"
                                                aria-label="{{ __("general.email") }}">
+
+                                        @error('email')
+                                            <p class="text-danger small text- mt-1 mb-0">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="password">{{ __("general.password") }}</label>
@@ -46,12 +52,19 @@
                                                placeholder="password"
                                                aria-label="password">
 
-                                        @if($errors->any())
-                                            <p class="text-danger small text- mt-2 mb-1">
-                                                {!! $errors->first() !!}
+                                        @error('password')
+                                            <p class="text-danger small text- mt-1 mb-0">
+                                                {{ $message }}
                                             </p>
-                                        @endif
+                                        @enderror
                                     </div>
+
+                                    @error('credentials')
+                                        <p class="text-danger small text- mt-0 mb-2">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+
                                     <div class="form-check form-switch">
                                         <input class="form-check-input"
                                                type="checkbox"

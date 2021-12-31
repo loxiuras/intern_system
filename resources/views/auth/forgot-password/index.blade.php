@@ -35,6 +35,12 @@
                                                class="form-control"
                                                placeholder="{{ __("general.email") }}"
                                                aria-label="{{ __("general.email") }}">
+
+                                        @error('email')
+                                            <p class="text-danger small text- mt-1 mb-0">
+                                                {{ $message }}
+                                            </p>
+                                        @enderror
                                     </div>
 
                                     @if(session('status'))
