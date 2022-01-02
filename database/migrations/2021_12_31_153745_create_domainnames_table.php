@@ -18,9 +18,9 @@ class CreateDomainNamesTable extends Migration
             $table->timestamps();
             $table->bigInteger("company_id")->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->string('domain_name');
-            $table->bigInteger('parent_domain_id')->unsigned();
-            $table->foreign('parent_domain_id')->references('id')->on('domain_names');
+            $table->string('name');
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('id')->on('domain_names');
             $table->tinyInteger('active');
         });
     }
