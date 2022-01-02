@@ -16,9 +16,11 @@ class CreateFreeDaysTable extends Migration
         Schema::create('free_days', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('date')->nullable();
-            $table->integer('minutes')->default(0);
-            $table->tinyInteger('is_special');
+            $table->integer('minutes')->nullable()->default(0);
+            $table->tinyInteger('is_special')->default(0);
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->dateTime('accepted_datetime')->nullable();

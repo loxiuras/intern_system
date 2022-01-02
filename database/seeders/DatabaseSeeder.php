@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanyUserTableSeeder::class);
         $this->call(HostTableSeeder::class);
         $this->call(DomainTableSeeder::class);
+        $this->call(FreeDayTableSeeder::class);
     }
 }
