@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class DomainTableSeeder extends Seeder {
 
-    const defaultPassword = 'Test123!Test123!';
-
     public function run()
     {
         DB::table('domains')->delete();
