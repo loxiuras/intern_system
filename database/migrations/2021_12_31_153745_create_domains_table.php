@@ -16,11 +16,13 @@ class CreateDomainsTable extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger("company_id")->unsigned();
+            $table->bigInteger("company_id")->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->string('name');
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('domains');
+            $table->bigInteger("host_id")->unsigned()->nullable();
+            $table->foreign('host_id')->references('id')->on('hosts');
             $table->tinyInteger('is_production')->default(1);
             $table->tinyInteger('active');
         });
