@@ -29,13 +29,6 @@ class DomainNameTableSeeder extends Seeder {
 
         DomainName::create([
             'company_id' => 1,
-            'name'       => 'www.suilichem.nl',
-            'parent_id'  => 1,
-            'active'     => 1,
-        ]);
-
-        DomainName::create([
-            'company_id' => 1,
             'name'       => 'www.suilichem.eu',
             'parent_id'  => 1,
             'active'     => 1,
