@@ -21,6 +21,7 @@ class CreateDomainNamesTable extends Migration
             $table->string('name');
             $table->bigInteger('parent_id')->unsigned()->nullable();
             $table->foreign('parent_id')->references('id')->on('domain_names');
+            $table->tinyInteger('is_production')->default(1);
             $table->tinyInteger('active');
         });
     }
