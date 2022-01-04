@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFreeDaysTable extends Migration
+class CreateDaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateFreeDaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('free_days', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('type', 10)->default('free');
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('date')->nullable();
@@ -36,6 +37,6 @@ class CreateFreeDaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('free_days');
+        Schema::dropIfExists('days');
     }
 }

@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\FreeDay;
+use App\Models\Day;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class FreeDayTableSeeder extends Seeder {
+class DayTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('free_days')->delete();
+        DB::table('days')->delete();
 
-        FreeDay::create([
+        Day::create([
+            'type'              => 'sick',
             'user_id'           => 1,
             'date'              => '2022-01-01',
             'minutes'           => 60,
@@ -22,7 +23,8 @@ class FreeDayTableSeeder extends Seeder {
             'accepted_user_id'  => 1,
         ]);
 
-        FreeDay::create([
+        Day::create([
+            'type'              => 'free',
             'user_id'           => 1,
             'date'              => '2022-01-02',
             'minutes'           => 120,
@@ -30,7 +32,8 @@ class FreeDayTableSeeder extends Seeder {
             'description'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie pretium nisi tristique tempor. Nullam velit orci, faucibus non sollicitudin et, ultrices eu purus. Vivamus pretium nibh in consequat ultricies.',
         ]);
 
-        FreeDay::create([
+        Day::create([
+            'type'              => 'free',
             'user_id'           => 1,
             'date'              => '2022-01-03',
             'minutes'           => 180,
