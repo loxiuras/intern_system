@@ -1,5 +1,5 @@
 {
-    "/js/plugins/password-viewer.js": "/js/plugins/password-viewer.js",
+    "/js/plugins/NovaPasswordViewer.js": "/js/plugins/NovaPasswordViewer.js",
     "/css/nucleo-svg.css": "/css/nucleo-svg.css",
     "/css/nucleo-icons.css": "/css/nucleo-icons.css",
     "/css/argon-dashboard.css": "/css/argon-dashboard.css"
