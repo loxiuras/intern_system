@@ -12,7 +12,8 @@
             let container = document.createElement( 'div' );
                 container.classList.add("NovaPasswordViewer__icon-container");
                 container.style.position = "absolute";
-                container.style.top = "7px";
+                container.style.top = "50%";
+                container.style.transform = "transformY(-50%)";
                 container.style.right = "25px";
 
             let icon = document.createElement( 'i' );
