@@ -11,6 +11,13 @@ return [
     "click-here"          => "Click here",
     "send-password-reset" => "Send password reset",
     "reset-password"      => "Reset password",
-    "back-to-login"       => "Back to login? :link"
+    "back-to-login"       => "Back to login? :link",
+    "add-new-item"        => "Add new :item",
+    "user"                => "User",
+    "first-name"          => "Firstname",
+    "last-name"           => "Lastname",
+    "last-login"          => "Last login",
+    "active"              => "Active",
+    "actions"             => "Actions",
 
 ];

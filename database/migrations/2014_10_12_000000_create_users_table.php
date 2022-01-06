@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->tinyInteger("is_admin");
+            $table->tinyInteger("active")->default(0);
         });
     }
 

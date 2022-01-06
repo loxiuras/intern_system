@@ -24,6 +24,7 @@ class UserTableSeeder extends Seeder {
             'telephone'     => '0624670166',
             'password'      => Hash::make(self::defaultPassword),
             'is_admin'      => 1,
+            'active'        => 0,
         ]);
 
         User::create([
@@ -34,6 +35,7 @@ class UserTableSeeder extends Seeder {
             'telephone'     => '0640611109',
             'password'      => Hash::make(self::defaultPassword),
             'is_admin'      => 1,
+            'active'        => 0,
         ]);
     }
 

@@ -16,10 +16,17 @@ class UserController extends Controller
 
         return view('pages.user.overview.index', [
             "loginUserData" => $this->getLoginUserData(),
-            "usersData" => $usersData
+            "sidebarData"   => $this->getSidebarData( "user", "overview" ),
+            "usersData"     => $usersData
         ]);
     }
 
-    public function add() {}
+    public function add()
+    {
+        return view('pages.user.overview.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "user", "add" ),
+        ]);
+    }
 
 }
