@@ -8,3 +8,9 @@
 
 
 @endsection
+
+@section('js')
+
+    <script src="{{ url('js/sidebar.js') }}"></script>
+
+@endsection
