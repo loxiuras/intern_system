@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -119,7 +120,7 @@ class UserController extends Controller
             $userData->last_password_renewal = Carbon::now();
             $userData->save();
 
-            // ToDo: Send password change e-mail notification;
+            $this->sendEmailNotification( $request->id );
 
             // ToDo: Add success message;
             return back()->with([
@@ -130,5 +131,44 @@ class UserController extends Controller
         else {
             return back()->with([ "incorrectCurrentPassword" => true ]);
         }
+    }
+
+    /**
+     * @param int $userId
+     *
+     * @return void
+     */
+    private function sendEmailNotification( int $userId )
+    {
+        $userData = User::find( $userId );
+        $userEmail = !empty( $userData->email ) ? trim( (string)$userData->email ) : "";
+
+        $userFirstName = !empty( $userData->name ) ? trim( (string)$userData->name ) : "";
+        $userInsertion = !empty( $userData->insertion ) ? " ". trim( (string)$userData->insertion ). " " : "";
+        $userLastName = !empty( $userData->last_name ) ? trim( (string)$userData->last_name ) : "";
+        $userFullName = "{$userFirstName}{$userInsertion}{$userLastName}";
+
+        $logo = "<img class='image' src='https://www.suilichem.com/assets/systems/email-logo.png' style='height: 30px;' height='30px' alt='Van Suilichem Online Logo'>";
+
+        $details = [
+            "from" => [
+                "name"  => __("emails/password-notification.from.name"),
+                "email" => __("emails/password-notification.from.email"),
+            ],
+            "to" => [
+                "name"  => $userFullName,
+                "email" => $userEmail,
+            ],
+            "subject"   => __("emails/reset-password.subject"),
+            "structure" => [
+                "style"  => "",
+                "header" => __("emails/password-notification.structure.header", ["logo" => $logo, "fullName" => $userFullName]),
+                "body"   => __("emails/password-notification.structure.body"),
+                "footer" => __("emails/password-notification.structure.footer"),
+            ],
+            "view" => "emails.password-notification",
+        ];
+
+        Mail::send(new \App\Mail\SendInBlue($details));
     }
 }
