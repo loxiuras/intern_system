@@ -20,14 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 100);
             $table->date('date_of_birth')->nullable();
             $table->string('email')->unique();
-            $table->string('telephone', 10);
+            $table->string('telephone', 20);
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('last_login')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->timestamp('last_password_renewal')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->tinyInteger("is_admin");
+            $table->tinyInteger("is_admin")->default(0);
             $table->tinyInteger("active")->default(0);
         });
     }
