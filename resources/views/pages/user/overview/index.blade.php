@@ -65,7 +65,12 @@
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
 
-                                                <!-- ToDo: Add delete action; -->
+                                                @if ( empty( $user->email_verified_at ) )
+                                                    <a href="{{ Route('user-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                        <i class="fas fa-paper-plane text-secondary"></i>
+                                                    </a>
+                                                @endif
+
                                                 <form action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">
                                                     @method('delete')
                                                     @csrf
