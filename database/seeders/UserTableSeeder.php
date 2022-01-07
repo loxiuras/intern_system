@@ -16,26 +16,28 @@ class UserTableSeeder extends Seeder {
         DB::table('users')->delete();
 
         User::create([
-            'name'          => 'Peter',
-            'insertion'     => 'van',
-            'last_name'     => 'Garderen',
-            'date_of_birth' => '1998-12-01',
-            'email'         => 'peter@suilichem.com',
-            'telephone'     => '0624670166',
-            'password'      => Hash::make(self::defaultPassword),
-            'is_admin'      => 1,
-            'active'        => 0,
+            'name'               => 'Peter',
+            'insertion'          => 'van',
+            'last_name'          => 'Garderen',
+            'date_of_birth'      => '1998-12-01',
+            'email'              => 'peter@suilichem.com',
+            'telephone'          => '0624670166',
+            'password'           => Hash::make(self::defaultPassword),
+            'is_admin'           => 1,
+            'active'             => 1,
+            'picture_default_id' => 1,
         ]);
 
         User::create([
-            'name'          => 'Wesley',
-            'last_name'     => 'Prijn',
-            'date_of_birth' => '1989-08-02',
-            'email'         => 'wesley@suilichem.com',
-            'telephone'     => '0640611109',
-            'password'      => Hash::make(self::defaultPassword),
-            'is_admin'      => 1,
-            'active'        => 0,
+            'name'               => 'Wesley',
+            'last_name'          => 'Prijn',
+            'date_of_birth'      => '1989-08-02',
+            'email'              => 'wesley@suilichem.com',
+            'telephone'          => '0640611109',
+            'password'           => Hash::make(self::defaultPassword),
+            'is_admin'           => 1,
+            'active'             => 1,
+            'picture_default_id' => 3,
         ]);
     }
 

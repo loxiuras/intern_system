@@ -67,12 +67,13 @@ class UserController extends Controller
         if ( $id ) {
             $userData = User::find($request->id);
 
-            $userData->name          = $request->name;
-            $userData->insertion     = $request->insertion;
-            $userData->last_name     = $request->last_name;
-            $userData->date_of_birth = $request->date_of_birth;
-            $userData->email         = $request->email;
-            $userData->telephone     = $request->telephone;
+            $userData->name               = $request->name;
+            $userData->insertion          = $request->insertion;
+            $userData->last_name          = $request->last_name;
+            $userData->date_of_birth      = $request->date_of_birth;
+            $userData->email              = $request->email;
+            $userData->telephone          = $request->telephone;
+            $userData->picture_default_id = (int)$request->picture_default_id;
             $userData->save();
         }
         else {

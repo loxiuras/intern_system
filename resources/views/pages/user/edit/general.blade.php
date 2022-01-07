@@ -79,8 +79,6 @@
                 </div>
             </div>
 
-            <hr class="horizontal dark mt-4">
-
             <div class="row mt-3">
                 <div class="col-12 col-sm-6">
                     <label for="email">{{ __("general.email") }}</label>
@@ -112,6 +110,32 @@
                         </span>
                     @enderror
                 </div>
+            </div>
+
+            <hr class="horizontal dark mt-4">
+
+            <div class="row mt-4">
+
+                @for( $i = 1; $i <= 3; $i++ )
+
+                    <div class="col-4 d-flex justify-content-center mb-2">
+
+                        <input type="radio" class="pictureDefaultElement"
+                               name="picture_default_id"
+                               value="{{ $i }}"
+                               @if( !empty( $userData->picture_default_id ) && $userData->picture_default_id === $i ) checked @endif
+                               id="picture_default_id_{{ $i }}" />
+                        <label for="picture_default_id_{{ $i }}">
+                            <img src="{{ url( "img/banners/banner-{$i}.png" ) }}"
+                                 alt="profile picture"
+                                 class="w-100 border-radius-lg shadow-sm">
+                            <span class="text bg-gradient-dark">{{ __("general.selected") }}</span>
+                        </label>
+
+                    </div>
+
+                @endfor
+
             </div>
 
             <div class="button-row d-flex mt-4">

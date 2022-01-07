@@ -24,5 +24,6 @@ return [
     "actions"             => "Actions",
     "date-of-birth"       => "Date of birth",
     "save"                => "Save :item",
+    "selected"            => "Selected",
 
 ];
