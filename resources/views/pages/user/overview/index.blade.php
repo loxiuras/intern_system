@@ -15,8 +15,7 @@
 
             <div class="d-sm-flex justify-content-end">
                 <div>
-                    <!-- ToDo: Add link to AddUser page; -->
-                    <a href="javascript:;" class="btn btn-icon btn-outline-white">
+                    <a href="{{ Route('user-add') }}" class="btn btn-icon btn-outline-white">
                         + {{ __("general.add-new-item", ["item" => strtolower(__("general.user"))]) }}
                     </a>
                 </div>

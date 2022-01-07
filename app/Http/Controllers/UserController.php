@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function add()
     {
-        return view('pages.user.overview.index', [
+        return view('pages.user.add.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "user", "add" ),
         ]);
