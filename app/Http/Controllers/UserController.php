@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -87,5 +89,43 @@ class UserController extends Controller
         }
 
         return redirect()->route('user-edit', ['id' => $id]);
+    }
+
+    public function storePassword(Request $request)
+    {
+        $this->validate($request, [
+            "id"               => "",
+            "current_password" => "required",
+            "new_password"     => [
+                "required",
+                "confirmed",
+                "string",
+                "min:10",
+                "max:30",
+                "regex:/[a-z]/",
+                "regex:/[A-Z]/",
+                "regex:/[0-9]/",
+                "regex:/[@$!%*#?&]/",
+            ],
+        ]);
+
+        $userData = user::find( $request->id );
+
+        if ($userData && Hash::check($request->current_password, $userData->password)) {
+            $userData->password              = Hash::make($request->new_password);
+            $userData->last_password_renewal = Carbon::now();
+            $userData->save();
+
+            // ToDo: Send password change e-mail notification;
+
+            // ToDo: Add success message;
+            return back()->with([
+                "passwordSaved"     => true,
+                "passwordSavedText" => __("auth.saved"),
+            ]);
+        }
+        else {
+            return back()->with([ "incorrectCurrentPassword" => true ]);
+        }
     }
 }
