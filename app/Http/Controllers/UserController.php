@@ -37,6 +37,8 @@ class UserController extends Controller
     {
         $userData = User::find($userId);
 
+        if ( empty( $userData ) ) return redirect()->route("user-overview");
+
         return view('pages.user.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "user", "edit" ),
