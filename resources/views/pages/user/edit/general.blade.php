@@ -13,12 +13,12 @@
 
             <div class="row mt-3">
                 <div class="col-12 col-sm-4">
-                    <label for="first_name">{{ __("general.first-name") }}</label>
-                    <input class="multisteps-form__input form-control @error('first_name') is-invalid @enderror"
+                    <label for="name">{{ __("general.first-name") }}</label>
+                    <input class="multisteps-form__input form-control @error('name') is-invalid @enderror"
                            type="text"
-                           name="first_name"
-                           id="first_name"
-                           value="{{ old('first_name', (isset($userData->first_name) ? $userData->first_name : ""))  }}"
+                           name="name"
+                           id="name"
+                           value="{{ old('name', (isset($userData->name) ? $userData->name : ""))  }}"
                            placeholder="" />
 
                     @error('first_name')
@@ -68,7 +68,7 @@
                            type="date"
                            name="date_of_birth"
                            id="date_of_birth"
-                           value="{{ old('date_of_birth', (isset($userData->date_of_birth) ? $userData->date_of_birth : ""))  }}"
+                           value="{{ old('date_of_birth', (isset($userData->date_of_birth) ? \Carbon\Carbon::parse($userData->date_of_birth)->format('Y-m-d') : "")) }}"
                            placeholder="" />
 
                     @error('date_of_birth')

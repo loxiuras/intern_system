@@ -31,6 +31,17 @@ class UserController extends Controller
         ]);
     }
 
+    public function edit(int $userId)
+    {
+        $userData = User::find($userId);
+
+        return view('pages.user.edit.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "user", "add" ),
+            "userData"      => $userData,
+        ]);
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      *
@@ -41,7 +52,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             "id"            => "integer",
-            "first_name"    => "required",
+            "name"          => "required",
             "insertion"     => "",
             "last_name"     => "required",
             "date_of_birth" => "required|date",
@@ -54,7 +65,7 @@ class UserController extends Controller
         if ( $id ) {
             $userData = User::find($request->id);
 
-            $userData->name    = $request->first_name;
+            $userData->name          = $request->name;
             $userData->insertion     = $request->insertion;
             $userData->last_name     = $request->last_name;
             $userData->date_of_birth = $request->date_of_birth;
@@ -65,7 +76,7 @@ class UserController extends Controller
         else {
             $id = User::insertGetId(
                 [
-                    "name"          => $request->first_name,
+                    "name"          => $request->name,
                     "insertion"     => $request->insertion,
                     "last_name"     => $request->last_name,
                     "date_of_birth" => $request->date_of_birth,
@@ -77,6 +88,4 @@ class UserController extends Controller
 
         return redirect()->route('user-edit', ['id' => $id]);
     }
-
-    public function edit() {}
 }

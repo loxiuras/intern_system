@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
 
-                        @include("pages.user.add.general")
+                        @include("pages.user.edit.general")
                         @if( isset($userData->id) )
-                            @include("pages.user.add.password")
+                            @include("pages.user.edit.password")
                         @endif
 
                     </div>
