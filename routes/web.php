@@ -22,5 +22,6 @@ Route::post('/reset-password/{email}/{token}', [ResetPasswordController::class, 
 Route::get('/user/overview', [UserController::class, 'overview'])->middleware('auth')->name('user-overview');
 Route::get('/user/add', [UserController::class, 'add'])->middleware('auth')->name('user-add');
 Route::get('/user/edit/{id}', [UserController::class, 'edit'])->middleware('auth')->name('user-edit');
+Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->middleware('auth')->name('user-delete');
 Route::post('/user/store', [UserController::class, 'store'])->middleware('auth')->name('user-store');
 Route::post('/user/store-password', [UserController::class, 'storePassword'])->middleware('auth')->name('user-store-password');

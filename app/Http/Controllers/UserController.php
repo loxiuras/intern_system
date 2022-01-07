@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
@@ -45,6 +46,17 @@ class UserController extends Controller
             "sidebarData"   => $this->getSidebarData( "user", "edit" ),
             "userData"      => $userData,
         ]);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete($id): \Illuminate\Http\RedirectResponse
+    {
+        DB::table('users')->where('id', '=', $id)->delete();
+        return back();
     }
 
     /**

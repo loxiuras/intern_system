@@ -16,9 +16,9 @@ class CreateCompanyUsersTable extends Migration
         Schema::create('company_users', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("company_id")->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade')->onDelete('cascade');
             $table->bigInteger("user_id")->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
