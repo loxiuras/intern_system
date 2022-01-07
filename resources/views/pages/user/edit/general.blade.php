@@ -139,7 +139,12 @@
             </div>
 
             <div class="button-row d-flex mt-4">
-                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
+                <button class="btn bg-gradient-light ms-auto mb-0 js-btn-next"
+                        type="button"
+                        onclick="window.location = '{{ Route('user-overview') }}'"
+                        title="Prev">{{ __( "general.back-to", ["location" => strtolower( __("general.overview") )] ) }}</button>
+
+                <button class="btn bg-gradient-dark ms-2 mb-0 js-btn-next"
                         type="submit"
                         title="Next">{{ __("general.save", ["item" => strtolower(__("general.user"))]) }}</button>
             </div>

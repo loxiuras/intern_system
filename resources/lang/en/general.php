@@ -25,5 +25,7 @@ return [
     "date-of-birth"       => "Date of birth",
     "save"                => "Save :item",
     "selected"            => "Selected",
+    "back-to"             => "Back to :location",
+    "overview"            => "Overview",
 
 ];
