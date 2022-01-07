@@ -26,6 +26,7 @@ class UserController extends Controller
         return view('pages.user.add.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "user", "add" ),
+            "userData"      => new \stdClass(),
         ]);
     }
 
