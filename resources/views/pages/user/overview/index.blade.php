@@ -3,7 +3,7 @@
 
 @section('pageContent')
 
-    <div class="min-height-300 bg-primary position-absolute w-100 bannerBackground"></div>
+    @include('layout.banner')
 
     @include("layout.sidebar.index")
 

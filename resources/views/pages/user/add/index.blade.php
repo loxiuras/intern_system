@@ -29,16 +29,11 @@
         display: block;
     }
 
-    .bannerBackground {
-        background-size: cover;
-        background-position: center;
-    }
-
 @endsection
 
 @section('pageContent')
 
-    <div class="min-height-300 bg-primary position-absolute w-100 bannerBackground" style="background-image: url({{ url( "img/banners/banner-". $loginUserData->picture_default_id .".png" ) }})"></div>
+    @include("layout.banner")
 
     @include("layout.sidebar.index")
 
