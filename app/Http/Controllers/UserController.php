@@ -39,7 +39,7 @@ class UserController extends Controller
 
         return view('pages.user.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
-            "sidebarData"   => $this->getSidebarData( "user", "add" ),
+            "sidebarData"   => $this->getSidebarData( "user", "edit" ),
             "userData"      => $userData,
         ]);
     }
