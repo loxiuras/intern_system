@@ -61,13 +61,12 @@
                                                 @endif
                                             </td>
                                             <td class="text-sm">
-                                                <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                                                    <i class="fas fa-eye text-secondary"></i>
-                                                </a>
-                                                <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                                <a href="{{ Route('user-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
-                                                <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+
+                                                <!-- ToDo: Add delete action; -->
+                                                <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
                                                     <i class="fas fa-trash text-secondary"></i>
                                                 </a>
                                             </td>
