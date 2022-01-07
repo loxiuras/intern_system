@@ -45,6 +45,13 @@ class CompanyTableSeeder extends Seeder {
             'optional_invoice_emails' => '',
             'active' => 1,
         ]);
+
+        $insertBulkData = false;
+        if ( $insertBulkData ) {
+            Company::factory()
+                ->count(2000)
+                ->create();
+        }
     }
 
 }
