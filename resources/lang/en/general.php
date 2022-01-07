@@ -27,5 +27,8 @@ return [
     "selected"            => "Selected",
     "back-to"             => "Back to :location",
     "overview"            => "Overview",
+    "company"             => "Company",
+    "company-name"        => "Company name",
+    "address"             => "Address",
 
 ];

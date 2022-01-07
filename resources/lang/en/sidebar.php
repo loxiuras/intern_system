@@ -10,4 +10,10 @@ return [
         "new-item" => "Add new",
     ],
 
+    "companies" => [
+        "main" => "Companies",
+        "overview" => "Overview",
+        "new-item" => "Add new",
+    ],
+
 ];

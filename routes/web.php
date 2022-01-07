@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -25,3 +26,8 @@ Route::get('/user/edit/{id}', [UserController::class, 'edit'])->middleware('auth
 Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->middleware('auth')->name('user-delete');
 Route::post('/user/store', [UserController::class, 'store'])->middleware('auth')->name('user-store');
 Route::post('/user/store-password', [UserController::class, 'storePassword'])->middleware('auth')->name('user-store-password');
+
+/** COMPANY **/
+Route::get('/company/overview', [CompanyController::class, 'overview'])->middleware('auth')->name('company-overview');
+Route::get('/company/add', [CompanyController::class, 'overview'])->middleware('auth')->name('company-add');
+Route::get('/company/edit/{id}', [CompanyController::class, 'overview'])->middleware('auth')->name('company-edit');
