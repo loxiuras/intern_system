@@ -64,6 +64,8 @@ class ResetPasswordController extends Controller
               'email' => $email
           ])->delete();
 
+        // ToDo: Send password change e-mail notification;
+
         return redirect()->route('login');
     }
 
