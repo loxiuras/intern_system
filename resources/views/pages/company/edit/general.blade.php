@@ -34,7 +34,7 @@
                        type="text"
                        name="legal_name"
                        id="legal_name"
-                       value="{{ old('name', (isset($companyData->legal_name) ? $companyData->legal_name : "")) }}"
+                       value="{{ old('legal_name', (isset($companyData->legal_name) ? $companyData->legal_name : "")) }}"
                        placeholder="" />
 
                 @error('legal_name')
@@ -53,7 +53,7 @@
                        type="text"
                        name="street_name"
                        id="street_name"
-                       value="{{ old('name', (isset($companyData->street_name) ? $companyData->street_name : "")) }}"
+                       value="{{ old('street_name', (isset($companyData->street_name) ? $companyData->street_name : "")) }}"
                        placeholder="" />
 
                 @error('street_name')
@@ -69,7 +69,7 @@
                        type="number"
                        name="house_number"
                        id="house_number"
-                       value="{{ old('name', (isset($companyData->house_number) ? $companyData->house_number : "")) }}"
+                       value="{{ old('house_number', (isset($companyData->house_number) ? $companyData->house_number : "")) }}"
                        placeholder="" />
 
                 @error('house_number')
@@ -85,7 +85,7 @@
                        type="text"
                        name="house_number_extra"
                        id="house_number_extra"
-                       value="{{ old('name', (isset($companyData->house_number_extra) ? $companyData->house_number_extra : "")) }}"
+                       value="{{ old('house_number_extra', (isset($companyData->house_number_extra) ? $companyData->house_number_extra : "")) }}"
                        placeholder="" />
 
                 @error('house_number_extra')
@@ -105,7 +105,7 @@
                        type="text"
                        name="postal_code"
                        id="postal_code"
-                       value="{{ old('name', (isset($companyData->postal_code) ? $companyData->postal_code : "")) }}"
+                       value="{{ old('postal_code', (isset($companyData->postal_code) ? $companyData->postal_code : "")) }}"
                        placeholder="" />
 
                 @error('postal_code')
@@ -121,7 +121,7 @@
                        type="text"
                        name="city"
                        id="city"
-                       value="{{ old('name', (isset($companyData->city) ? $companyData->city : "")) }}"
+                       value="{{ old('city', (isset($companyData->city) ? $companyData->city : "")) }}"
                        placeholder="" />
 
                 @error('city')
@@ -141,7 +141,7 @@
                        type="text"
                        name="province"
                        id="province"
-                       value="{{ old('name', (isset($companyData->province) ? $companyData->province : "")) }}"
+                       value="{{ old('province', (isset($companyData->province) ? $companyData->province : "")) }}"
                        placeholder="" />
 
                 @error('province')
@@ -157,7 +157,7 @@
                        type="text"
                        name="country"
                        id="country"
-                       value="{{ old('name', (isset($companyData->country) ? $companyData->country : "")) }}"
+                       value="{{ old('country', (isset($companyData->country) ? $companyData->country : "")) }}"
                        placeholder="" />
 
                 @error('country')
@@ -177,7 +177,7 @@
                        type="text"
                        name="telephone"
                        id="telephone"
-                       value="{{ old('name', (isset($companyData->telephone) ? $companyData->telephone : "")) }}"
+                       value="{{ old('telephone', (isset($companyData->telephone) ? $companyData->telephone : "")) }}"
                        placeholder="" />
 
                 @error('telephone')
@@ -193,7 +193,7 @@
                        type="text"
                        name="primary_email"
                        id="primary_email"
-                       value="{{ old('name', (isset($companyData->primary_email) ? $companyData->primary_email : "")) }}"
+                       value="{{ old('primary_email', (isset($companyData->primary_email) ? $companyData->primary_email : "")) }}"
                        placeholder="" />
 
                 @error('primary_email')
@@ -209,7 +209,7 @@
                        type="text"
                        name="primary_website"
                        id="primary_website"
-                       value="{{ old('name', (isset($companyData->primary_website) ? $companyData->primary_website : "")) }}"
+                       value="{{ old('primary_website', (isset($companyData->primary_website) ? $companyData->primary_website : "")) }}"
                        placeholder="" />
 
                 @error('primary_website')

@@ -13,7 +13,7 @@
                        type="text"
                        name="primary_invoice_email"
                        id="primary_invoice_email"
-                       value="{{ old('name', (isset($companyData->primary_invoice_email) ? $companyData->primary_invoice_email : "")) }}"
+                       value="{{ old('primary_invoice_email', (isset($companyData->primary_invoice_email) ? $companyData->primary_invoice_email : "")) }}"
                        placeholder="" />
 
                 @error('primary_invoice_email')
@@ -31,7 +31,7 @@
                           id="optional_invoice_emails"
                           rows="5"
                           style="resize: none;">
-                    {{ old('name', (isset($companyData->optional_invoice_emails) ? $companyData->optional_invoice_emails : "")) }}
+                    {{ old('optional_invoice_emails', (isset($companyData->optional_invoice_emails) ? $companyData->optional_invoice_emails : "")) }}
                 </textarea>
 
                 @error('optional_invoice_emails')
