@@ -21,7 +21,7 @@
 
                         @foreach( $companyUsers as $user )
 
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-4 text-center">
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
                                 <div class="avatar avatar-lg rounded-circle border border-primary">
                                     <!-- ToDo: Add user image; -->
                                     <img alt="Image placeholder" class="p-1" src="https://picsum.photos/400/400?random={{ $user->user_id }}">
