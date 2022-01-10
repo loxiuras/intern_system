@@ -13,9 +13,9 @@
                     <div class="card-body d-flex">
 
                         <div class="col-lg-2 col-md-2 col-sm-3 col-4 text-center">
-                            <a href="javascript:;" class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary">
+                            <div class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary NovaModel" data-nova-model-body-class="modal-open" data-nova-model-target="connectUserModel">
                                 <i class="fas fa-plus text-white"></i>
-                            </a>
+                            </div>
                             <p class="mb-0 text-sm" style="margin-top:6px;">{{ __("general.connect-item", ["item" => strtolower(__("general.user"))]) }}</p>
                         </div>
 

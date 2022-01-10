@@ -17,6 +17,10 @@
 
         @include("pages.company.edit.form")
 
+        @if( isset($companyData->id) )
+            @include("pages.company.edit.connect-user")
+        @endif
+
     </main>
 
 @endsection
@@ -25,5 +29,6 @@
 
     <script src="{{ url('js/sidebar.js') }}"></script>
     <script src="{{ url('js/plugins/NovaPasswordViewer.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaModel.js') }}"></script>
 
 @endsection

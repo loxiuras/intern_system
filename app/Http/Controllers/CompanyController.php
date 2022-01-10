@@ -41,7 +41,7 @@ class CompanyController extends Controller
                                    ->orderBy('users.name', 'asc')
                                    ->get();
 
-        return view('pages.company.add.index', [
+        return view('pages.company.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "company", "add" ),
             "companyData"   => $companyData,
