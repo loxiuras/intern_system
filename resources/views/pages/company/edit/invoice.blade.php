@@ -30,9 +30,16 @@
                           name="optional_invoice_emails"
                           id="optional_invoice_emails"
                           rows="5"
-                          style="resize: none;">
-                    {{ old('optional_invoice_emails', (isset($companyData->optional_invoice_emails) ? $companyData->optional_invoice_emails : "")) }}
-                </textarea>
+                          style="resize: none;">@php
+                        $optionalInvoiceEmails = old('optional_invoice_emails', (isset($companyData->optional_invoice_emails) ? $companyData->optional_invoice_emails : ""));
+                        $parts = explode(",", $optionalInvoiceEmails);
+
+                        if ( !empty( $parts ) && count( $parts ) > 0 ) {
+                            foreach ( $parts as $part ) {
+                                echo trim($part) . "\n";
+                            }
+                        }
+                    @endphp</textarea>
 
                 @error('optional_invoice_emails')
                 <span class="invalid-feedback">
