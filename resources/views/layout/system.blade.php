@@ -18,8 +18,9 @@
     <style type="text/css">
         @yield('css')
     </style>
+    @yield('styles')
 </head>
-<body class="@yield('bodyClass')">
+<body @yield('bodyAttributes')>
 
 @yield('pageContent')
 

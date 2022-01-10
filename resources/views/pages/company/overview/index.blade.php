@@ -1,6 +1,12 @@
 
 @extends('layout.system')
 
+@section('bodyAttributes', 'class=NovaPreloadSpinner data-time=1000')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ url('css/plugins/NovaPreloadSpinner.css') }}">
+@endsection
+
 @section('pageContent')
 
     @include('layout.banner')
@@ -92,6 +98,7 @@
     <script src="{{ url('js/sidebar.js') }}"></script>
 
     <script src="{{ url('js/plugins/datatables.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaPreloadSpinner.js') }}"></script>
     <script>
         if (document.getElementById('datatable-company-list')) {
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-company-list", {
