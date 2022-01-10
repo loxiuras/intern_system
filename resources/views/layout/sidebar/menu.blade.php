@@ -43,11 +43,11 @@
                             <span class="sidenav-normal">{{ __('sidebar.companies.overview') }}</span>
                         </a>
                     </li>
-{{--                    <li class="nav-item ">--}}
-{{--                        <a class="nav-link " href="{{ Route('company-add') }}">--}}
-{{--                            <span class="sidenav-normal">{{ __('sidebar.companies.new-item') }}</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('company-add') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.companies.new-item') }}</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
