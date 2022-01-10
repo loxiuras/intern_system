@@ -15,6 +15,9 @@
             <div class="row mt-3">
                 <div class="col-12 col-sm-6">
                     <label for="name">{{ __("general.name") }}</label>
+                    <p class="form-text text-muted text-xs ms-1">
+                        {!! __("pages/company.name--subtext") !!}
+                    </p>
                     <input class="multisteps-form__input form-control @error('name') is-invalid @enderror"
                            type="text"
                            name="name"

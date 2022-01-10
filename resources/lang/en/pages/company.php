@@ -25,6 +25,7 @@ return [
         ]
     ],
 
+    "name--subtext"       => "The general name of the company.",
     "legal-name--subtext" => "The full legal name, e.g., the Chamber of Commerce name.",
 
     "content" => [
