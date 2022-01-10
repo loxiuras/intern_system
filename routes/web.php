@@ -29,5 +29,7 @@ Route::post('/user/store-password', [UserController::class, 'storePassword'])->m
 
 /** COMPANY **/
 Route::get('/company/overview', [CompanyController::class, 'overview'])->middleware('auth')->name('company-overview');
-Route::get('/company/add', [CompanyController::class, 'overview'])->middleware('auth')->name('company-add');
-Route::get('/company/edit/{id}', [CompanyController::class, 'overview'])->middleware('auth')->name('company-edit');
+Route::get('/company/add', [CompanyController::class, 'add'])->middleware('auth')->name('company-add');
+Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->middleware('auth')->name('company-edit');
+Route::delete('/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('auth')->name('company-delete');
+Route::post('/company/store', [CompanyController::class, 'store'])->middleware('auth')->name('company-store');

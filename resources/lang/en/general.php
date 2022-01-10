@@ -30,5 +30,17 @@ return [
     "company"             => "Company",
     "company-name"        => "Company name",
     "address"             => "Address",
+    "name"                => "Name",
+    "legal-name"          => "Legal name",
+    "street-name"         => "Street name",
+    "house-number"        => "House number",
+    "house-number-extra"  => "Extra",
+    "postal-code"         => "Postal code",
+    "city"                => "City",
+    "province"            => "Province",
+    "country"             => "Country",
+    "website"             => "Website (primary)",
+    "invoice-email"       => "Invoice e-mailaddress",
+    "invoice-email-optional" => "Extra invoice e-mailaddresses",
 
 ];

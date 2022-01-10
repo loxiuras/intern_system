@@ -20,4 +20,17 @@ class CompanyController extends Controller
             "companiesData"     => $companiesData
         ]);
     }
+
+    public function add()
+    {
+        return view('pages.company.add.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "company", "add" ),
+            "companyData"      => new \stdClass(),
+        ]);
+    }
+
+    public function edit(int $userId) {}
+
+    public function delete($id) {}
 }

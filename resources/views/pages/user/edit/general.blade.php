@@ -21,7 +21,7 @@
                            value="{{ old('name', (isset($userData->name) ? $userData->name : ""))  }}"
                            placeholder="" />
 
-                    @error('first_name')
+                    @error('name')
                         <span class="invalid-feedback">
                             {{ $message }}
                         </span>

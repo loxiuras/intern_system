@@ -25,10 +25,15 @@ return [
         ]
     ],
 
+    "legal-name--subtext" => "The full legal name, e.g., the Chamber of Commerce name.",
+
     "content" => [
         "add" => [
-            "title"       => "User details",
-            "description" => "Please enter all user information below.",
+            "title"       => "Company details",
+            "description" => "Please enter all company information below.",
+
+            "title--invoice"       => "Invoice settings",
+            "description--invoice" => "Set the invoice data below.",
         ]
     ]
 
