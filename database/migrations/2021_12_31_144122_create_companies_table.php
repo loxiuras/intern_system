@@ -30,7 +30,7 @@ class CreateCompaniesTable extends Migration
             $table->string('primary_email', 100);
             $table->string('primary_invoice_email', 100);
             $table->text('optional_invoice_emails')->nullable();
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(0);
         });
     }
 

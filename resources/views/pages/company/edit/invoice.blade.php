@@ -17,7 +17,7 @@
                        placeholder="" />
 
                 @error('primary_invoice_email')
-                <span class="invalid-feedback">
+                    <span class="invalid-feedback">
                         {{ $message }}
                     </span>
                 @enderror
@@ -42,7 +42,7 @@
                     @endphp</textarea>
 
                 @error('optional_invoice_emails')
-                <span class="invalid-feedback">
+                    <span class="invalid-feedback">
                         {{ $message }}
                     </span>
                 @enderror

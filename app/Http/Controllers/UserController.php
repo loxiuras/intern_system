@@ -80,7 +80,7 @@ class UserController extends Controller
         $id = $request->id;
 
         if ( $id ) {
-            $userData = User::find($request->id);
+            $userData = User::find($id);
 
             $userData->name               = $request->name;
             $userData->insertion          = $request->insertion;
