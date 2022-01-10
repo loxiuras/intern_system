@@ -16,4 +16,10 @@ return [
         "new-item" => "Add new",
     ],
 
+    "domains" => [
+        "main" => "Domains",
+        "overview" => "Overview",
+        "new-item" => "Add new",
+    ],
+
 ];

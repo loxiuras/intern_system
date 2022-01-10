@@ -52,6 +52,28 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#domainsModule" class="nav-link" aria-controls="domainsModule" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                    <i class="ni ni-laptop text-success text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">{{ __('sidebar.domains.main') }}</span>
+            </a>
+            <div class="collapse" id="domainsModule">
+                <ul class="nav ms-4">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('domain-overview') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.domains.overview') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('domain-add') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.domains.new-item') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
     </ul>
 </div>

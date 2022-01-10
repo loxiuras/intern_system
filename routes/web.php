@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DomainController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
@@ -34,3 +35,10 @@ Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->middleware
 Route::delete('/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('auth')->name('company-delete');
 Route::post('/company/store', [CompanyController::class, 'store'])->middleware('auth')->name('company-store');
 Route::post('/company/connect-user', [CompanyController::class, 'connectUser'])->middleware('auth')->name('company-connect-user');
+
+/** DOMAINS **/
+Route::get('/domain/overview', [DomainController::class, 'overview'])->middleware('auth')->name('domain-overview');
+Route::get('/domain/add', [DomainController::class, 'add'])->middleware('auth')->name('domain-add');
+Route::get('/domain/edit', [DomainController::class, 'edit'])->middleware('auth')->name('domain-edit');
+Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middleware('auth')->name('domain-delete');
+Route::post('/domain/store', [CompanyController::class, 'store'])->middleware('auth')->name('domain-store');
