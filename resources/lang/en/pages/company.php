@@ -35,6 +35,9 @@ return [
 
             "title--invoice"       => "Invoice settings",
             "description--invoice" => "Set the invoice data below.",
+
+            "title--users"       => "Users overview",
+            "description--users" => "All users connected to this company",
         ]
     ]
 

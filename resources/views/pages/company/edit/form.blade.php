@@ -6,7 +6,18 @@
                 <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
 
-                        @include("pages.company.edit.general")
+                        <form method="POST" action="{{ Route("company-store") }}" class="multisteps-form__form mb-1">
+                            @csrf
+
+                            <input type="hidden" name="id" id="id" value="{{ isset($companyData->id) ? $companyData->id : 0 }}">
+
+                            @include("pages.company.edit.general")
+                            @if( isset($companyData->id) )
+                                @include("pages.company.edit.users")
+                            @endif
+                            @include("pages.company.edit.invoice")
+
+                        </form>
 
                     </div>
                 </div>

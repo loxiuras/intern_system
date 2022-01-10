@@ -42,5 +42,6 @@ return [
     "website"             => "Website (primary)",
     "invoice-email"       => "Invoice e-mailaddress",
     "invoice-email-optional" => "Extra invoice e-mailaddresses",
+    "connect-item"        => "Connect :item",
 
 ];
