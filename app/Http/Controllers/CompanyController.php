@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\CompanyUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,11 +42,21 @@ class CompanyController extends Controller
                                    ->orderBy('users.name', 'asc')
                                    ->get();
 
+        $connectedCompanyUserIds = [];
+        if ( $companyUsers ) {
+            foreach( $companyUsers as $user ) {
+                $connectedCompanyUserIds[] = $user->id;
+            }
+        }
+
+        $connectUsers = User::whereRaw('!FIND_IN_SET(id,"'. implode(",", $connectedCompanyUserIds) .'")')->orderBy('name')->get();
+
         return view('pages.company.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "company", "add" ),
             "companyData"   => $companyData,
             "companyUsers"  => $companyUsers,
+            "connectUsers"  => $connectUsers,
         ]);
     }
 
@@ -129,5 +140,25 @@ class CompanyController extends Controller
         }
 
         return redirect()->route('company-edit', ['id' => $id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function connectUser(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $this->validate($request, [
+            'id'      => 'required',
+            'user_id' => 'required',
+        ]);
+
+        CompanyUser::insertGetId([
+            'company_id' => $request->id,
+            'user_id'    => $request->user_id,
+        ]);
+
+        return back();
     }
 }

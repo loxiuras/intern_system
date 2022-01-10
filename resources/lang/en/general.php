@@ -25,6 +25,7 @@ return [
     "date-of-birth"       => "Date of birth",
     "save"                => "Save :item",
     "selected"            => "Selected",
+    "select-item"         => "Select a :item",
     "back-to"             => "Back to :location",
     "overview"            => "Overview",
     "company"             => "Company",
@@ -43,5 +44,6 @@ return [
     "invoice-email"       => "Invoice e-mailaddress",
     "invoice-email-optional" => "Extra invoice e-mailaddresses",
     "connect-item"        => "Connect :item",
+    "search-for"          => "Search for a :item",
 
 ];

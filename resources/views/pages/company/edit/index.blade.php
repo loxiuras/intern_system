@@ -3,6 +3,10 @@
 
 @section('css')
 
+    .choices {
+        width: 100%;
+    }
+
 @endsection
 
 @section('pageContent')
@@ -31,4 +35,15 @@
     <script src="{{ url('js/plugins/NovaPasswordViewer.js') }}"></script>
     <script src="{{ url('js/plugins/NovaModel.js') }}"></script>
 
+    <script src="{{ url('js/plugins/choices.js') }}"></script>
+    <script >
+        if (document.getElementById('choices-user-id')) {
+            var element = document.getElementById('choices-user-id');
+            const example = new Choices(element, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.name")]) }}',
+                shouldSort: false,
+            });
+        };
+    </script>
 @endsection

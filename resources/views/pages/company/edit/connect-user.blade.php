@@ -5,41 +5,39 @@
         <div class="modal-content">
             <div class="modal-body p-0">
                 <div class="card card-plain">
+
+
                     <div class="card-header pb-0 text-left">
-                        <h3 class="font-weight-bolder text-primary text-gradient">Join us today</h3>
-                        <p class="mb-0">Enter your email and password to register</p>
+                        <h3 class="font-weight-bolder text-primary text-gradient">{!! __("pages/company.connect-user.title") !!}</h3>
+                        <p class="mb-0">{!! __("pages/company.connect-user.description") !!}</p>
                     </div>
+
                     <div class="card-body pb-3">
-                        <form role="form text-left">
-                            <label>Name</label>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon">
+                        <form role="form text-left" method="POST" action="{{ Route('company-connect-user') }}">
+                            @csrf
+
+                            <input type="hidden" name="id" id="name" value="{{ $companyData->id }}" />
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="user_id">{{ __("general.user") }}</label>
+                                    <div class="input-group mb-3" style="width: 100%;">
+                                        <select name="user_id" class="form-control" id="choices-user-id">
+                                            <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.name"))]) }}</option>
+                                            @foreach( $connectUsers as $user )
+                                                <option value="{{ $user->id }}">{{ $user->name }} {{ $user->insertion }} {{ $user->last_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <label>Email</label>
-                            <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                            </div>
-                            <label>Password</label>
-                            <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                            </div>
-                            <div class="form-check form-check-info text-left">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    I agree the <a href="javascrpt:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                                </label>
-                            </div>
+
                             <div class="text-center">
-                                <button type="button" class="btn bg-gradient-primary btn-lg btn-rounded w-100 mt-4 mb-0">Sign up</button>
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mt-2 mb-0">{{ __("general.connect-item", ["item" => strtolower( __("general.user") )]) }}</button>
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer text-center pt-0 px-sm-4 px-1">
-                        <p class="mb-4 mx-auto">
-                            Already have an account?
-                            <a href="javascrpt:;" class="text-primary text-gradient font-weight-bold">Sign in</a>
-                        </p>
-                    </div>
+
                 </div>
             </div>
         </div>

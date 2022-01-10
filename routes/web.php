@@ -33,3 +33,4 @@ Route::get('/company/add', [CompanyController::class, 'add'])->middleware('auth'
 Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->middleware('auth')->name('company-edit');
 Route::delete('/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('auth')->name('company-delete');
 Route::post('/company/store', [CompanyController::class, 'store'])->middleware('auth')->name('company-store');
+Route::post('/company/connect-user', [CompanyController::class, 'connectUser'])->middleware('auth')->name('company-connect-user');

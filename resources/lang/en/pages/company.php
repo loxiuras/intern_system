@@ -39,6 +39,11 @@ return [
             "title--users"       => "Users overview",
             "description--users" => "All users connected to this company",
         ]
+    ],
+
+    "connect-user" => [
+        "title"       => "Connect a new user",
+        "description" => "Select your new user in the selectbox below.",
     ]
 
 ];
