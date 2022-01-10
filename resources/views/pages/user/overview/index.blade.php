@@ -65,18 +65,12 @@
                                                     <i class="fas fa-user-edit text-secondary"></i>
                                                 </a>
 
-                                                @if ( empty( $user->email_verified_at ) )
-                                                    <a href="{{ Route('user-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                        <i class="fas fa-paper-plane text-secondary"></i>
-                                                    </a>
-                                                @endif
-
-                                                <form action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">
+                                                <form class="mx-3" action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">
                                                     @method('delete')
                                                     @csrf
 
                                                     <label for="deleteSubmit{{$user->id}}">
-                                                        <span class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                        <span data-bs-toggle="tooltip" data-bs-original-title="Delete product" style="cursor: pointer;">
                                                             <i class="fas fa-trash text-secondary"></i>
                                                         </span>
                                                     </label>
