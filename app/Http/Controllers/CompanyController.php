@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\CompanyUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -48,7 +49,15 @@ class CompanyController extends Controller
         ]);
     }
 
-    public function delete($id) {}
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete($id): \Illuminate\Http\RedirectResponse
+    {
+        DB::table('companies')->where('id', '=', $id)->delete();
+        return back();
+    }
 
     /**
      * @param Request $request

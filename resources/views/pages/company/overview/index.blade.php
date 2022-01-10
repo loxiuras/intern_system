@@ -60,22 +60,22 @@
                                         </td>
                                         <td class="text-sm">
                                             <a href="{{ Route('company-edit', ['id' => $company->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                <i class="far fa-edit text-normal"></i>
+                                                <i class="fas fa-edit text-secondary"></i>
                                             </a>
 
 
-{{--                                            <form action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">--}}
-{{--                                                @method('delete')--}}
-{{--                                                @csrf--}}
+                                            <form action="{{ Route('company-delete', ['id' => $company->id]) }}" method="POST" title="{{ $company->id }}" style="display: inline-block;">
+                                                @method('delete')
+                                                @csrf
 
-{{--                                                <label for="deleteSubmit{{$user->id}}">--}}
-{{--                                                        <span class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product">--}}
-{{--                                                            <i class="fas fa-trash text-secondary"></i>--}}
-{{--                                                        </span>--}}
-{{--                                                </label>--}}
+                                                <label for="deleteSubmit{{$company->id}}">
+                                                        <span class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                            <i class="fas fa-trash text-secondary"></i>
+                                                        </span>
+                                                </label>
 
-{{--                                                <input id="deleteSubmit{{$user->id}}" name="deleteSubmit{{$user->id}}" type="submit" style="display: none" />--}}
-{{--                                            </form>--}}
+                                                <input id="deleteSubmit{{$company->id}}" name="deleteSubmit{{$company->id}}" type="submit" style="display: none" />
+                                            </form>
                                         </td>
                                     </tr>
 
