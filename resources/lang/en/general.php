@@ -45,5 +45,7 @@ return [
     "invoice-email-optional" => "Extra invoice e-mailaddresses",
     "connect-item"        => "Connect :item",
     "search-for"          => "Search for a :item",
+    "domain"              => "Domain",
+    "host"                => "Host",
 
 ];
