@@ -38,6 +38,7 @@ Route::post('/company/connect-user', [CompanyController::class, 'connectUser'])-
 
 /** DOMAINS **/
 Route::get('/domain/overview', [DomainController::class, 'overview'])->middleware('auth')->name('domain-overview');
+Route::post('/domain/overview', [DomainController::class, 'overview'])->middleware('auth');
 Route::get('/domain/add', [DomainController::class, 'add'])->middleware('auth')->name('domain-add');
 Route::get('/domain/edit', [DomainController::class, 'edit'])->middleware('auth')->name('domain-edit');
 Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middleware('auth')->name('domain-delete');

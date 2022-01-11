@@ -24,7 +24,64 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="table-responsive">
+                        <div class="card-header">
+
+                            <form action="{{ Route('domain-overview') }}" method="POST">
+                                @csrf
+
+                                <div class="row mt-3">
+
+                                    <div class="col-12 col-sm-2">
+                                        <label for="domain_name">{{ __("general.domain") }}</label>
+                                        <input class="multisteps-form__input form-control @error('domain_name') is-invalid @enderror"
+                                               type="text"
+                                               name="domain_name"
+                                               id="domain_name"
+                                               value="{{ old('domain_name', (!empty( $searchData->domain_name ) ? $searchData->domain_name : "")) }}"
+                                               placeholder="E.g. www.suilichem.com" />
+                                    </div>
+
+                                    <div class="col-12 col-sm-2">
+                                        <label for="domain_name">{{ __("general.host") }}</label>
+                                        <select name="host_id" id="host_id" class="multisteps-form__input form-control @error('host_id') is-invalid @enderror">
+                                            <option value="0"></option>
+                                            @foreach( $hostsData as $host )
+                                                @if( isset( $searchData->host_id ) && (int)$host->id === (int)$searchData->host_id )
+                                                    <option value='{{ $host->id }}' selected="selected">{{ $host->name }}</option>
+                                                @else
+                                                    <option value='{{ $host->id }}'>{{ $host->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 col-sm-3">
+                                        <label for="domain_name">{{ __("general.company") }}</label>
+                                        <select name="company_id" id="company_id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
+                                            <option value="0"></option>
+                                            @foreach( $companiesData as $company )
+                                                @if( isset( $searchData->company_id ) && (int)$company->id === (int)$searchData->company_id )
+                                                    <option value='{{ $company->id }}' selected="selected">{{ $company->name }}</option>
+                                                @else
+                                                    <option value='{{ $company->id }}'>{{ $company->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 col-sm-1 d-flex align-items-end">
+                                        <button type="submit" class="btn btn-sm btn-dark btn-lg mt-4 mb-0 px-6">Filter</button>
+                                    </div>
+
+                                    @if( isset( $searchData ) && count( (array)$searchData ) > 0 )
+                                        <div class="col-12 col-sm-1 d-flex align-items-end">
+                                            <a href="{{ Route('domain-overview') }}" class="btn btn-sm btn-light btn-lg mt-4 mb-0 px-6">Clear</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </form>
+
+                            <div class="table-responsive">
 
                             <table class="table table-flush" id="datatable-domain-list">
                                 <thead class="thead-light">
