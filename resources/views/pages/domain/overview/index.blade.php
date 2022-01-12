@@ -93,17 +93,31 @@
                                     <th data-sortable="false">{{ __("general.actions") }}</th>
                                 </tr>
                                 </thead>
+                                @php
+                                    $prevRecordId = 0;
+                                @endphp
                                 <tbody>
                                     @foreach( $domainsData as $domain )
-
                                         <tr>
+
+                                            @if( empty( $domain->parent_id ) )
+                                                @php
+                                                    $prevRecordId = $domain->id;
+                                                @endphp
+                                            @endif
 
                                             <td class="text-xs font-weight-bold">
                                                 <span class="my-2 text-xs">
                                                     @if( !empty( $domain->parent_id ) )
-                                                        -
+                                                        @if ( $domain->parent_id === $prevRecordId )
+                                                            <i class="fas fa-level-up-alt fa-rotate-90 fa-fw" style="margin-right: 10px;"></i>
+                                                        @else
+                                                            <i class="fas fa-reply fa-fw" style="margin-right: 10px; color: #e3e3e3;"></i>
+                                                        @endif
+                                                        {{ $domain->domainName }}
+                                                    @else
+                                                        <b>{{ $domain->domainName }}</b>
                                                     @endif
-                                                    {{ $domain->domainName }}
                                                 </span>
                                             </td>
 
@@ -124,9 +138,9 @@
                                             </td>
 
                                             <td class="text-sm">
-    {{--                                            <a href="{{ Route('user-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">--}}
-    {{--                                                <i class="fas fa-user-edit text-secondary"></i>--}}
-    {{--                                            </a>--}}
+                                                <a href="{{ Route('domain-edit', ['id' => $domain->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                    <i class="fas fa-edit text-secondary"></i>
+                                                </a>
 
     {{--                                            <form class="mx-3" action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">--}}
     {{--                                                @method('delete')--}}

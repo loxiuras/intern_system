@@ -40,6 +40,7 @@ class DomainController extends Controller
             'domains.name as domainName',
             'hosts.name as hostName',
             'companies.name as companyName',
+            'domains.id',
             'domains.active',
             'domains.parent_id',
         ])
