@@ -47,9 +47,9 @@
                                             <option value="0">{{ __("general.no-choice") }}</option>
                                             @foreach( $hostsData as $host )
                                                 @if( isset( $searchData->host_id ) && (int)$host->id === (int)$searchData->host_id )
-                                                    <option value='{{ $host->id }}' selected="selected">{{ $host->name }}</option>
+                                                    <option value='{{ $host->id }}' selected="selected">{{ $host->name }} - {{ $host->ip_address }}</option>
                                                 @else
-                                                    <option value='{{ $host->id }}'>{{ $host->name }}</option>
+                                                    <option value='{{ $host->id }}'>{{ $host->name }} - {{ $host->ip_address }}</option>
                                                 @endif
                                             @endforeach
                                         </select>

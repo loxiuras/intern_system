@@ -17,7 +17,7 @@ class CreateHostsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 50)->nullable();
-            $table->string('ip-address', 50)->nullable();
+            $table->string('ip_address', 50)->nullable();
             $table->text('description')->nullable();
             $table->tinyInteger('active');
         });

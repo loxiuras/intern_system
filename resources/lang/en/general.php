@@ -48,5 +48,7 @@ return [
     "domain"              => "Domain",
     "host"                => "Host",
     "no-choice"           => "No choice",
+    "parent"              => "Parent",
+    "production"       => "Production",
 
 ];

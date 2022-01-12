@@ -12,13 +12,6 @@ class DomainController extends Controller
 
     public function overview(Request $request)
     {
-//        dd(
-//            $request->domain_name,
-//            $request->host_name,
-//            $request->company_name,
-//            $request->active,
-//        );
-
         $where = [];
         $where[] = ['domains.name', '!=', ''];
 
@@ -63,8 +56,54 @@ class DomainController extends Controller
         ]);
     }
 
-    public function add(){}
-    public function edit(){}
+    public function add()
+    {
+        $companiesData = Company::where('name', '!=', '')->orderBy('name', 'asc')->get();
+
+        $domainsData = Domain::where([
+            ['name', '!=', ''],
+            ['parent_id', '=', 0],
+        ])->orWhereNull('parent_id')->get();
+
+        $hostsData = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
+
+        return view('pages.domain.add.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "domain", "add" ),
+            "domainData"    => new \stdClass(),
+            "companiesData" => $companiesData,
+            "domainsData"   => $domainsData,
+            "hostsData"     => $hostsData,
+        ]);
+    }
+
+    /**
+     * @param int $domainId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(int $domainId)
+    {
+        $companiesData = Company::where('name', '!=', '')->orderBy('name', 'asc')->get();
+
+        $domainData = Domain::find( $domainId );
+
+        $domainsData = Domain::where([
+            ['name', '!=', ''],
+            ['parent_id', '=', 0],
+        ])->orWhereNull('parent_id')->get();
+
+        $hostsData = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
+
+        return view('pages.domain.edit.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "domain", "add" ),
+            "domainData"    => $domainData,
+            "companiesData" => $companiesData,
+            "domainsData"   => $domainsData,
+            "hostsData"     => $hostsData,
+        ]);
+    }
+
     public function delete(){}
     public function store(){}
 

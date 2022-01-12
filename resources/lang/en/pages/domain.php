@@ -25,8 +25,8 @@ return [
         ]
     ],
 
-    "name--subtext"       => "The general name of the company.",
-    "legal-name--subtext" => "The full legal name, e.g., the Chamber of Commerce name.",
+    "is-production--subtext" => "Is the domain for production? Will mostly be invoiced. <br>For example you can set a development environment to non-production.",
+    "active--subtext"        => "Is the domain active? If not, it won't be available in filters and/or invoices e.g.",
 
     "content" => [
         "add" => [
