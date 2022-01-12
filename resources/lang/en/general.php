@@ -47,5 +47,6 @@ return [
     "search-for"          => "Search for a :item",
     "domain"              => "Domain",
     "host"                => "Host",
+    "no-choice"           => "No choice",
 
 ];

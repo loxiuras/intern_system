@@ -43,8 +43,8 @@
 
                                     <div class="col-12 col-sm-2">
                                         <label for="domain_name">{{ __("general.host") }}</label>
-                                        <select name="host_id" id="host_id" class="multisteps-form__input form-control @error('host_id') is-invalid @enderror">
-                                            <option value="0"></option>
+                                        <select name="host_id" id="choices-host-id" class="multisteps-form__input form-control @error('host_id') is-invalid @enderror">
+                                            <option value="0">{{ __("general.no-choice") }}</option>
                                             @foreach( $hostsData as $host )
                                                 @if( isset( $searchData->host_id ) && (int)$host->id === (int)$searchData->host_id )
                                                     <option value='{{ $host->id }}' selected="selected">{{ $host->name }}</option>
@@ -57,8 +57,8 @@
 
                                     <div class="col-12 col-sm-3">
                                         <label for="domain_name">{{ __("general.company") }}</label>
-                                        <select name="company_id" id="company_id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
-                                            <option value="0"></option>
+                                        <select name="company_id" id="choices-company-id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
+                                            <option value="0">{{ __("general.no-choice") }}</option>
                                             @foreach( $companiesData as $company )
                                                 @if( isset( $searchData->company_id ) && (int)$company->id === (int)$searchData->company_id )
                                                     <option value='{{ $company->id }}' selected="selected">{{ $company->name }}</option>
@@ -162,6 +162,26 @@
 @section('js')
 
     <script src="{{ url('js/sidebar.js') }}"></script>
+    <script src="{{ url('js/plugins/choices.js') }}"></script>
+    <script >
+        if (document.getElementById('choices-host-id')) {
+            let hostElement = document.getElementById('choices-host-id');
+            const hostSearch = new Choices(hostElement, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.host")]) }}',
+                shouldSort: false,
+            });
+        };
+
+        if (document.getElementById('choices-company-id')) {
+            var companyElement = document.getElementById('choices-company-id');
+            const companySearch = new Choices(companyElement, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.company")]) }}',
+                shouldSort: false,
+            });
+        };
+    </script>
 
     <script src="{{ url('js/plugins/datatables.js') }}"></script>
     <script>
