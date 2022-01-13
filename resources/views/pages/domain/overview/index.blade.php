@@ -69,15 +69,14 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-12 col-sm-1 d-flex align-items-end">
+                                    <div class="col-12 col-sm-3 d-flex align-items-end">
                                         <button type="submit" class="btn btn-sm btn-dark btn-lg mt-4 mb-0 px-6">Filter</button>
+
+                                        @if( isset( $searchData ) && count( (array)$searchData ) > 0 )
+                                            <a href="{{ Route('domain-overview') }}" class="btn btn-sm btn-light btn-lg mt-4 mb-0 mx-2 px-6">Clear</a>
+                                        @endif
                                     </div>
 
-                                    @if( isset( $searchData ) && count( (array)$searchData ) > 0 )
-                                        <div class="col-12 col-sm-1 d-flex align-items-end">
-                                            <a href="{{ Route('domain-overview') }}" class="btn btn-sm btn-light btn-lg mt-4 mb-0 px-6">Clear</a>
-                                        </div>
-                                    @endif
                                 </div>
                             </form>
 
