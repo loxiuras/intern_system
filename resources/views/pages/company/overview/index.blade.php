@@ -39,6 +39,7 @@
                                     <th data-sortable="false">{{ __("general.address") }}</th>
                                     <th data-sortable="false">{{ __("general.email") }}</th>
                                     <th data-sortable="false">{{ __("general.telephone") }}</th>
+                                    <th data-sortable="false">{{ __("general.active") }}?</th>
                                     <th data-sortable="false">{{ __("general.actions") }}</th>
                                 </tr>
                                 </thead>
@@ -57,6 +58,13 @@
                                         </td>
                                         <td class="text-xs font-weight-bold">
                                             <a href="tel:{{ $company->telephone }}" class="my-2 text-xs text-secondary">{{ $company->telephone }}</a>
+                                        </td>
+                                        <td class="text-xs font-weight-bold">
+                                            @if( $company->active )
+                                                <span class="badge badge-success">{{ __("general.active") }}</span>
+                                            @else
+                                                <span class="badge badge-secondary">{{ __("general.in-active") }}</span>
+                                            @endif
                                         </td>
                                         <td class="text-sm">
                                             <a href="{{ Route('company-edit', ['id' => $company->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
