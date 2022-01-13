@@ -42,4 +42,4 @@ Route::post('/domain/overview', [DomainController::class, 'overview'])->middlewa
 Route::get('/domain/add', [DomainController::class, 'add'])->middleware('auth')->name('domain-add');
 Route::get('/domain/edit/{id}', [DomainController::class, 'edit'])->middleware('auth')->name('domain-edit');
 Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middleware('auth')->name('domain-delete');
-Route::post('/domain/store', [CompanyController::class, 'store'])->middleware('auth')->name('domain-store');
+Route::post('/domain/store', [DomainController::class, 'store'])->middleware('auth')->name('domain-store');

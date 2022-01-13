@@ -105,6 +105,44 @@ class DomainController extends Controller
     }
 
     public function delete(){}
-    public function store(){}
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            "id"   => "integer",
+            "name" => "required",
+        ]);
+
+        $id = $request->id;
+
+        if ( $id ) {
+            $domainData = Domain::find($id);
+
+            $domainData->name          = strtolower( $request->name );
+            if ( !empty( $request->parent_id ) )  $domainData->parent_id = $request->parent_id;
+            if ( !empty( $request->company_id ) ) $domainData->company_id = $request->company_id;
+            if ( !empty( $request->host_id ) )    $domainData->host_id = $request->host_id;
+            $domainData->is_production = !empty( $request->is_production ) ? 1 : 0;
+            $domainData->active        = !empty( $request->active ) ? 1 : 0;
+            $domainData->save();
+        }
+        else {
+            $data = [
+                "name"          => $request->name,
+                "is_production" => !empty( $request->is_production ) ? 1 : 0,
+                "active"        => !empty( $request->active ) ? 1 : 0,
+            ];
+
+            if ( !empty( $request->parent_id ) )  $data['parent_id'] = $request->parent_id;
+            if ( !empty( $request->company_id ) ) $data['company_id'] = $request->company_id;
+            if ( !empty( $request->host_id ) )    $data['host_id'] = $request->host_id;
+
+            $id = Domain::insertGetId(
+                $data
+            );
+        }
+
+        return redirect()->route('domain-edit', ['id' => $id]);
+    }
 
 }
