@@ -86,7 +86,7 @@ class UserController extends Controller
             $userData->insertion          = $request->insertion;
             $userData->last_name          = $request->last_name;
             $userData->date_of_birth      = $request->date_of_birth;
-            $userData->email              = $request->email;
+            $userData->email              = strtolower($request->email);
             $userData->telephone          = $request->telephone;
             $userData->picture_default_id = (int)$request->picture_default_id;
             $userData->save();
