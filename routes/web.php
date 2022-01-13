@@ -43,3 +43,4 @@ Route::get('/domain/add', [DomainController::class, 'add'])->middleware('auth')-
 Route::get('/domain/edit/{id}', [DomainController::class, 'edit'])->middleware('auth')->name('domain-edit');
 Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middleware('auth')->name('domain-delete');
 Route::post('/domain/store', [DomainController::class, 'store'])->middleware('auth')->name('domain-store');
+Route::get('/domain/calculate-sequence', [DomainController::class, 'calculateSequence'])->middleware('auth')->name('calculate-sequence');

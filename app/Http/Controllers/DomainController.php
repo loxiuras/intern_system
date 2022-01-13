@@ -38,6 +38,7 @@ class DomainController extends Controller
             'domains.parent_id',
         ])
             ->where($where)
+            ->orderBy('sequence', 'asc')
             ->join('hosts', 'hosts.id', '=', 'domains.host_id')
             ->join('companies', 'companies.id', '=', 'domains.company_id')
             ->get();
@@ -142,7 +143,13 @@ class DomainController extends Controller
             );
         }
 
+        Domain::calculateSequence();
+
         return redirect()->route('domain-edit', ['id' => $id]);
     }
 
+    public function calculateSequence()
+    {
+        Domain::calculateSequence();
+    }
 }

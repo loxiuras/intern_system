@@ -34,4 +34,31 @@ class Domain extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * Calculation for the order sequence based on parent IDs
+     *
+     * @return void
+     */
+    public static function calculateSequence(): void
+    {
+        $sequence = 0;
+
+        $domains = Domain::whereNull('parent_id')->orderBy('name')->get();
+
+        foreach ( $domains as $domain ) {
+            $id = $domain->id;
+
+            $domain->sequence = $sequence++;
+            $domain->save();
+
+            $subDomains = Domain::where('parent_id', '=', $id)->orderBy('name', 'asc')->get();
+            if ( $subDomains ) {
+                foreach ( $subDomains as $subDomain ) {
+                    $subDomain->sequence = $sequence++;
+                    $subDomain->save();
+                }
+            }
+        }
+    }
 }

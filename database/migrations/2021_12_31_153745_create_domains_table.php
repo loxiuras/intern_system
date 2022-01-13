@@ -25,6 +25,7 @@ class CreateDomainsTable extends Migration
             $table->foreign('host_id')->references('id')->on('hosts');
             $table->tinyInteger('is_production')->default(1);
             $table->tinyInteger('active');
+            $table->integer('sequence')->default(0);
         });
     }
 
