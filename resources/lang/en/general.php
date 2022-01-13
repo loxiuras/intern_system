@@ -21,6 +21,7 @@ return [
     "last-name"           => "Last name",
     "last-login"          => "Last login",
     "active"              => "Active",
+    "in-active"           => "In-active",
     "actions"             => "Actions",
     "date-of-birth"       => "Date of birth",
     "save"                => "Save :item",

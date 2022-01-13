@@ -55,9 +55,9 @@
                                             </td>
                                             <td class="text-xs font-weight-bold">
                                                 @if( $user->active )
-                                                    <span class="text-success">Ja</span>
+                                                    <span class="badge badge-success">{{ __("general.active") }}</span>
                                                 @else
-                                                    <span class="text-danger">Nee</span>
+                                                    <span class="badge badge-secondary">{{ __("general.in-active") }}</span>
                                                 @endif
                                             </td>
                                             <td class="text-sm">
