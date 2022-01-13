@@ -116,9 +116,25 @@
 
             <div class="row mt-4">
 
+                <div class="col-3 d-flex justify-content-center mb-2">
+
+                    <input type="radio" class="pictureDefaultElement"
+                           name="picture_default_id"
+                           value="0"
+                           checked
+                           id="picture_default_id_0" />
+                    <label for="picture_default_id_0">
+                        <img src="{{ url( "img/banners/banner-0.png" ) }}"
+                             alt="profile picture"
+                             class="w-100 border-radius-lg shadow-sm">
+                        <span class="text bg-gradient-dark">{{ __("general.selected") }}</span>
+                    </label>
+
+                </div>
+
                 @for( $i = 1; $i <= 3; $i++ )
 
-                    <div class="col-4 d-flex justify-content-center mb-2">
+                    <div class="col-3 d-flex justify-content-center mb-2">
 
                         <input type="radio" class="pictureDefaultElement"
                                name="picture_default_id"
