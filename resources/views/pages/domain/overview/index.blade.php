@@ -130,9 +130,9 @@
 
                                             <td class="text-xs font-weight-bold">
                                                 @if( $domain->active )
-                                                    <span class="text-success">Ja</span>
+                                                    <span class="badge badge-success">Actief</span>
                                                 @else
-                                                    <span class="text-danger">Nee</span>
+                                                    <span class="badge badge-secondary">In-actief</span>
                                                 @endif
                                             </td>
 
