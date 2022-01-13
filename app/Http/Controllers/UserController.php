@@ -94,12 +94,13 @@ class UserController extends Controller
         else {
             $id = User::insertGetId(
                 [
-                    "name"          => $request->name,
-                    "insertion"     => $request->insertion,
-                    "last_name"     => $request->last_name,
-                    "date_of_birth" => $request->date_of_birth,
-                    "email"         => $request->email,
-                    "telephone"     => $request->telephone,
+                    "name"                  => $request->name,
+                    "insertion"             => $request->insertion,
+                    "last_name"             => $request->last_name,
+                    "date_of_birth"         => $request->date_of_birth,
+                    "email"                 => strtolower($request->email),
+                    "telephone"             => $request->telephone,
+                    "picture_default_id"    => (int)$request->picture_default_id,
                 ]
             );
         }
