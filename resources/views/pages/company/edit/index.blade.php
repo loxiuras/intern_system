@@ -7,6 +7,30 @@
         width: 100%;
     }
 
+    .domainHover:hover {
+        color: var( --bs-primary ) !important;
+        font-weight: 600;
+    }
+
+    .domainHover .domainHoverIcon {
+        display: none;
+    }
+
+    .domainHover:hover .domainHoverIcon {
+        display: inline-block;
+    }
+
+    .domainLink {
+        color: #aaaaaa !important;
+    }
+    .domainLink i {
+        color: #aaaaaa;
+    }
+    .domainHover:hover {
+        color: #676767 !important;
+    }
+
+
 @endsection
 
 @section('pageContent')

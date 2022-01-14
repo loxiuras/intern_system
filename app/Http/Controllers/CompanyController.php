@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Domain;
 use App\Models\Company;
 use App\Models\CompanyUser;
 use App\Models\User;
@@ -42,6 +43,8 @@ class CompanyController extends Controller
                                    ->orderBy('users.name', 'asc')
                                    ->get();
 
+        $companyDomains = Domain::getConnectedCompany( $companyId );
+
         $connectedCompanyUserIds = [];
         if ( $companyUsers ) {
             foreach( $companyUsers as $user ) {
@@ -52,11 +55,12 @@ class CompanyController extends Controller
         $connectUsers = User::whereRaw('!FIND_IN_SET(id,"'. implode(",", $connectedCompanyUserIds) .'")')->orderBy('name')->get();
 
         return view('pages.company.edit.index', [
-            "loginUserData" => $this->getLoginUserData(),
-            "sidebarData"   => $this->getSidebarData( "company", "add" ),
-            "companyData"   => $companyData,
-            "companyUsers"  => $companyUsers,
-            "connectUsers"  => $connectUsers,
+            "loginUserData"  => $this->getLoginUserData(),
+            "sidebarData"    => $this->getSidebarData( "company", "add" ),
+            "companyData"    => $companyData,
+            "companyUsers"   => $companyUsers,
+            "connectUsers"   => $connectUsers,
+            "companyDomains" => $companyDomains,
         ]);
     }
 

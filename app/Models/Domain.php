@@ -36,6 +36,16 @@ class Domain extends Model
     protected $casts = [];
 
     /**
+     * @param int $companyId
+     *
+     * @return mixed
+     */
+    public static function getConnectedCompany( int $companyId )
+    {
+        return Domain::where("company_id", "=", $companyId)->orderBy("name", "asc")->get();
+    }
+
+    /**
      * Calculation for the order sequence based on parent IDs
      *
      * @return void

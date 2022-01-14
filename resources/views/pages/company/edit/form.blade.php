@@ -14,6 +14,7 @@
                             @include("pages.company.edit.general")
                             @if( isset($companyData->id) )
                                 @include("pages.company.edit.users")
+                                @include("pages.company.edit.domain-overview")
                             @endif
                             @include("pages.company.edit.invoice")
 

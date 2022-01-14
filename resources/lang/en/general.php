@@ -47,10 +47,12 @@ return [
     "connect-item"        => "Connect :item",
     "search-for"          => "Search for a :item",
     "domain"              => "Domain",
+    "domains"             => "Domains",
     "host"                => "Host",
     "no-choice"           => "No choice",
     "parent"              => "Parent",
     "production"          => "Production",
     "banner-image"        => "Banner image",
+    "no-results-found"    => "No :item found",
 
 ];

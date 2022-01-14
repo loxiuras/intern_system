@@ -30,6 +30,8 @@ return [
 
     "active--subtext" => "Is the company active? If not, it won't be available in filters and/or invoices e.g.",
 
+    "domain-overview--subtext" => "View all domains of this company",
+
     "content" => [
         "add" => [
             "title"       => "Company details",
@@ -40,6 +42,9 @@ return [
 
             "title--users"       => "Users overview",
             "description--users" => "All users connected to this company",
+
+            "title--domain-overview"       => "Domain overview",
+            "description--domain-overview" => "All domains connected to this company",
         ]
     ],
 
