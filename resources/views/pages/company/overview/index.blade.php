@@ -77,7 +77,7 @@
                                                 @csrf
 
                                                 <label for="deleteSubmit{{$company->id}}">
-                                                        <span class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                        <span class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Delete product" style="cursor: pointer;">
                                                             <i class="fas fa-trash text-secondary"></i>
                                                         </span>
                                                 </label>
