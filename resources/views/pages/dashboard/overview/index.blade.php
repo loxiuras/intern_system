@@ -36,7 +36,7 @@
                                                 </h5>
                                                 <p class="mb-0">
                                                     <span class="@if( $userInfo->monthCount > 0 ) text-success @elseif ( $userInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
-                                                        @if( $userInfo->monthCount > 0 )+@endif{{ $userInfo->monthCount }}
+                                                        {{ $userInfo->monthCount }}
                                                     </span>
                                                     {!! __("pages/dashboard.info.user.subtext") !!}
                                                 </p>
