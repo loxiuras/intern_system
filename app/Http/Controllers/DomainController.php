@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Domain;
 use App\Models\Host;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DomainController extends Controller
 {
@@ -105,7 +106,16 @@ class DomainController extends Controller
         ]);
     }
 
-    public function delete(){}
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(int $id): \Illuminate\Http\RedirectResponse
+    {
+        DB::table('domains')->where('id', '=', $id)->delete();
+        return back();
+    }
 
     public function store(Request $request)
     {

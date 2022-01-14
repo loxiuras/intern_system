@@ -141,18 +141,18 @@
                                                     <i class="fas fa-edit text-secondary"></i>
                                                 </a>
 
-    {{--                                            <form class="mx-3" action="{{ Route('user-delete', ['id' => $user->id]) }}" method="POST" title="{{ $user->id }}" style="display: inline-block;">--}}
-    {{--                                                @method('delete')--}}
-    {{--                                                @csrf--}}
+                                                <form class="mx-3" action="{{ Route('domain-delete', ['id' => $domain->id]) }}" method="POST" title="{{ $domain->id }}" style="display: inline-block;">
+                                                    @method('delete')
+                                                    @csrf
 
-    {{--                                                <label for="deleteSubmit{{$user->id}}">--}}
-    {{--                                                        <span data-bs-toggle="tooltip" data-bs-original-title="Delete product" style="cursor: pointer;">--}}
-    {{--                                                            <i class="fas fa-trash text-secondary"></i>--}}
-    {{--                                                        </span>--}}
-    {{--                                                </label>--}}
+                                                    <label for="deleteSubmit{{$domain->id}}">
+                                                            <span data-bs-toggle="tooltip" data-bs-original-title="Delete product" style="cursor: pointer;">
+                                                                <i class="fas fa-trash text-secondary"></i>
+                                                            </span>
+                                                    </label>
 
-    {{--                                                <input id="deleteSubmit{{$user->id}}" name="deleteSubmit{{$user->id}}" type="submit" style="display: none" />--}}
-    {{--                                            </form>--}}
+                                                    <input id="deleteSubmit{{$domain->id}}" name="deleteSubmit{{$domain->id}}" type="submit" style="display: none" />
+                                                </form>
                                             </td>
 
                                         </tr>
