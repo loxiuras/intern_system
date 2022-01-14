@@ -4,6 +4,7 @@ use App\Http\Controllers\DomainController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -48,3 +49,6 @@ Route::get('/domain/edit/{id}', [DomainController::class, 'edit'])->middleware('
 Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middleware('auth')->name('domain-delete');
 Route::post('/domain/store', [DomainController::class, 'store'])->middleware('auth')->name('domain-store');
 Route::get('/domain/calculate-sequence', [DomainController::class, 'calculateSequence'])->middleware('auth')->name('calculate-sequence');
+
+/** PASSWORD **/
+Route::get('/password/overview', [PasswordController::class, 'overview'])->middleware('auth')->name('password-overview');
