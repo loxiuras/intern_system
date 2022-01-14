@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="row">
 
-                        <div class="col-lg-3 col-md-6 col-12">
+                        <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-body p-3">
 
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-12">
+                        <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-body p-3">
 
@@ -85,7 +85,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-12">
+                        <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-body p-3">
                                     <div class="row">
@@ -111,14 +111,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    C
                                 </div>
                             </div>
                         </div>
