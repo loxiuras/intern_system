@@ -50,6 +50,7 @@ return [
     "host"                => "Host",
     "no-choice"           => "No choice",
     "parent"              => "Parent",
-    "production"       => "Production",
+    "production"          => "Production",
+    "banner-image"        => "Banner image",
 
 ];

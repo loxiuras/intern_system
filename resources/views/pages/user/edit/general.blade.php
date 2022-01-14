@@ -112,9 +112,36 @@
                 </div>
             </div>
 
+            <div class="row mt-4">
+
+                <div class="col-12 col-sm-7">
+                    <div class="form-group">
+                        <label>
+                            {{ __("general.active") }}?
+                        </label>
+                        <p class="form-text text-muted text-xs ms-1">
+                            {!! __("pages/user.active--subtext") !!}
+                        </p>
+                        <div class="form-check form-switch ms-1">
+                            <input class="form-check-input" type="checkbox" id="active" name="active" {{ isset( $userData->active ) && 1 === $userData->active ? 'checked' : '' }}>
+                            <label class="form-check-label" for="active"></label>
+                        </div>
+                    </div>
+
+                    @error('active')
+                    <span class="invalid-feedback">
+                        {{ $message }}
+                    </span>
+                    @enderror
+                </div>
+
+            </div>
+
             <hr class="horizontal dark mt-4">
 
             <div class="row mt-4">
+
+                <label for="email">{{ __("general.banner-image") }}</label>
 
                 <div class="col-3 d-flex justify-content-center mb-2">
 

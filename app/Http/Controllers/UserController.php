@@ -89,18 +89,20 @@ class UserController extends Controller
             $userData->email              = strtolower($request->email);
             $userData->telephone          = $request->telephone;
             $userData->picture_default_id = (int)$request->picture_default_id;
+            $userData->active             = !empty( $request->active ) ? 1 : 0;
             $userData->save();
         }
         else {
             $id = User::insertGetId(
                 [
-                    "name"                  => $request->name,
-                    "insertion"             => $request->insertion,
-                    "last_name"             => $request->last_name,
-                    "date_of_birth"         => $request->date_of_birth,
-                    "email"                 => strtolower($request->email),
-                    "telephone"             => $request->telephone,
-                    "picture_default_id"    => (int)$request->picture_default_id,
+                    "name"               => $request->name,
+                    "insertion"          => $request->insertion,
+                    "last_name"          => $request->last_name,
+                    "date_of_birth"      => $request->date_of_birth,
+                    "email"              => strtolower($request->email),
+                    "telephone"          => $request->telephone,
+                    "picture_default_id" => (int)$request->picture_default_id,
+                    "active"             => !empty( $request->active ) ? 1 : 0,
                 ]
             );
         }
