@@ -4,6 +4,10 @@ return [
 
     "settings" => "Settings",
 
+    "dashboard" => [
+        "main" => "Dashboard",
+    ],
+
     "users" => [
         "main" => "Users",
         "overview" => "Overview",
