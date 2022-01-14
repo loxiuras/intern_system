@@ -14,7 +14,8 @@
     .pictureDefaultElement + label .text {
         display: none;
         position: absolute;
-        bottom: 20px;
+        top: 0;
+        transform: translateY( 50% );
         right: 0;
         padding: 2px 10px 2px 15px;
         color: #ffffff;
