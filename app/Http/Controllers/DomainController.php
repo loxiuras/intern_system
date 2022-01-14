@@ -29,6 +29,10 @@ class DomainController extends Controller
             $where[] = ['domains.company_id', '=', (int)$request->company_id];
             $searchData->company_id = $request->company_id;
         }
+        if( !empty( $_GET['company_id'] ) ) {
+            $where[] = ['domains.company_id', '=', (int)$_GET['company_id']];
+            $searchData->company_id = $request->company_id;
+        }
 
         $domainsData = Domain::select([
             'domains.name as domainName',
@@ -43,7 +47,6 @@ class DomainController extends Controller
             ->join('hosts', 'hosts.id', '=', 'domains.host_id')
             ->join('companies', 'companies.id', '=', 'domains.company_id')
             ->get();
-
 
         $hostsData     = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
         $companiesData = Company::where('name', '!=', '')->orderBy('name', 'asc')->get();

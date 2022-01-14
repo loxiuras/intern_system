@@ -21,7 +21,7 @@
 
                 @endforeach
 
-                <a href="{{ Route('domain-overview', ['companyId' => $domain->company_id]) }}" class="domainLink text-sm mt-3">
+                <a href="{{ Route('domain-overview', ['company_id' => $domain->company_id]) }}" class="domainLink text-sm mt-3">
                     {!! __("pages/company.domain-overview--subtext") !!}?
                     {!! __("general.click-here") !!}
                     <i class="fas fa-long-arrow-alt-right"></i>
