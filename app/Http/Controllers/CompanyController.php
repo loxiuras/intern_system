@@ -71,7 +71,9 @@ class CompanyController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -115,6 +117,7 @@ class CompanyController extends Controller
             $companyData->primary_website         = $request->primary_website;
             $companyData->primary_invoice_email   = $request->primary_invoice_email;
             $companyData->optional_invoice_emails = $optionalInvoiceEmails;
+            $companyData->active                  = !empty( $request->active ) ? 1 : 0;
 
             $companyData->save();
         }
@@ -135,6 +138,7 @@ class CompanyController extends Controller
                     "primary_website"         => $request->primary_website,
                     "primary_invoice_email"   => $request->primary_invoice_email,
                     "optional_invoice_emails" => $optionalInvoiceEmails,
+                    "active"                  => !empty( $request->active ) ? 1 : 0,
                 ]
             );
         }

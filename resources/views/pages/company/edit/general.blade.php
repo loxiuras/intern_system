@@ -221,6 +221,31 @@
 
         </div>
 
+        <div class="row mt-5">
+
+            <div class="col-12 col-sm-7">
+                <div class="form-group">
+                    <label>
+                        {{ __("general.active") }}?
+                    </label>
+                    <p class="form-text text-muted text-xs ms-1">
+                        {!! __("pages/company.active--subtext") !!}
+                    </p>
+                    <div class="form-check form-switch ms-1">
+                        <input class="form-check-input" type="checkbox" id="active" name="active" {{ isset( $companyData->active ) && 1 === $companyData->active ? 'checked' : '' }}>
+                        <label class="form-check-label" for="active"></label>
+                    </div>
+                </div>
+
+                @error('active')
+                    <span class="invalid-feedback">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </div>
+
+        </div>
+
     </div>
 
 </div>

@@ -28,6 +28,8 @@ return [
     "name--subtext"       => "The general name of the company.",
     "legal-name--subtext" => "The full legal name, e.g., the Chamber of Commerce name.",
 
+    "active--subtext" => "Is the company active? If not, it won't be available in filters and/or invoices e.g.",
+
     "content" => [
         "add" => [
             "title"       => "Company details",
