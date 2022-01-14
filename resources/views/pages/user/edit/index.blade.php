@@ -14,14 +14,15 @@
     .pictureDefaultElement + label .text {
         display: none;
         position: absolute;
-        bottom: 20px;
+        top: 0;
+        transform: translateY( 50% );
         right: 0;
         padding: 2px 10px 2px 15px;
         color: #ffffff;
         border-radius: .75rem 0 0 .75rem;
     }
     .pictureDefaultElement:checked + label {
-        box-shadow: 0 0px 0 4px #212229;
+        box-shadow: 0 0 0 4px #212229;
         opacity: 1;
         border-radius: .75rem;
     }
