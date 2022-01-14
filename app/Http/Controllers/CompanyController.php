@@ -61,10 +61,10 @@ class CompanyController extends Controller
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete($id): \Illuminate\Http\RedirectResponse
+    public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
         DB::table('companies')->where('id', '=', $id)->delete();
         return back();
