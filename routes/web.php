@@ -52,3 +52,4 @@ Route::get('/domain/calculate-sequence', [DomainController::class, 'calculateSeq
 
 /** PASSWORD **/
 Route::get('/password/overview', [PasswordController::class, 'overview'])->middleware('auth')->name('password-overview');
+Route::post('/password/overview', [PasswordController::class, 'overview'])->middleware('auth');
