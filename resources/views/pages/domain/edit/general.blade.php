@@ -57,11 +57,7 @@
                     <select name="company_id" id="choices-company-id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
                         <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.company"))]) }}</option>
                         @foreach( $companiesData as $company )
-                            @if( !empty( $domainData->company_id ) && $company->id === $domainData->company_id )
-                                <option value="{{ $company->id }}" selected="selected">{{ $company->name }}</option>
-                            @else
-                                <option value="{{ $company->id }}">{{ $company->name }}</option>
-                            @endif
+                            <option value="{{ $company->id }}" @if( !empty( $domainData->company_id ) && $company->id === $domainData->company_id ) selected="selected" @endif>{{ $company->name }}</option>
                         @endforeach
                     </select>
 
@@ -81,11 +77,7 @@
                     <select name="host_id" id="choices-host-id" class="multisteps-form__input form-control @error('host_id') is-invalid @enderror">
                         <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.host"))]) }}</option>
                         @foreach( $hostsData as $host )
-                            @if( !empty( $domainData->host_id ) && $host->id === $domainData->host_id )
-                                <option value="{{ $host->id }}" selected="selected">{{ $host->name }} - {{ $host->ip_address }}</option>
-                            @else
-                                <option value="{{ $host->id }}">{{ $host->name }} - {{ $host->ip_address }}</option>
-                            @endif
+                            <option value="{{ $host->id }}" @if( !empty( $domainData->host_id ) && $host->id === $domainData->host_id ) selected="selected" @endif>{{ $host->name }} - {{ $host->ip_address }}</option>
                         @endforeach
                     </select>
 
