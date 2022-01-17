@@ -80,7 +80,9 @@
                                 </div>
                             </form>
 
-                            <div class="table-responsive">
+                        </div>
+
+                        <div class="table-responsive">
 
                             <table class="table table-flush" id="datatable-domain-list">
                                 <thead class="thead-light">
