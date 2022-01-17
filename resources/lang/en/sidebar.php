@@ -26,4 +26,10 @@ return [
         "new-item" => "Add new",
     ],
 
+    "password" => [
+        "main" => "Password",
+        "overview" => "Overview",
+        "new-item" => "Add new",
+    ],
+
 ];

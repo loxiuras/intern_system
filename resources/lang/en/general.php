@@ -54,5 +54,6 @@ return [
     "production"          => "Production",
     "banner-image"        => "Banner image",
     "no-results-found"    => "No :item found",
-
+    "type"                => "Type",
+    "id"                  => "Id",
 ];
