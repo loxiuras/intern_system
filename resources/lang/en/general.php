@@ -56,4 +56,5 @@ return [
     "no-results-found"    => "No :item found",
     "type"                => "Type",
     "id"                  => "Id",
+    "not-available"       => "Not available",
 ];

@@ -41,29 +41,27 @@
                                         </select>
                                     </div>
 
-                                    @if( isset( $searchData->type ) )
+                                    <div class="col-12 col-sm-2">
+                                        <label for="domain_name">{{ __("general.id") }} @if( !isset( $searchData->type ) ) - <span class="text-normal">{{ strtolower( __("general.not-available") ) }}</span> @endif</label>
+                                        <input class="multisteps-form__input form-control @error('record_id') is-invalid @enderror"
+                                               @if( !isset( $searchData->type ) ) disabled @endif
+                                               type="number"
+                                               name="record_id"
+                                               id="record_id"
+                                               value="{{ old('record_id', (!empty( $searchData->record_id ) ? $searchData->record_id : "")) }}"
+                                               placeholder="" />
+                                    </div>
 
-                                        <div class="col-12 col-sm-2">
-                                            <label for="domain_name">{{ __("general.id") }}</label>
-                                            <input class="multisteps-form__input form-control @error('record_id') is-invalid @enderror"
-                                                   type="number"
-                                                   name="record_id"
-                                                   id="record_id"
-                                                   value="{{ old('record_id', (!empty( $searchData->record_id ) ? $searchData->record_id : "")) }}"
-                                                   placeholder="" />
-                                        </div>
-
-                                        <div class="col-12 col-sm-2">
-                                            <label for="name">{{ __("general.name") }}</label>
-                                            <input class="multisteps-form__input form-control @error('name') is-invalid @enderror"
-                                                   type="text"
-                                                   name="name"
-                                                   id="name"
-                                                   value="{{ old('name', (!empty( $searchData->name ) ? $searchData->name : "")) }}"
-                                                   placeholder="" />
-                                        </div>
-
-                                    @endif
+                                    <div class="col-12 col-sm-2">
+                                        <label for="name">{{ __("general.name") }} @if( !isset( $searchData->type ) ) - <span class="text-normal">{{ strtolower( __("general.not-available") ) }}</span> @endif</label>
+                                        <input class="multisteps-form__input form-control @error('name') is-invalid @enderror"
+                                               @if( !isset( $searchData->type ) ) disabled @endif
+                                               type="text"
+                                               name="name"
+                                               id="name"
+                                               value="{{ old('name', (!empty( $searchData->name ) ? $searchData->name : "")) }}"
+                                               placeholder="" />
+                                    </div>
 
                                     <div class="col-12 col-sm-3 d-flex align-items-end">
                                         <button type="submit" class="btn btn-sm btn-dark btn-lg mt-4 mb-0 px-6">Filter</button>
