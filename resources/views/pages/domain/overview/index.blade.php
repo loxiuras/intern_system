@@ -46,11 +46,7 @@
                                         <select name="host_id" id="choices-host-id" class="multisteps-form__input form-control @error('host_id') is-invalid @enderror">
                                             <option value="0">{{ __("general.no-choice") }}</option>
                                             @foreach( $hostsData as $host )
-                                                @if( isset( $searchData->host_id ) && (int)$host->id === (int)$searchData->host_id )
-                                                    <option value='{{ $host->id }}' selected="selected">{{ $host->name }} - {{ $host->ip_address }}</option>
-                                                @else
-                                                    <option value='{{ $host->id }}'>{{ $host->name }} - {{ $host->ip_address }}</option>
-                                                @endif
+                                                <option value='{{ $host->id }}' @if( isset( $searchData->host_id ) && (int)$host->id === (int)$searchData->host_id ) selected="selected" @endif>{{ $host->name }} - {{ $host->ip_address }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,11 +56,7 @@
                                         <select name="company_id" id="choices-company-id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
                                             <option value="0">{{ __("general.no-choice") }}</option>
                                             @foreach( $companiesData as $company )
-                                                @if( isset( $searchData->company_id ) && (int)$company->id === (int)$searchData->company_id )
-                                                    <option value='{{ $company->id }}' selected="selected">{{ $company->name }}</option>
-                                                @else
-                                                    <option value='{{ $company->id }}'>{{ $company->name }}</option>
-                                                @endif
+                                                <option value='{{ $company->id }}' @if( isset( $searchData->company_id ) && (int)$company->id === (int)$searchData->company_id ) selected="selected" @endif>{{ $company->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
