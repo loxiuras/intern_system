@@ -41,6 +41,6 @@ class LoginController extends Controller
         $user->last_login = Carbon::now();
         $user->save();
 
-        // ToDo: Redirect to dashboard overview;
+        return redirect()->route('dashboard');
     }
 }
