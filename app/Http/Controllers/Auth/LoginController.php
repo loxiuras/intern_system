@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +15,7 @@ class LoginController extends Controller
 {
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -22,7 +25,7 @@ class LoginController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse|void
+     * @return RedirectResponse|void
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -42,5 +45,19 @@ class LoginController extends Controller
         $user->save();
 
         return redirect()->route('dashboard');
+    }
+
+    /**
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function logout( Request $request ): Redirector|Application|RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

@@ -60,11 +60,15 @@
                                     <div class="">
                                         <i class="fa fa-sign-out me-1"></i>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center ps-2">
-                                        <h6 class="text-sm font-weight-normal mb-0">
-                                            <span class="font-weight-bold">Sign out</span>
-                                        </h6>
-                                    </div>
+                                    <form action="{{ Route('logout') }}" method="post">
+                                        @csrf
+                                        <div class="d-flex flex-column justify-content-center ps-2">
+                                            <label for="logout" class="text-sm font-weight-normal mb-0">
+                                                <span class="font-weight-bold">{{ __("general.sign-out") }}</span>
+                                            </label>
+                                            <input type="submit" id="logout" name="logout" style="display: none;">
+                                        </div>
+                                    </form>
                                 </div>
                             </a>
                         </li>

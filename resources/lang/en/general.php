@@ -57,4 +57,5 @@ return [
     "type"                => "Type",
     "id"                  => "Id",
     "not-available"       => "Not available",
+    "sign-out"            => "Sign out",
 ];
