@@ -25,4 +25,12 @@ return [
             ],
         ]
     ],
+
+    "content" => [
+        "add" => [
+            "title"       => "Password details",
+            "description" => "Please enter all password information below.",
+        ]
+    ]
+
 ];

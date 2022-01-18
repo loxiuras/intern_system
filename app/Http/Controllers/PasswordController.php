@@ -48,4 +48,32 @@ class PasswordController extends Controller
             "searchData"    => $searchData,
         ]);
     }
+
+    public function add()
+    {
+        $passwordData = new \stdClass();
+
+        $typesData = Password::select('type')->distinct()->get();
+
+        return view('pages.password.add.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "password", "add" ),
+            "passwordData"  => $passwordData,
+            "typesData"     => $typesData,
+        ]);
+    }
+
+    public function edit(int $passwordId)
+    {
+        $passwordData = Password::find($passwordId);
+
+        $typesData = Password::select('type')->distinct()->get();
+
+        return view('pages.password.edit.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "password", "edit" ),
+            "passwordData"  => $passwordData,
+            "typesData"     => $typesData,
+        ]);
+    }
 }

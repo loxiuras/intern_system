@@ -115,7 +115,7 @@
                                         </td>
 
                                         <td class="text-sm">
-                                            <a href="{{ Route('user-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a href="{{ Route('password-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="fas fa-edit text-secondary"></i>
                                             </a>
                                         </td>

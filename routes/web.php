@@ -56,3 +56,7 @@ Route::get('/domain/calculate-sequence', [DomainController::class, 'calculateSeq
 /** PASSWORD **/
 Route::get('/password/overview', [PasswordController::class, 'overview'])->middleware('auth')->name('password-overview');
 Route::post('/password/overview', [PasswordController::class, 'overview'])->middleware('auth');
+Route::get('/password/add', [PasswordController::class, 'add'])->middleware('auth')->name('password-add');
+Route::get('/password/edit/{id}', [PasswordController::class, 'edit'])->middleware('auth')->name('password-edit');
+Route::delete('/password/delete/{id}', [PasswordController::class, 'delete'])->middleware('auth')->name('password-delete');
+Route::post('/password/store', [PasswordController::class, 'store'])->middleware('auth')->name('password-store');

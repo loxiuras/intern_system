@@ -60,4 +60,6 @@ return [
     "sign-out"            => "Sign out",
     "profile"             => "Profile",
     "hello"               => "Hello",
+    "description"         => "Description",
+    "username"            => "Username",
 ];
