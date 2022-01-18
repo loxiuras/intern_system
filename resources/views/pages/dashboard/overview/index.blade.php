@@ -92,7 +92,7 @@
                                         <div class="col-8">
                                             <div class="numbers">
                                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                                                    {!! __("pages/dashboard.info.user.title") !!}
+                                                    {!! __("pages/dashboard.info.domain.title") !!}
                                                 </p>
                                                 <h5 class="font-weight-bolder">
                                                     {{ $domainInfo->totalCount }}
@@ -101,7 +101,7 @@
                                                     <span class="@if( $domainInfo->monthCount > 0 ) text-success @elseif ( $domainInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
                                                         @if( $domainInfo->monthCount > 0 )+@endif{{ $domainInfo->monthCount }}
                                                     </span>
-                                                    {!! __("pages/dashboard.info.user.subtext") !!}
+                                                    {!! __("pages/dashboard.info.domain.subtext") !!}
                                                 </p>
                                             </div>
                                         </div>
