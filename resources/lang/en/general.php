@@ -58,4 +58,5 @@ return [
     "id"                  => "Id",
     "not-available"       => "Not available",
     "sign-out"            => "Sign out",
+    "profile"             => "Profile",
 ];

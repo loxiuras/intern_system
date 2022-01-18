@@ -21,23 +21,23 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" id="navSettings" aria-labelledby="navSettings">
 
-                        <!-- ToDo: Edit location and translation -->
                         <li class="mb-1">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <a class="dropdown-item border-radius-md" href="{{ Route('user-edit', ['id' => $loginUserData->id]) }}">
                                 <div class="d-flex py-1 d-flex flex-row justify-content-start">
                                     <div class="">
                                         <i class="fa fa-user-cog me-1"></i>
                                     </div>
                                     <div class="d-flex flex-column justify-content-center ps-2">
                                         <h6 class="text-sm font-weight-normal mb-0">
-                                            <span class="font-weight-bold">Profile</span>
+                                            <span class="font-weight-bold">{{ __("general.profile") }}</span>
                                         </h6>
                                     </div>
                                 </div>
                             </a>
                         </li>
 
-                        <!-- ToDo: Edit location and translation -->
+                        <!--
+                        ToDo: Edit location and translation
                         <li class="mb-1">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1 d-flex flex-row justify-content-start">
@@ -52,8 +52,8 @@
                                 </div>
                             </a>
                         </li>
+                        -->
 
-                        <!-- ToDo: Edit location and translation -->
                         <li class="mb-1">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1 d-flex flex-row justify-content-start">
