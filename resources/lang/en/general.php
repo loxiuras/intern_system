@@ -59,4 +59,5 @@ return [
     "not-available"       => "Not available",
     "sign-out"            => "Sign out",
     "profile"             => "Profile",
+    "hello"               => "Hello",
 ];

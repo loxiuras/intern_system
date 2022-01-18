@@ -12,7 +12,7 @@
                     <!-- ToDo: Edit location and translation -->
                     <a href="#" class="nav-link text-white font-weight-bold px-0" target="_blank">
                         <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Hello, {{ $loginUserData->name }}</span>
+                        <span class="d-sm-inline d-none">{{ __("general.hello") }}, {{ $loginUserData->name }}</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-2 ps-3 d-flex align-items-center">
