@@ -15,7 +15,7 @@
 
             <div class="d-sm-flex justify-content-end">
                 <div>
-                    <a href="{{ Route('user-add') }}" class="btn btn-icon btn-outline-white">
+                    <a href="{{ Route('password-add') }}" class="btn btn-icon btn-outline-white">
                         + {{ __("general.add-new-item", ["item" => strtolower(__("general.password"))]) }}
                     </a>
                 </div>

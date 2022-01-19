@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Password;
+use App\Services\PasswordService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class PasswordController extends Controller
 {
@@ -75,5 +77,61 @@ class PasswordController extends Controller
             "passwordData"  => $passwordData,
             "typesData"     => $typesData,
         ]);
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function store(Request $request )
+    {
+        $this->validate($request, [
+            "id"        => "integer",
+            "type"      => "required",
+            "record_id" => "required",
+            "name"      => "required",
+            "username"  => "required",
+            "password"  => [
+                "required",
+                "string",
+                "min:10",
+                "max:30",
+                "regex:/[a-z]/",
+                "regex:/[A-Z]/",
+                "regex:/[0-9]/",
+                "regex:/[@$!%*#?&]/",
+            ],
+        ]);
+
+        $id = $request->id;
+
+        $PasswordService = new PasswordService( $request->type, $request->record_id );
+
+        if ( $id ) {
+            $passwordData = Password::find($id);
+
+            $passwordData->type        = $request->type;
+            $passwordData->record_id   = $request->record_id;
+            $passwordData->name        = $request->name;
+            $passwordData->username    = $request->username;
+            $passwordData->password    = $PasswordService->encrypt( $request->password );
+            $passwordData->description = $request->description;
+            $passwordData->active      = !empty( $request->active ) ? 1 : 0;
+            $passwordData->save();
+        }
+        else {
+            $id = Password::insertGetId(
+                [
+                    "type"        => $request->type,
+                    "record_id"   => $request->record_id,
+                    "name"        => $request->name,
+                    "username"    => $request->username,
+                    "password"    => $PasswordService->encrypt( $request->password ),
+                    "description" => $request->description,
+                    "active"      => !empty( $request->active ) ? 1 : 0,
+                ]
+            );
+        }
+
+        return redirect()->route('password-edit', ['id' => $id]);
     }
 }

@@ -72,7 +72,7 @@
                 <div class="col-12">
                     <label for="description">{{ __("general.description") }}</label>
                     <div id="edit-description-edit" class="h-100">
-                        {{ $passwordData->description }}
+                        {{ old('description', (isset($passwordData->description) ? $passwordData->description : ""))  }}
                     </div>
                 </div>
 
@@ -112,6 +112,21 @@
                             {{ $message }}
                         </span>
                     @enderror
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+
+                <div class="button-row d-flex mt-4">
+                    <button class="btn bg-gradient-light ms-auto mb-0 js-btn-next"
+                            type="button"
+                            onclick="window.location = '{{ Route('password-overview') }}'"
+                            title="Prev">{{ __( "general.back-to", ["location" => strtolower( __("general.overview") )] ) }}</button>
+
+                    <button class="btn bg-gradient-dark ms-2 mb-0 js-btn-next"
+                            type="submit"
+                            title="Next">{{ __("general.save", ["item" => strtolower(__("general.password"))]) }}</button>
                 </div>
 
             </div>
