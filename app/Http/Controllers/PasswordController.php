@@ -104,8 +104,6 @@ class PasswordController extends Controller
 
         $id = $request->id;
 
-        $PasswordService = new PasswordService( $request->type, $request->record_id );
-
         if ( $id ) {
             $passwordData = Password::find($id);
 
@@ -113,7 +111,7 @@ class PasswordController extends Controller
             $passwordData->record_id   = $request->record_id;
             $passwordData->name        = $request->name;
             $passwordData->username    = $request->username;
-            $passwordData->password    = $PasswordService->encrypt( $request->password );
+            $passwordData->password    = $request->password;
             $passwordData->description = $request->description;
             $passwordData->active      = !empty( $request->active ) ? 1 : 0;
             $passwordData->save();
@@ -125,7 +123,7 @@ class PasswordController extends Controller
                     "record_id"   => $request->record_id,
                     "name"        => $request->name,
                     "username"    => $request->username,
-                    "password"    => $PasswordService->encrypt( $request->password ),
+                    "password"    => $request->password,
                     "description" => $request->description,
                     "active"      => !empty( $request->active ) ? 1 : 0,
                 ]
