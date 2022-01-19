@@ -71,14 +71,15 @@
 
                 <div class="col-12">
                     <label for="description">{{ __("general.description") }}</label>
-                    <div id="edit-description-edit" class="h-100">
-                        {{ old('description', (isset($passwordData->description) ? $passwordData->description : ""))  }}
+
+                    <div>
+                        <textarea id="quill-description-edit" class="height-200" name="description">{{ old('description', (isset($passwordData->description) ? $passwordData->description : "")) }}</textarea>
                     </div>
                 </div>
 
             </div>
 
-            <hr class="horizontal dark mt-7">
+            <hr class="horizontal dark mt-4">
 
             <div class="row mt-3">
 
