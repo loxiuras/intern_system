@@ -21,7 +21,7 @@
                               data-icon="fas fa-eye"
                               data-close-icon="fas fa-eye-slash"
                               data-text="{!! $password->password !!}">
-                            *********
+                            @for( $i = 0; $i <= strlen( $password->password ); $i++ )*@endfor
                         </span>
                     </div>
 
