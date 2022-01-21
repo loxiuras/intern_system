@@ -63,4 +63,7 @@ return [
     "hello"               => "Hello",
     "description"         => "Description",
     "username"            => "Username",
+    "import-csv"          => "Import CSV-file",
+    "import"              => "Import",
+    "file"                => "File",
 ];

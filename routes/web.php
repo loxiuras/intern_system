@@ -43,6 +43,7 @@ Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->middleware
 Route::delete('/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('auth')->name('company-delete');
 Route::post('/company/store', [CompanyController::class, 'store'])->middleware('auth')->name('company-store');
 Route::post('/company/connect-user', [CompanyController::class, 'connectUser'])->middleware('auth')->name('company-connect-user');
+Route::post('/company/import', [CompanyController::class, 'import'])->middleware('auth')->name('company-import');
 
 /** DOMAINS **/
 Route::get('/domain/overview', [DomainController::class, 'overview'])->middleware('auth')->name('domain-overview');

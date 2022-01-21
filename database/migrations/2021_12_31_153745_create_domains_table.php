@@ -17,12 +17,12 @@ class CreateDomainsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->bigInteger("company_id")->unsigned()->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade')->onDelete('cascade');;
             $table->string('name');
             $table->bigInteger('parent_id')->unsigned()->nullable();
-            $table->foreign('parent_id')->references('id')->on('domains');
+            $table->foreign('parent_id')->references('id')->on('domains')->onUpdate('cascade')->onDelete('cascade');;
             $table->bigInteger("host_id")->unsigned()->nullable();
-            $table->foreign('host_id')->references('id')->on('hosts');
+            $table->foreign('host_id')->references('id')->on('hosts')->onUpdate('cascade')->onDelete('cascade');;
             $table->tinyInteger('is_production')->default(1);
             $table->tinyInteger('active');
             $table->integer('sequence')->default(0);

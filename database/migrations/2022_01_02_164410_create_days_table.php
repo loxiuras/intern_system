@@ -18,7 +18,7 @@ class CreateDaysTable extends Migration
             $table->timestamps();
             $table->string('type', 10)->default('free');
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
             $table->date('date')->nullable();
             $table->integer('minutes')->nullable()->default(0);
             $table->tinyInteger('is_special')->default(0);
@@ -26,7 +26,7 @@ class CreateDaysTable extends Migration
             $table->text('description')->nullable();
             $table->dateTime('accepted_datetime')->nullable();
             $table->bigInteger('accepted_user_id')->unsigned()->nullable();
-            $table->foreign('accepted_user_id')->references('id')->on('users');
+            $table->foreign('accepted_user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
         });
     }
 

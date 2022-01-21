@@ -25,5 +25,7 @@
 @yield('pageContent')
 
 @yield('js')
+
+@include("layout.notifications.index")
 </body>
 </html>

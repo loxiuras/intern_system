@@ -22,6 +22,10 @@
 
             <div class="d-sm-flex justify-content-end">
                 <div>
+                    <span class="btn btn-icon btn-outline-white NovaModel" data-nova-model-body-class="modal-open" data-nova-model-target="importCompanyCsvModel">
+                        {{ __("general.import-csv") }}
+                    </span>
+
                     <a href="{{ Route('company-add') }}" class="btn btn-icon btn-outline-white">
                         + {{ __("general.add-new-item", ["item" => strtolower(__("general.company"))]) }}
                     </a>
@@ -99,6 +103,8 @@
 
     </main>
 
+    @include("pages.company.overview.import-csv-file")
+
 @endsection
 
 @section('js')
@@ -107,6 +113,7 @@
 
     <script src="{{ url('js/plugins/datatables.js') }}"></script>
     <script src="{{ url('js/plugins/NovaPreloadSpinner.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaModel.js') }}"></script>
     <script>
         if (document.getElementById('datatable-company-list')) {
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-company-list", {

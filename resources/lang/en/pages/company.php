@@ -51,6 +51,23 @@ return [
     "connect-user" => [
         "title"       => "Connect a new user",
         "description" => "Select your new user in the selectbox below.",
-    ]
+    ],
 
+    "import-csv" => [
+        "title"       => "Import CSV file",
+        "description" => "Please check if the file you want to upload is an .csv and not an excel file.",
+    ],
+
+    "notification" => [
+        "import" => [
+            "error" => [
+                "title" => "Import error!",
+                "text"  => "Something went wrong with the import.<br>Please check your CSV-file and try again.",
+            ],
+            "success" => [
+                "title" => "Import successfully!",
+                "text"  => "All records are successfully imported.",
+            ]
+        ],
+    ],
 ];

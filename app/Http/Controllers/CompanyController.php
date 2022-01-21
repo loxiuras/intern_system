@@ -8,6 +8,7 @@ use App\Models\Password;
 use App\Models\CompanyUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\ImportService;
 use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
@@ -172,5 +173,89 @@ class CompanyController extends Controller
         ]);
 
         return back();
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|max:2048',
+        ]);
+
+        try {
+            $file     = $request->file;
+            $fileName = $file->getPathname();
+
+            $companyData = (new ImportService( $fileName ))->cast();
+
+            foreach ( $companyData as $data ) {
+                $name = !empty( $data['name'] ) ? $data['name'] : null;
+
+                $company = Company::where('name', '=', $name)->first();
+                if ( $company && !empty( $company->id ) ) {
+                    $companyData = Company::find($company->id);
+
+                    $companyData->name                    = $data['name'];
+                    $companyData->legal_name              = $data['legal_name'];
+                    $companyData->street_name             = $data['street_name'];
+                    $companyData->house_number            = (int)$data['house_number'];
+                    $companyData->house_number_extra      = $data['house_number_extra'];
+                    $companyData->postal_code             = $data['postal_code'];
+                    $companyData->city                    = $data['city'];
+                    $companyData->province                = $data['province'];
+                    $companyData->country                 = $data['country'];
+                    $companyData->telephone               = $data['telephone'];
+                    $companyData->primary_email           = $data['primary_email'];
+                    $companyData->primary_website         = $data['primary_website'];
+                    $companyData->primary_invoice_email   = $data['primary_invoice_email'];
+                    $companyData->optional_invoice_emails = $data['optional_invoice_emails'];
+                    $companyData->active                  = $data['active'] ? 1 : 0;
+
+                    $companyData->save();
+                }
+                else {
+                    Company::insert(
+                        [
+                            "name"                    => $data['name'],
+                            "legal_name"              => $data['legal_name'],
+                            "street_name"             => $data['street_name'],
+                            "house_number"            => (int)$data['house_number'],
+                            "house_number_extra"      => $data['house_number_extra'],
+                            "postal_code"             => $data['postal_code'],
+                            "city"                    => $data['city'],
+                            "province"                => $data['province'],
+                            "country"                 => $data['country'],
+                            "telephone"               => $data['telephone'],
+                            "primary_email"           => $data['primary_email'],
+                            "primary_website"         => $data['primary_website'],
+                            "primary_invoice_email"   => $data['primary_invoice_email'],
+                            "optional_invoice_emails" => $data['optional_invoice_emails'],
+                            "active"                  => !empty( $data['active'] ) ? 1 : 0,
+                        ]
+                    );
+                }
+            }
+            return back()->with([
+                "notificationActive"    => true,
+                "notificationType"      => "success",
+                "notificationIconClass" => "fas fa-bell",
+                "notificationTitle"     => __("pages/company.notification.import.success.title"),
+                "notificationSubTitle"  => null,
+                "notificationText"      => __("pages/company.notification.import.success.text"),
+            ]);
+        }
+        catch ( \Exception $exception ) {
+
+            return back()->with([
+                "notificationActive"    => true,
+                "notificationType"      => "danger",
+                "notificationIconClass" => "fas fa-bell",
+                "notificationTitle"     => __("pages/company.notification.import.error.title"),
+                "notificationSubTitle"  => null,
+                "notificationText"      => __("pages/company.notification.import.error.text"),
+            ]);
+        }
     }
 }
