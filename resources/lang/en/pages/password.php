@@ -27,6 +27,7 @@ return [
     ],
 
     "active--subtext" =>  "Is the password active? Older back-up password can be set in-active for storage.",
+    "password-overview--subtext" =>  "Add new password to this item",
 
     "content" => [
         "add" => [

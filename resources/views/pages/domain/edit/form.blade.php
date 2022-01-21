@@ -8,7 +8,7 @@
 
                         @include("pages.domain.edit.general")
                         @if( isset($domainData->id) )
-                            @include("pages.password.partials.list")
+                            @include("pages.password.partials.list", [ 'addType' => 'domain', 'addRecordId' => $domainData->id ])
                         @endif
 
                     </div>

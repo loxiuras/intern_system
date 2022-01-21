@@ -14,7 +14,7 @@
                             @include("pages.company.edit.general")
                             @if( isset($companyData->id) )
                                 @include("pages.company.edit.users")
-                                @include("pages.password.partials.list")
+                                @include("pages.password.partials.list", [ 'addType' => 'company', 'addRecordId' => $companyData->id ])
                                 @include("pages.company.edit.domain-overview")
                             @endif
                             @include("pages.company.edit.invoice")

@@ -56,6 +56,9 @@ class PasswordController extends Controller
     {
         $passwordData = new \stdClass();
 
+        if ( !empty( $_GET["type"] ) ) $passwordData->type = $_GET["type"];
+        if ( !empty( $_GET["recordId"] ) ) $passwordData->record_id = $_GET["recordId"];
+
         $typesData = Password::select('type')->distinct()->get();
 
         return view('pages.password.add.index', [

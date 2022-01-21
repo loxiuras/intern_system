@@ -20,16 +20,15 @@
         display: inline-block;
     }
 
-    .domainLink {
+    .lightLink {
         color: #aaaaaa !important;
     }
-    .domainLink i {
+    .lightLink i {
         color: #aaaaaa;
     }
-    .domainHover:hover {
+    .lightLink:hover {
         color: #676767 !important;
     }
-
 
 @endsection
 

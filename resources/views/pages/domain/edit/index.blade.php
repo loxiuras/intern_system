@@ -1,6 +1,20 @@
 
 @extends('layout.system')
 
+@section('css')
+
+    .lightLink {
+        color: #aaaaaa !important;
+    }
+    .lightLink i {
+        color: #aaaaaa;
+    }
+    .lightLink:hover {
+        color: #676767 !important;
+    }
+
+@endsection
+
 @section('pageContent')
 
     @include("layout.banner")

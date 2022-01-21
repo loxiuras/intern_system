@@ -35,5 +35,11 @@
 
         @endif
 
+        <a href="{{ Route( "password-add", ["type" => $addType, "recordId" => $addRecordId] ) }}" class="lightLink text-sm mt-3 d-block">
+            {!! __("pages/password.password-overview--subtext") !!}?
+            {!! __("general.click-here") !!}
+            <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+
     </div>
 </div>
