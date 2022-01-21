@@ -32,9 +32,6 @@ return [
         "add" => [
             "title"       => "Domain details",
             "description" => "Please enter all domain information below.",
-
-            "title--password"       => "Password details",
-            "description--password" => "All password connected to this domain are listed below.",
         ]
     ],
 

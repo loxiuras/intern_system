@@ -1,14 +1,14 @@
 
 <div class="card p-3 mt-4 border-radius-xl bg-white js-active" data-animation="FadeIn">
 
-    <h5 class="font-weight-bolder mb-0">{!! __("pages/domain.content.add.title--password") !!}</h5>
-    <p class="mb-0 text-sm">{!! __("pages/domain.content.add.description--password") !!}</p>
+    <h5 class="font-weight-bolder mb-0">{!! __("pages/password.content.add.title--password") !!}</h5>
+    <p class="mb-0 text-sm">{!! __("pages/password.content.add.description--password") !!}</p>
 
     <div class="multisteps-form__content mt-4">
 
-        @if ( $domainPasswords && $domainPasswords->count() )
+        @if ( $passwordsData && $passwordsData->count() )
 
-            @foreach( $domainPasswords as $password )
+            @foreach( $passwordsData as $password )
 
                 <div class="row mt-2">
 
@@ -28,6 +28,10 @@
                 </div>
 
             @endforeach
+
+        @else
+
+            <span class="text-dark mt-1 d-block">{{ __("general.no-results-found", ["item" => strtolower( __("general.passwords") )]) }}</span>
 
         @endif
 

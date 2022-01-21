@@ -8,7 +8,7 @@
 
                         @include("pages.domain.edit.general")
                         @if( isset($domainData->id) )
-                            @include("pages.domain.edit.passwords")
+                            @include("pages.password.partials.list")
                         @endif
 
                     </div>

@@ -5,6 +5,7 @@ return [
     "email"               => "E-mailaddress",
     "telephone"           => "Telephone",
     "password"            => "Password",
+    "passwords"           => "Passwords",
     "current-password"    => "Current password",
     "confirm-password"    => "Confirm password",
     "remember-me"         => "Remember me",

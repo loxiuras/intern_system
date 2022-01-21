@@ -100,7 +100,7 @@ class DomainController extends Controller
 
         $hostsData = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
 
-        $domainPasswords = Password::getAllFromType( 'domain', $domainId );
+        $passwordsData = Password::getAllFromType( 'domain', $domainId );
 
         return view('pages.domain.edit.index', [
             "loginUserData"   => $this->getLoginUserData(),
@@ -109,7 +109,7 @@ class DomainController extends Controller
             "companiesData"   => $companiesData,
             "domainsData"     => $domainsData,
             "hostsData"       => $hostsData,
-            "domainPasswords" => $domainPasswords,
+            "passwordsData"   => $passwordsData,
         ]);
     }
 

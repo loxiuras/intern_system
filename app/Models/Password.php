@@ -70,11 +70,20 @@ class Password extends Model
         return !empty( $type ) && !empty( $recordId ) ? (new PasswordService( $type, $recordId ))->decrypt( $key ) : "";
     }
 
-    public static function getAllFromType( string $type, int $recordId )
+    /**
+     * @param string $type
+     * @param int    $recordId
+     * @param bool   $onlyActive
+     *
+     * @return mixed
+     */
+    public static function getAllFromType( string $type, int $recordId, bool $onlyActive = true )
     {
-        return Password::where([
-            ['type', '=', $type],
-            ['record_id', '=', $recordId],
-        ])->orderBy('name')->get();
+        $where = [];
+        $where[] = ['type', '=', $type];
+        $where[] = ['record_id', '=', $recordId];
+        if ( $onlyActive ) $where[] = ['active', '=', 1];
+
+        return Password::where($where)->orderBy('name')->get();
     }
 }

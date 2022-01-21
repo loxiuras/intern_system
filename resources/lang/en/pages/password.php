@@ -32,6 +32,9 @@ return [
         "add" => [
             "title"       => "Password details",
             "description" => "Please enter all password information below.",
+
+            "title--password"       => "Password details",
+            "description--password" => "All password connected to this item are listed below.",
         ]
     ]
 

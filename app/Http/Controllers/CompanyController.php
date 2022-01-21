@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use App\Models\Company;
+use App\Models\Password;
 use App\Models\CompanyUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,6 +46,8 @@ class CompanyController extends Controller
 
         $companyDomains = Domain::getConnectedCompany( $companyId );
 
+        $passwordsData = Password::getAllFromType( 'company', $companyId );
+
         $connectedCompanyUserIds = [];
         if ( $companyUsers ) {
             foreach( $companyUsers as $user ) {
@@ -61,6 +64,7 @@ class CompanyController extends Controller
             "companyUsers"   => $companyUsers,
             "connectUsers"   => $connectUsers,
             "companyDomains" => $companyDomains,
+            "passwordsData"  => $passwordsData,
         ]);
     }
 
