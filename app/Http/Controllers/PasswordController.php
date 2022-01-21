@@ -102,16 +102,7 @@ class PasswordController extends Controller
             "record_id" => "required",
             "name"      => "required",
             "username"  => "required",
-            "password"  => [
-                "required",
-                "string",
-                "min:10",
-                "max:30",
-                "regex:/[a-z]/",
-                "regex:/[A-Z]/",
-                "regex:/[0-9]/",
-                "regex:/[@$!%*#?&]/",
-            ],
+            "password"  => "required",
         ]);
 
         $id = $request->id;
