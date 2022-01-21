@@ -7,6 +7,9 @@
                     <div class="col-12 col-lg-8 m-auto">
 
                         @include("pages.domain.edit.general")
+                        @if( isset($domainData->id) )
+                            @include("pages.domain.edit.passwords")
+                        @endif
 
                     </div>
                 </div>

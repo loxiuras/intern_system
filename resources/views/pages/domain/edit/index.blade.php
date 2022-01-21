@@ -20,6 +20,8 @@
 @section('js')
 
     <script src="{{ url('js/sidebar.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaTextSwitcher.js') }}"></script>
+
     <script src="{{ url('js/plugins/choices.js') }}"></script>
     <script >
         if (document.getElementById('choices-company-id')) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\Domain;
 use App\Models\Host;
+use App\Models\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -99,13 +100,16 @@ class DomainController extends Controller
 
         $hostsData = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
 
+        $domainPasswords = Password::getAllFromType( 'domain', $domainId );
+
         return view('pages.domain.edit.index', [
-            "loginUserData" => $this->getLoginUserData(),
-            "sidebarData"   => $this->getSidebarData( "domain", "add" ),
-            "domainData"    => $domainData,
-            "companiesData" => $companiesData,
-            "domainsData"   => $domainsData,
-            "hostsData"     => $hostsData,
+            "loginUserData"   => $this->getLoginUserData(),
+            "sidebarData"     => $this->getSidebarData("domain", "add"),
+            "domainData"      => $domainData,
+            "companiesData"   => $companiesData,
+            "domainsData"     => $domainsData,
+            "hostsData"       => $hostsData,
+            "domainPasswords" => $domainPasswords,
         ]);
     }
 

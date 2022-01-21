@@ -69,4 +69,12 @@ class Password extends Model
         $recordId = $this->attributes['record_id'] ?: null;
         return !empty( $type ) && !empty( $recordId ) ? (new PasswordService( $type, $recordId ))->decrypt( $key ) : "";
     }
+
+    public static function getAllFromType( string $type, int $recordId )
+    {
+        return Password::where([
+            ['type', '=', $type],
+            ['record_id', '=', $recordId],
+        ])->orderBy('name')->get();
+    }
 }
