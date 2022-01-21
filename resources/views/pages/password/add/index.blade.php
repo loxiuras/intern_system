@@ -39,11 +39,27 @@
 
     <script src="{{ url('js/plugins/quill.js') }}"></script>
     <script>
-        if (document.getElementById('edit-description-edit')) {
-            var quill = new Quill('#edit-description-edit', {
+
+        let quillDescriptionEditElement = document.getElementById('quill-description-edit');
+        if ( quillDescriptionEditElement ) {
+
+            let newElement = document.createElement("div");
+            newElement.id = "quill-description-edit--container";
+            newElement.classList.add("height-200");
+
+            quillDescriptionEditElement.style.display = "none";
+
+            quillDescriptionEditElement.parentNode.append( newElement );
+
+            var quill = new Quill('#quill-description-edit--container', {
                 theme: 'snow'
             });
-        };
+            const delta = quill.clipboard.convert( quillDescriptionEditElement.innerText );
+            quill.setContents(delta, 'silent');
+            quill.on('text-change', function() {
+                quillDescriptionEditElement.innerText = quill.root.innerHTML;
+            });
+        }
     </script>
 
 @endsection
