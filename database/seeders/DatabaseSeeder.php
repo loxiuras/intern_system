@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HostTableSeeder::class);
         $this->call(DomainTableSeeder::class);
         $this->call(DayTableSeeder::class);
+        $this->call(PasswordTableSeeder::class);
     }
 }
