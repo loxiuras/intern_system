@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Password;
 use App\Services\PasswordService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -77,6 +78,17 @@ class PasswordController extends Controller
             "passwordData"  => $passwordData,
             "typesData"     => $typesData,
         ]);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(int $id): \Illuminate\Http\RedirectResponse
+    {
+        DB::table('passwords')->where('id', '=', $id)->delete();
+        return back();
     }
 
     /**

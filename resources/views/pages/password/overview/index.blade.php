@@ -90,24 +90,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $passwordsData as $user )
+                                @foreach( $passwordsData as $password )
 
                                     <tr>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">{{ __("general.". strtolower( $user->type )) }}</span>
+                                            <span class="my-2 text-xs">{{ __("general.". strtolower( $password->type )) }}</span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">{{ $user->record_id }}</span>
+                                            <span class="my-2 text-xs">{{ $password->record_id }}</span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">{{ $user->name }}</span>
+                                            <span class="my-2 text-xs">{{ $password->name }}</span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            @if( $user->active )
+                                            @if( $password->active )
                                                 <span class="badge badge-success">{{ __("general.active") }}</span>
                                             @else
                                                 <span class="badge badge-secondary">{{ __("general.in-active") }}</span>
@@ -115,9 +115,22 @@
                                         </td>
 
                                         <td class="text-sm">
-                                            <a href="{{ Route('password-edit', ['id' => $user->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a href="{{ Route('password-edit', ['id' => $password->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="fas fa-edit text-secondary"></i>
                                             </a>
+
+                                            <form class="mx-3" action="{{ Route('password-delete', ['id' => $password->id]) }}" method="POST" title="{{ $password->id }}" style="display: inline-block;">
+                                                @method('delete')
+                                                @csrf
+
+                                                <label for="deleteSubmit{{$password->id}}">
+                                                            <span data-bs-toggle="tooltip" data-bs-original-title="Delete product" style="cursor: pointer;">
+                                                                <i class="fas fa-trash text-secondary"></i>
+                                                            </span>
+                                                </label>
+
+                                                <input id="deleteSubmit{{$password->id}}" name="deleteSubmit{{$password->id}}" type="submit" style="display: none" />
+                                            </form>
                                         </td>
 
                                     </tr>
