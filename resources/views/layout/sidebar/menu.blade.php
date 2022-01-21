@@ -84,5 +84,14 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a href="{{ Route('password-overview') }}" class="nav-link" >
+                <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                    <i class="ni ni-key-25 text-secondary text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">{{ __('sidebar.passwords.main') }}</span>
+            </a>
+        </li>
+
     </ul>
 </div>
