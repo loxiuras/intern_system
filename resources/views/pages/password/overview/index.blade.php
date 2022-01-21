@@ -33,7 +33,7 @@
 
                                     <div class="col-12 col-sm-2">
                                         <label for="domain_name">{{ __("general.type") }}</label>
-                                        <select name="type" id="choices-type" class="multisteps-form__input form-control @error('type') is-invalid @enderror">
+                                        <select name="type" id="choices-password-type" class="multisteps-form__input form-control @error('type') is-invalid @enderror">
                                             <option value="">{{ __("general.no-choice") }}</option>
                                             @foreach( $typesData as $type )
                                                 <option value='{{ $type->type }}' @if( isset( $searchData->type ) && $type->type === $searchData->type ) selected="selected" @endif>{{ __("general.". strtolower( $type->type ) ) }}</option>
@@ -154,6 +154,18 @@
 @section('js')
 
     <script src="{{ url('js/sidebar.js') }}"></script>
+
+    <script src="{{ url('js/plugins/choices.js') }}"></script>
+    <script >
+        if (document.getElementById('choices-password-type')) {
+            let typeElement = document.getElementById('choices-password-type');
+            const typeSearch = new Choices(typeElement, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.password")]) }}',
+                shouldSort: false,
+            });
+        };
+    </script>
 
     <script src="{{ url('js/plugins/datatables.js') }}"></script>
     <script>
