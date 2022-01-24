@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
@@ -36,7 +37,7 @@ Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->middlewar
 Route::post('/user/store', [UserController::class, 'store'])->middleware('auth')->name('user-store');
 Route::post('/user/store-password', [UserController::class, 'storePassword'])->middleware('auth')->name('user-store-password');
 
-/** COMPANY **/
+/** COMPANIES **/
 Route::get('/company/overview', [CompanyController::class, 'overview'])->middleware('auth')->name('company-overview');
 Route::get('/company/add', [CompanyController::class, 'add'])->middleware('auth')->name('company-add');
 Route::get('/company/edit/{id}', [CompanyController::class, 'edit'])->middleware('auth')->name('company-edit');
@@ -54,10 +55,15 @@ Route::delete('/domain/delete/{id}', [DomainController::class, 'delete'])->middl
 Route::post('/domain/store', [DomainController::class, 'store'])->middleware('auth')->name('domain-store');
 Route::get('/domain/calculate-sequence', [DomainController::class, 'calculateSequence'])->middleware('auth')->name('calculate-sequence');
 
-/** PASSWORD **/
+/** PASSWORDS **/
 Route::get('/password/overview', [PasswordController::class, 'overview'])->middleware('auth')->name('password-overview');
 Route::post('/password/overview', [PasswordController::class, 'overview'])->middleware('auth');
 Route::get('/password/add', [PasswordController::class, 'add'])->middleware('auth')->name('password-add');
 Route::get('/password/edit/{id}', [PasswordController::class, 'edit'])->middleware('auth')->name('password-edit');
 Route::delete('/password/delete/{id}', [PasswordController::class, 'delete'])->middleware('auth')->name('password-delete');
 Route::post('/password/store', [PasswordController::class, 'store'])->middleware('auth')->name('password-store');
+
+/** TICKETS **/
+Route::get('/ticket/overview', [TicketController::class, 'overview'])->middleware('auth')->name('ticket-overview');
+Route::post('/ticket/overview', [TicketController::class, 'overview'])->middleware('auth');
+Route::get('/ticket/add', [TicketController::class, 'add'])->middleware('auth')->name('ticket-add');

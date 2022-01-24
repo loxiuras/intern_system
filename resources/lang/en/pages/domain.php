@@ -3,7 +3,7 @@
 return [
 
     "breadcrumb" => [
-        "icon"       => "ni ni-badge",
+        "icon"       => "ni ni-laptop",
         "controller" => "Domains",
         "actions"    => [
             "overview" => [

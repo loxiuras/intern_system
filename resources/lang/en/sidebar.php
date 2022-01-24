@@ -3,9 +3,16 @@
 return [
 
     "settings" => "Settings",
+    "modules" => "Modules",
 
     "dashboard" => [
         "main" => "Dashboard",
+    ],
+
+    "tickets" => [
+        "main" => "Tickets",
+        "overview" => "Overview",
+        "new-item" => "Add new",
     ],
 
     "users" => [

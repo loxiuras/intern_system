@@ -12,6 +12,34 @@
         </li>
 
         <li class="nav-item mt-3">
+            <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">{{ __("sidebar.modules") }}</h6>
+        </li>
+
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#ticketsModule" class="nav-link" aria-controls="ticketsModule" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                    <i class="ni ni-book-bookmark text-info text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">{{ __('sidebar.tickets.main') }}</span>
+            </a>
+            <div class="collapse" id="ticketsModule">
+                <ul class="nav ms-4">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('ticket-overview') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.tickets.overview') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('ticket-add') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.tickets.new-item') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+
+        <li class="nav-item mt-3">
             <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">{{ __("sidebar.settings") }}</h6>
         </li>
 
