@@ -13,15 +13,7 @@
 
         <div class="container-fluid py-4">
 
-            <div class="d-sm-flex justify-content-end">
-                <div>
-                    <a href="{{ Route('password-add') }}" class="btn btn-icon btn-outline-white">
-                        + {{ __("general.add-new-item", ["item" => strtolower(__("general.password"))]) }}
-                    </a>
-                </div>
-            </div>
-
-            <div class="row">
+            <div class="row mt-6">
                 <div class="col-12">
                     <div class="card">
 
