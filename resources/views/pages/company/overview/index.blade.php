@@ -52,7 +52,13 @@
 
                                     <tr>
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">{{ $company->name }}</span>
+                                            <span class="my-2 text-xs">
+                                                {{ $company->name }}
+
+                                                @if( $company->amount_of_passwords )
+                                                    <i class="fas fa-key" style="margin-left: 5px;" title="{{ __("general.has-passwords") }}"></i>
+                                                @endif
+                                            </span>
                                         </td>
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">{{ $company->street_name }} {{ $company->house_number }}{{ $company->house_number_extra }}, {{ $company->postal_code }} {{ $company->city }}</span>

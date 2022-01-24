@@ -17,8 +17,11 @@ class CompanyController extends Controller
     public function overview()
     {
         $companiesData = Company::where([
-            ['name', '!=', ''],
-        ])->get();
+                ['companies.name', '!=', ''],
+            ])
+            ->select('companies.*')
+            ->selectRaw("(SELECT COUNT(*) FROM passwords AS p WHERE p.type = 'company' AND p.record_id = companies.id) AS amount_of_passwords")
+            ->get();
 
         return view('pages.company.overview.index', [
             "loginUserData" => $this->getLoginUserData(),
@@ -94,9 +97,8 @@ class CompanyController extends Controller
         $request->session()->put('notificationText', __("pages/company.notification.save.missing-fields.text"));
 
         $this->validate($request, [
-            "name"                    => "required",
-            "id"                    => "required|integer",
             "name"                  => "required",
+            "id"                    => "required|integer",
             "legal_name"            => "required",
             "street_name"           => "required|min:5",
             "house_number"          => "required|integer",
