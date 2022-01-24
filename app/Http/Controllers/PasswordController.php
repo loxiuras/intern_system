@@ -99,6 +99,12 @@ class PasswordController extends Controller
      */
     public function store(Request $request )
     {
+        $request->session()->put('notificationActive', true);
+        $request->session()->put('notificationType', "warning");
+        $request->session()->put('notificationIconClass', "fas fa-bell");
+        $request->session()->put('notificationTitle', __("pages/password.notification.save.missing-fields.title"));
+        $request->session()->put('notificationText', __("pages/password.notification.save.missing-fields.text"));
+
         $this->validate($request, [
             "id"        => "integer",
             "type"      => "required",
@@ -136,6 +142,13 @@ class PasswordController extends Controller
             );
         }
 
-        return redirect()->route('password-edit', ['id' => $id]);
+        return back()->with([
+            "notificationActive"    => true,
+            "notificationType"      => "success",
+            "notificationIconClass" => "fas fa-bell",
+            "notificationTitle"     => __("pages/password.notification.save.success.title"),
+            "notificationSubTitle"  => null,
+            "notificationText"      => __("pages/password.notification.save.success.text"),
+        ]);
     }
 }

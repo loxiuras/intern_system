@@ -37,6 +37,22 @@ return [
             "title--password"       => "Password details",
             "description--password" => "All password connected to this item are listed below.",
         ]
-    ]
+    ],
 
+    "notification" => [
+        "save" => [
+            "success" => [
+                "title" => "Saved successfully",
+                "text"  => "All data is saved successfully.",
+            ],
+            "missing-fields" => [
+                "title" => "Missing fields",
+                "text"  => "Looks like some fields are not filled in or not valid.",
+            ],
+            "error" => [
+                "title" => "Error",
+                "text"  => "Something went wrong, please try again later.",
+            ],
+        ],
+    ],
 ];
