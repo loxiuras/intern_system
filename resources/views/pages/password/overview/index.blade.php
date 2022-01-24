@@ -1,6 +1,12 @@
 
 @extends('layout.system')
 
+@section('bodyAttributes', 'class=NovaPreloadSpinner data-time=1000')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ url('css/plugins/NovaPreloadSpinner.css') }}">
+@endsection
+
 @section('pageContent')
 
     @include('layout.banner')
@@ -146,6 +152,7 @@
 @section('js')
 
     <script src="{{ url('js/sidebar.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaPreloadSpinner.js') }}"></script>
 
     <script src="{{ url('js/plugins/choices.js') }}"></script>
     <script >
