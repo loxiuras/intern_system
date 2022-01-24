@@ -35,4 +35,20 @@ return [
         ]
     ],
 
+    "notification" => [
+        "save" => [
+            "success" => [
+                "title" => "Saved successfully",
+                "text"  => "All data is saved successfully.",
+            ],
+            "missing-fields" => [
+                "title" => "Missing fields",
+                "text"  => "Looks like some fields are not filled in or not valid.",
+            ],
+            "error" => [
+                "title" => "Error",
+                "text"  => "Something went wrong, please try again later.",
+            ],
+        ],
+    ],
 ];

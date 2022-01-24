@@ -126,6 +126,12 @@ class DomainController extends Controller
 
     public function store(Request $request)
     {
+        $request->session()->put('notificationActive', true);
+        $request->session()->put('notificationType', "warning");
+        $request->session()->put('notificationIconClass', "fas fa-bell");
+        $request->session()->put('notificationTitle', __("pages/domain.notification.save.missing-fields.title"));
+        $request->session()->put('notificationText', __("pages/domain.notification.save.missing-fields.text"));
+
         $this->validate($request, [
             "id"   => "integer",
             "name" => "required",
@@ -162,7 +168,14 @@ class DomainController extends Controller
 
         Domain::calculateSequence();
 
-        return redirect()->route('domain-edit', ['id' => $id]);
+        return back()->with([
+            "notificationActive"    => true,
+            "notificationType"      => "success",
+            "notificationIconClass" => "fas fa-bell",
+            "notificationTitle"     => __("pages/domain.notification.save.success.title"),
+            "notificationSubTitle"  => null,
+            "notificationText"      => __("pages/domain.notification.save.success.text"),
+        ]);
     }
 
     public function calculateSequence()
