@@ -31,8 +31,26 @@
                     }, 500);
                 }
             });
+
+            setTimeout(() => {
+                if ( box ) {
+                    box.style.opacity = 0;
+
+                    setTimeout(() => {
+                        box.classList.remove('show');
+                    }, 500);
+                }
+            }, 5000);
         }
 
     </script>
 
+    @php
+        session( ["notificationActive" => false ] );
+        session( ["notificationType" => null ] );
+        session( ["notificationIconClass" => null ] );
+        session( ["notificationTitle" => null ] );
+        session( ["notificationSubTitle" => null ] );
+        session( ["notificationText" => null ] );
+    @endphp
 @endif

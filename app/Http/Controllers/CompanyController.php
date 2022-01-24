@@ -87,22 +87,25 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $request->session()->put('notificationActive', true);
+        $request->session()->put('notificationType', "warning");
+        $request->session()->put('notificationIconClass', "fas fa-bell");
+        $request->session()->put('notificationTitle', __("pages/company.notification.save.missing-fields.title"));
+        $request->session()->put('notificationText', __("pages/company.notification.save.missing-fields.text"));
+
         $this->validate($request, [
-            "id"                      => "required|integer",
             "name"                    => "required",
-            "legal_name"              => "required",
-            "street_name"             => "required|min:5",
-            "house_number"            => "required|integer",
-            "house_number_extra"      => "",
-            "postal_code"             => "required|min:6",
-            "city"                    => "required|min:6",
-            "province"                => "",
-            "country"                 => "required",
-            "telephone"               => "required|min:10",
-            "primary_email"           => "required|email",
-            "primary_website"         => "",
-            "primary_invoice_email"   => "required|email",
-            "optional_invoice_emails" => "",
+            "id"                    => "required|integer",
+            "name"                  => "required",
+            "legal_name"            => "required",
+            "street_name"           => "required|min:5",
+            "house_number"          => "required|integer",
+            "postal_code"           => "required|min:6",
+            "city"                  => "required|min:6",
+            "country"               => "required",
+            "telephone"             => "required|min:10",
+            "primary_email"         => "required|email",
+            "primary_invoice_email" => "required|email",
         ]);
 
         $id = $request->id;
@@ -152,7 +155,14 @@ class CompanyController extends Controller
             );
         }
 
-        return redirect()->route('company-edit', ['id' => $id]);
+        return back()->with([
+                "notificationActive"    => true,
+                "notificationType"      => "success",
+                "notificationIconClass" => "fas fa-bell",
+                "notificationTitle"     => __("pages/company.notification.save.success.title"),
+                "notificationSubTitle"  => null,
+                "notificationText"      => __("pages/company.notification.save.success.text"),
+        ]);
     }
 
     /**
@@ -251,7 +261,7 @@ class CompanyController extends Controller
             return back()->with([
                 "notificationActive"    => true,
                 "notificationType"      => "danger",
-                "notificationIconClass" => "fas fa-bell",
+                "notificationIconClass" => "fas fa-bug",
                 "notificationTitle"     => __("pages/company.notification.import.error.title"),
                 "notificationSubTitle"  => null,
                 "notificationText"      => __("pages/company.notification.import.error.text"),

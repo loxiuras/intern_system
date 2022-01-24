@@ -16,7 +16,7 @@ return [
     "info" => [
         "user" => [
             "title"   => "Amount of users",
-            "subtext" => "current active users",
+            "subtext" => "current active users <small>(last 7 days)</small>",
         ],
         "company" => [
             "title"   => "Amount of companies",

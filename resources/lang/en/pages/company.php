@@ -60,14 +60,28 @@ return [
 
     "notification" => [
         "import" => [
+            "success" => [
+                "title" => "Import successfully!",
+                "text"  => "All records are successfully imported.",
+            ],
             "error" => [
                 "title" => "Import error!",
                 "text"  => "Something went wrong with the import.<br>Please check your CSV-file and try again.",
             ],
+        ],
+        "save" => [
             "success" => [
-                "title" => "Import successfully!",
-                "text"  => "All records are successfully imported.",
-            ]
+                "title" => "Saved successfully",
+                "text"  => "All data is saved successfully.",
+            ],
+            "missing-fields" => [
+                "title" => "Missing fields",
+                "text"  => "Looks like some fields are not filled in or not valid.",
+            ],
+            "error" => [
+                "title" => "Error",
+                "text"  => "Something went wrong, please try again later.",
+            ],
         ],
     ],
 ];

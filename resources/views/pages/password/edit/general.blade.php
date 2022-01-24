@@ -18,7 +18,7 @@
                     <select name="type" id="choices-type-id" class="multisteps-form__input form-control @error('type') is-invalid @enderror">
                         <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.type"))]) }}</option>
                         @foreach( $typesData as $type )
-                            <option value="{{ $type->type }} {{$passwordData->type}}" @if( !empty( $passwordData->type ) && $type->type === $passwordData->type ) selected="selected" @endif>{{ __("general.". $type->type ) }}</option>
+                            <option value="{{ $type->type }}" @if( !empty( $passwordData->type ) && $type->type === $passwordData->type ) selected="selected" @endif>{{ __("general.". $type->type ) }}</option>
                         @endforeach
                     </select>
 
