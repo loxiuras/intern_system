@@ -105,7 +105,7 @@
                            placeholder="" />
 
                     @error('telephone')
-                        <span class="telephone">
+                        <span class="invalid-feedback">
                             {{ $message }}
                         </span>
                     @enderror
