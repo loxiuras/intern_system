@@ -66,4 +66,5 @@ return [
     "import-csv"          => "Import CSV-file",
     "import"              => "Import",
     "file"                => "File",
+    "has-passwords"       => "Has passwords",
 ];

@@ -43,6 +43,7 @@ class DomainController extends Controller
             'domains.active',
             'domains.parent_id',
         ])
+            ->selectRaw("(SELECT COUNT(*) FROM passwords AS p WHERE p.type = 'domain' AND p.record_id = domains.id) AS amount_of_passwords")
             ->where($where)
             ->orderBy('sequence', 'asc')
             ->join('hosts', 'hosts.id', '=', 'domains.host_id')

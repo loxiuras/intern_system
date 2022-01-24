@@ -117,6 +117,10 @@
                                                     @else
                                                         <b>{{ $domain->domainName }}</b>
                                                     @endif
+
+                                                    @if( $domain->amount_of_passwords )
+                                                        <i class="fas fa-key" style="margin-left: 5px;" title="{{ __("general.has-passwords") }}"></i>
+                                                    @endif
                                                 </span>
                                             </td>
 
