@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\TimeService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,4 +40,20 @@ class Ticket extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * ToDo: Create attribute get for InvoiceTime;
+     *
+     * @param $key
+     */
+    public function getTitleAttribute($key)
+    {
+        $invoiceTime = $this->attributes['invoice_time'];
+
+        $hours = (new TimeService( $invoiceTime ))->transformHours();
+        $minutes = (new TimeService( $invoiceTime ))->transformMinutes();
+
+        $this->attributes['invoice_time_hours'] = $hours;
+        $this->attributes['invoice_time_minutes'] = $minutes;
+    }
 }

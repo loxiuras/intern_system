@@ -73,4 +73,6 @@ return [
     "price"               => "Price",
     "time"                => "Time",
     "status"              => "Status",
+    "hours"               => "Hours",
+    "minutes"             => "Minutes",
 ];

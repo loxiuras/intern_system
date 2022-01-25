@@ -31,7 +31,6 @@
                 <div class="col-12">
                     <div class="card">
 
-
                         <div class="table-responsive">
 
                             <table class="table table-flush" id="datatable-ticket-list">
@@ -59,33 +58,45 @@
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs"></span>
+                                            <span class="my-2 text-xs">
+                                                {{ substr( $ticket->description, 0, 50 ) }}
+                                            </span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs"></span>
+                                            <span class="my-2 text-xs">
+                                                {{ substr( $ticket->invoice_description, 0, 50 ) }}
+                                            </span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">
                                                 @php
                                                     if ( !empty( $ticket->invoice_price ) ) echo (new \App\Services\PriceService( (int)$ticket->invoice_price ))->transform();
-                                                    else echo "Free";
-                                                    if ( !empty( $ticket->invoice_time ) ) echo "&nbsp;/&nbsp;" . (new \App\Services\TimeService( (int)$ticket->invoice_time ))->transform();
+                                                    echo "&nbsp;";
+                                                    if ( !empty( $ticket->invoice_time ) ) echo "(" . (new \App\Services\TimeService( (int)$ticket->invoice_time ))->transform() . ")";
                                                 @endphp
-
-{{--                                                {{ $ticket->invoice_time }}--}}
                                             </span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">{{ $ticket->status }}</span>
+                                            <span class="my-2 text-xs">
+                                                <span class="badge {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">{{ __("pages/ticket.status_". $ticket->status . ".title") }}</span>
+                                            </span>
                                         </td>
 
                                         <td class="text-xs">
-                                            <a href="{{ Route('ticket-edit', ['id' => $ticket->id]) }}" data-bs-toggle="tooltip" data-bs-original-title="Edit ticket">
-                                                <i class="fas fa-edit text-secondary"></i>
-                                            </a>
+                                            @if( 4 !== $ticket->status )
+                                                <a href="{{ Route('ticket-edit', ['id' => $ticket->id]) }}" data-bs-toggle="tooltip">
+                                                    <i class="fas fa-edit text-secondary"></i>
+                                                </a>
+                                            @endif
+
+                                            @if( 3 === $ticket->status )
+                                                <a href="{{ Route('ticket-edit', ['id' => $ticket->id, 'is_invoice' => 1]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
+                                                    <i class="fas fa-coins text-primary"></i>
+                                                </span>
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -116,7 +127,6 @@
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-ticket-list", {
                 searchable: true,
                 perPageSelect: false,
-
             });
         }
     </script>

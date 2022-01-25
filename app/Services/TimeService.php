@@ -16,10 +16,7 @@ class TimeService
         $this->time = $time;
     }
 
-    /**
-     * @return string
-     */
-    public function transform(): string
+    private function getTimeData()
     {
         $hours = 0;
         $minutes = 0;
@@ -31,6 +28,22 @@ class TimeService
             $hours++;
         }
         $minutes = $time;
+
+        $timeData = new \stdClass();
+        $timeData->hours   = $hours;
+        $timeData->minutes = $minutes;
+
+        return $timeData;
+    }
+
+    /**
+     * @return string
+     */
+    public function transform(): string
+    {
+        $timeData = $this->getTimeData();
+        $hours = $timeData->hours;
+        $minutes = $timeData->minutes;
 
         $timeText = "";
 
@@ -49,5 +62,23 @@ class TimeService
         }
 
         return $timeText;
+    }
+
+    /**
+     * @return int
+     */
+    public function transformHours(): int
+    {
+        $timeData = $this->getTimeData();
+        return (int)$timeData->hours;
+    }
+
+    /**
+     * @return int
+     */
+    public function transformMinutes(): int
+    {
+        $timeData = $this->getTimeData();
+        return (int)$timeData->minutes;
     }
 }

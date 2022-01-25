@@ -24,4 +24,36 @@ return [
             ],
         ]
     ],
+
+    "content" => [
+        "add" => [
+            "title"       => "Ticket details",
+            "description" => "Please enter all ticket information below.",
+        ],
+    ],
+
+    "price--subtext" => "Complete price for this ticket. Leave this field empty if price is unknown.",
+    "time--subtext"  => "Spent/estimated time of ticket. Leave this field empty if no work has been done.",
+
+    "invoice" => [
+        "title"       => "Invoice information",
+        "description" => "All invoice data is listed below.",
+    ],
+
+    "status_1" => [
+        "title"     => "Open",
+        "className" => "bg-gradient-primary",
+    ],
+    "status_2" => [
+        "title"     => "Started",
+        "className" => "bg-gradient-warning",
+    ],
+    "status_3" => [
+        "title"     => "Completed",
+        "className" => "bg-gradient-success",
+    ],
+    "status_4" => [
+        "title"     => "Invoiced",
+        "className" => "bg-gradient-info",
+    ],
 ];
