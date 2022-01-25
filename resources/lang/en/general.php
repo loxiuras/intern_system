@@ -67,4 +67,10 @@ return [
     "import"              => "Import",
     "file"                => "File",
     "has-passwords"       => "Has passwords",
+    "ticket"              => "Ticket",
+    "title"               => "Title",
+    "invoice-description" => "Invoice description",
+    "price"               => "Price",
+    "time"                => "Time",
+    "status"              => "Status",
 ];

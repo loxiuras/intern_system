@@ -67,3 +67,6 @@ Route::post('/password/store', [PasswordController::class, 'store'])->middleware
 Route::get('/ticket/overview', [TicketController::class, 'overview'])->middleware('auth')->name('ticket-overview');
 Route::post('/ticket/overview', [TicketController::class, 'overview'])->middleware('auth');
 Route::get('/ticket/add', [TicketController::class, 'add'])->middleware('auth')->name('ticket-add');
+Route::get('/ticket/edit/{id}', [TicketController::class, 'edit'])->middleware('auth')->name('ticket-edit');
+Route::delete('/ticket/delete/{id}', [TicketController::class, 'delete'])->middleware('auth')->name('ticket-delete');
+Route::post('/ticket/store', [TicketController::class, 'store'])->middleware('auth')->name('ticket-store');
