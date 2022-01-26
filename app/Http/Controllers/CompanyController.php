@@ -97,7 +97,6 @@ class CompanyController extends Controller
         $request->session()->put('notificationText', __("pages/company.notification.save.missing-fields.text"));
 
         $this->validate($request, [
-            "name"                  => "required",
             "id"                    => "required|integer",
             "legal_name"            => "required",
             "street_name"           => "required|min:5",
