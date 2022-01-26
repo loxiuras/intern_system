@@ -29,6 +29,22 @@
                     @enderror
                 </div>
 
+                <div class="col-12 col-sm-6">
+                    <label for="company_id">{{ __("general.company") }}</label>
+                    <select name="company_id" id="choices-company-id" class="multisteps-form__input form-control @error('company_id') is-invalid @enderror">
+                        <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.company"))]) }}</option>
+                        @foreach( $companiesData as $company )
+                            <option value="{{ $company->id }}" @if( !empty( $ticketData->company_id ) && $company->id === $ticketData->company_id ) selected="selected" @endif>{{ $company->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @error('company_id')
+                        <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
             </div>
 
             <div class="row mt-3">
@@ -36,7 +52,7 @@
                 <div class="col-12 col-sm-12">
                     <label for="description">{{ __("general.description") }}</label>
                     <div>
-                        <textarea name="description" id="quill-description-edit" class="height-200" name="description">{{ old('description', (isset($ticketData->description) ? $ticketData->description : "")) }}</textarea>
+                        <textarea name="description" id="quill-description-edit" class="height-200">{{ old('description', (isset($ticketData->description) ? $ticketData->description : "")) }}</textarea>
                     </div>
 
                     @error('description')
@@ -53,7 +69,7 @@
                 <div class="col-12 col-sm-12">
                     <label for="invoice-description">{{ __("general.invoice-description") }}</label>
                     <div>
-                        <textarea name="invoice-description" id="quill-invoice-description-edit" class="height-200" name="description">{{ old('invoice_description', (isset($ticketData->invoice_description) ? $ticketData->invoice_description : "")) }}</textarea>
+                        <textarea name="invoice_description" id="quill-invoice-description-edit" class="height-200">{{ old('invoice_description', (isset($ticketData->invoice_description) ? $ticketData->invoice_description : "")) }}</textarea>
                     </div>
 
                     @error('invoice_description')
@@ -64,6 +80,23 @@
                 </div>
 
             </div>
+
+            @if( isset($ticketData->id) && $ticketData->id > 0 )
+
+                <div class="row mt-3">
+
+                    <div class="col-12 col-sm-6">
+                        <label for="status">{{ __("general.status") }}</label>
+                        <select name="status" id="choices-status" class="multisteps-form__input form-control @error('status') is-invalid @enderror">
+                            @for( $i = 1; $i <= 4; $i++ )
+                                <option value="{{ $i }}" {{ isset( $ticketData->status ) && $i === $ticketData->status ? 'selected' : '' }}>{{ __("pages/ticket.status_". $i . ".title") }}</option>
+                            @endfor
+                        </select>
+                    </div>
+
+                </div>
+
+            @endif
 
             <div class="row mt-5">
 
@@ -101,8 +134,8 @@
                         <div class="col-6">
                             <input class="multisteps-form__input form-control @error('invoice_time') is-invalid @enderror"
                                    type="number"
-                                   name="invoice_time"
-                                   id="invoice_time"
+                                   name="invoice_time_hours"
+                                   id="invoice_time_hours"
                                    min="0"
                                    value="{{ old('invoice_time_hours', (isset($ticketData->invoice_time_hours) ? $ticketData->invoice_time_hours : ""))  }}"
                                    placeholder="{{ __("general.hours") }}" />
@@ -111,8 +144,8 @@
                         <div class="col-6">
                             <input class="multisteps-form__input form-control @error('invoice_time') is-invalid @enderror"
                                    type="number"
-                                   name="invoice_time"
-                                   id="invoice_time"
+                                   name="invoice_time_minutes"
+                                   id="invoice_time_minutes"
                                    min="0"
                                    max="59"
                                    value="{{ old('invoice_time_minutes', (isset($ticketData->invoice_time_minutes) ? $ticketData->invoice_time_minutes : ""))  }}"

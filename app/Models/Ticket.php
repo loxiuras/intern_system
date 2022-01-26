@@ -55,5 +55,7 @@ class Ticket extends Model
 
         $this->attributes['invoice_time_hours'] = $hours;
         $this->attributes['invoice_time_minutes'] = $minutes;
+
+        return $this->attributes['title'];
     }
 }

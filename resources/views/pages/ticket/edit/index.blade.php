@@ -65,9 +65,30 @@
             const delta = quillInvoice.clipboard.convert( quillInvoiceDescriptionEditElement.innerText );
             quillInvoice.setContents(delta, 'silent');
             quillInvoice.on('text-change', function() {
-                quillInvoiceDescriptionEditElement.innerText = quill.root.innerHTML;
+                quillInvoiceDescriptionEditElement.innerText = quillInvoice.root.innerHTML;
             });
         }
+    </script>
+
+    <script src="{{ url('js/plugins/choices.js') }}"></script>
+    <script >
+        if (document.getElementById('choices-company-id')) {
+            var companyElement = document.getElementById('choices-company-id');
+            const companySearch = new Choices(companyElement, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.company")]) }}',
+                shouldSort: false,
+            });
+        };
+
+        if (document.getElementById('choices-status')) {
+            var statusElement = document.getElementById('choices-status');
+            const statusSearch = new Choices(statusElement, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.status")]) }}',
+                shouldSort: false,
+            });
+        };
     </script>
 
 @endsection

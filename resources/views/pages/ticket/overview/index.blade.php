@@ -21,7 +21,7 @@
 
             <div class="d-sm-flex justify-content-end">
                 <div>
-                    <a href="{{ Route('domain-add') }}" class="btn btn-icon btn-outline-white">
+                    <a href="{{ Route('ticket-add') }}" class="btn btn-icon btn-outline-white">
                         + {{ __("general.add-new-item", ["item" => strtolower(__("general.ticket"))]) }}
                     </a>
                 </div>
@@ -59,13 +59,13 @@
 
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">
-                                                {{ substr( $ticket->description, 0, 50 ) }}
+                                                {{ str_replace( ["<p>", "</p>"], "", substr( $ticket->description, 0, 50 ) ) }}
                                             </span>
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">
-                                                {{ substr( $ticket->invoice_description, 0, 50 ) }}
+                                                {{ str_replace( ["<p>", "</p>"], "", substr( $ticket->invoice_description, 0, 50 ) ) }}
                                             </span>
                                         </td>
 
