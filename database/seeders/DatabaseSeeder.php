@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DomainTableSeeder::class);
         $this->call(DayTableSeeder::class);
         $this->call(PasswordTableSeeder::class);
+        $this->call(TicketTableSeeder::class);
     }
 }
