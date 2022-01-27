@@ -41,6 +41,10 @@ return [
         "description" => "All invoice data is listed below.",
     ],
 
+    "status_0" => [
+        "title"     => "All",
+        "className" => "bg-gradient-dark",
+    ],
     "status_1" => [
         "title"     => "Open",
         "className" => "bg-gradient-primary",

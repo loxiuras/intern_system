@@ -5,6 +5,23 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ url('css/plugins/NovaPreloadSpinner.css') }}">
+
+    <style>
+
+        .ticketStatusBadgeElement {
+            display: none;
+        }
+        .ticketStatusBadgeElement + label .ticketStatusBadge {
+            opacity: 0.2;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .ticketStatusBadgeElement:checked + label .ticketStatusBadge {
+            opacity: 1;
+            border: 2px solid var( --bs-gray-dark );
+        }
+
+    </style>
 @endsection
 
 @section('pageContent')
@@ -31,7 +48,41 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <div class="table-responsive">
+                        <div class="card-header mb-0 pb-0">
+
+                            <form action="{{ Route('ticket-overview') }}" method="POST">
+                                @csrf
+
+                                <div class="row mt-3">
+
+                                    <div class="col-12 col-sm-2">
+
+                                        <label for="title" class="d-block w-100">{{ __("general.status") }}</label>
+                                        <div class="d-inline-block">
+
+                                            @for( $i = 0; $i <= 4; $i++ )
+                                                <input type="radio" class="ticketStatusBadgeElement"
+                                                       name="status"
+                                                       value="{{ $i }}"
+                                                       {{ isset( $searchData ) && isset( $searchData->status ) && $searchData->status === $i ? 'checked' : '' }}
+                                                       id="status_{{ $i }}" />
+                                                <label for="status_{{ $i }}">
+                                                    <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}">{{ __("pages/ticket.status_". $i . ".title") }}</span>
+                                                </label>
+                                            @endfor
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-3 d-flex align-items-end">
+                                        <button type="submit" class="btn btn-sm btn-dark btn-lg mt-0 mb-2 px-6">Filter</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="table-responsive mt-0 pt-0">
 
                             <table class="table table-flush" id="datatable-ticket-list">
                                 <thead class="thead-light">

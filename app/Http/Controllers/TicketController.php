@@ -22,6 +22,16 @@ class TicketController extends Controller
     {
         $where = [];
 
+        $searchData = new \stdClass();
+
+        if( isset( $request->status ) ) {
+            if ( !empty( $request->status ) ) $where[] = ['tickets.status', '=', (int)$request->status];
+            $searchData->status = (int)$request->status;
+        } else {
+            $where[] = ['tickets.status', '=', 1];
+            $searchData->status = 1;
+        }
+
         $ticketsData = Ticket::select([
             'tickets.*',
             'companies.name as companyName'
@@ -36,6 +46,7 @@ class TicketController extends Controller
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "ticket", "overview" ),
             "ticketsData"   => $ticketsData,
+            "searchData"    => $searchData,
         ]);
     }
 
