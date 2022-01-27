@@ -102,4 +102,6 @@ return [
     "minutes"             => "Minutes",
     "date"                => "Date",
     "scheduled_date"      => "Scheduled date",
+    "created-by"          => "Created by",
+    "updated-by"          => "Updated by",
 ];

@@ -70,3 +70,5 @@ Route::get('/ticket/add', [TicketController::class, 'add'])->middleware('auth')-
 Route::get('/ticket/edit/{id}', [TicketController::class, 'edit'])->middleware('auth')->name('ticket-edit');
 Route::delete('/ticket/delete/{id}', [TicketController::class, 'delete'])->middleware('auth')->name('ticket-delete');
 Route::post('/ticket/store', [TicketController::class, 'store'])->middleware('auth')->name('ticket-store');
+Route::get('/ticket/edit-invoice/{id}', [TicketController::class, 'editInvoice'])->middleware('auth')->name('ticket-edit-invoice');
+Route::post('/ticket/store-invoice', [TicketController::class, 'storeInvoice'])->middleware('auth')->name('ticket-store-invoice');

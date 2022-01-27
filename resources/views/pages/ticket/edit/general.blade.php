@@ -112,7 +112,7 @@
                                    type="text"
                                    name="invoice_price"
                                    id="invoice_price"
-                                   value="{{ (new \App\Services\PriceService( old('invoice_price', (isset($ticketData->invoice_price) ? $ticketData->invoice_price : "")) ))->transform( false ) }}"
+                                   value="{{ (new \App\Services\PriceService( old('invoice_price', (isset($ticketData->invoice_price) ? $ticketData->invoice_price : 0)) ))->transform( false ) }}"
                                    placeholder="" />
                         </div>
                     </div>

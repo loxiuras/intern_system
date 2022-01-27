@@ -36,6 +36,8 @@ return [
     "scheduled_date--subtext"  => "Scheduled date from this ticket, leave this field empty if no date is necessary.",
     "time--subtext"  => "Spent/estimated time of ticket. Leave this field empty if no work has been done.",
 
+    "update-to-invoiced" => "Update to invoiced",
+
     "invoice" => [
         "title"       => "Invoice information",
         "description" => "All invoice data is listed below.",

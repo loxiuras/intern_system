@@ -9,7 +9,9 @@ use App\Services\TimeService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class TicketController extends Controller
 {
@@ -24,8 +26,10 @@ class TicketController extends Controller
 
         $searchData = new \stdClass();
 
-        if( isset( $request->status ) ) {
-            if ( !empty( $request->status ) ) $where[] = ['tickets.status', '=', (int)$request->status];
+        if( isset( $request->status ) || isset( $_GET['status'] ) ) {
+            $status = !empty( $_GET['status'] ) ? (int)$_GET['status'] : (int)$request->status;
+
+            if ( !empty( $request->status ) ) $where[] = ['tickets.status', '=', $status];
             $searchData->status = (int)$request->status;
         } else {
             $where[] = ['tickets.status', '=', 1];
@@ -79,6 +83,50 @@ class TicketController extends Controller
             "sidebarData"   => $this->getSidebarData( "ticket", "edit" ),
             "ticketData"    => $ticketData,
             "companiesData" => $companiesData,
+        ]);
+    }
+
+    /**
+     * @param int $ticketId
+     * @return Application|Factory|View|RedirectResponse|Redirector
+     */
+    public function editInvoice( int $ticketId ): View|Factory|Redirector|RedirectResponse|Application
+    {
+        $ticketData = Ticket::select([
+                "tickets.id",
+                "tickets.title",
+                "tickets.description",
+                "tickets.invoice_description",
+                "tickets.invoice_price",
+                "tickets.invoice_time",
+                "tickets.created_user_id",
+                "tickets.updated_user_id",
+                "tickets.status",
+                "companies.name as companyName",
+                "u1.name as createdUserName",
+                "u1.insertion as createdUserInsertion",
+                "u1.last_name as createdUserLastName",
+                "u2.name as updatedUserName",
+                "u2.insertion as updatedUserInsertion",
+                "u2.last_name as updatedUserLastName",
+            ])
+            ->where([ ["tickets.id", "=", $ticketId] ])
+            ->join('companies', 'companies.id', '=', 'tickets.company_id')
+            ->join('users as u1', 'u1.id', '=', 'tickets.created_user_id')
+            ->join('users as u2', 'u2.id', '=', 'tickets.updated_user_id')
+            ->first();
+
+        if (
+            !$ticketData
+            || ( !empty( $ticketData ) && $ticketData->status !== 3 )
+        ) {
+            return Redirect( Route( "ticket-edit", ["id" => $ticketId] ) );
+        }
+
+        return view('pages.ticket.edit-invoice.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "ticket", "edit" ),
+            "ticketData"    => $ticketData,
         ]);
     }
 
@@ -149,6 +197,20 @@ class TicketController extends Controller
 
             return Redirect( Route( "ticket-edit", ["id" => $id] ) );
         }
+    }
+
+    public function storeInvoice( Request $request )
+    {
+        $id = $request->id;
+
+        if ( $id ) {
+            $ticketData = Ticket::find($id);
+
+            $ticketData->status = 4;
+            $ticketData->save();
+        }
+
+        return Redirect( Route( "ticket-overview", ["status" => 3] ) );
     }
 
     /**
