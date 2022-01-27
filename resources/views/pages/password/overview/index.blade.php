@@ -106,9 +106,9 @@
 
                                         <td class="text-xs font-weight-bold">
                                             @if( $password->active )
-                                                <span class="badge badge-success">{{ __("general.active") }}</span>
+                                                <span class="badge bg-gradient-success">{{ __("general.active") }}</span>
                                             @else
-                                                <span class="badge badge-secondary">{{ __("general.in-active") }}</span>
+                                                <span class="badge bg-gradient-secondary">{{ __("general.in-active") }}</span>
                                             @endif
                                         </td>
 
