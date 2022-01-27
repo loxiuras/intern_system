@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Ticket;
+use App\Services\PriceService;
 use App\Services\TimeService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -96,7 +97,7 @@ class TicketController extends Controller
             $ticketData->title               = $request->title;
             $ticketData->description         = $request->description;
             $ticketData->invoice_description = $request->invoice_description;
-            $ticketData->invoice_price       = (int)$request->invoice_price;
+            $ticketData->invoice_price       = (new PriceService( $request->invoice_price ))->transformDatabase();
             $ticketData->invoice_time        = $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes );
             $ticketData->status              = (int)$request->status;
             $ticketData->updated_user_id     = (int)$loginUserData->id;
@@ -119,7 +120,7 @@ class TicketController extends Controller
                     "title"               => $request->title,
                     "description"         => $request->description,
                     "invoice_description" => $request->invoice_description,
-                    "invoice_price"       => (int)$request->invoice_price,
+                    "invoice_price"       => (new PriceService( $request->invoice_price ))->transformDatabase(),
                     "invoice_time"        => $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes ),
                     "created_user_id"     => $loginUserData->id,
                     "updated_user_id"     => $loginUserData->id,
