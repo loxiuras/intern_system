@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="col-12 col-sm-6">
-                    <label for="invoice_time">{{ __("general.time") }}</label>
+                    <label for="invoice_time">{{ __("general.time") }} <span class="text-lowercase">( {{ __("general.hours") }} + {{ __("general.minutes") }} )</span></label>
                     <p class="form-text text-muted text-xs ms-1">
                         {!! __("pages/ticket.time--subtext") !!}
                     </p>
