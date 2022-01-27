@@ -48,7 +48,7 @@
                                 <tbody>
                                 @foreach( $ticketsData as $ticket )
 
-                                    <tr>
+                                    <tr style="{{ $ticket->status === 4 ? 'background-color: #FAFAFA;' : '' }}">
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">{{ $ticket->companyName }}</span>
                                         </td>
