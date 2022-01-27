@@ -28,7 +28,7 @@ class TicketController extends Controller
         ])
             ->where($where)
             ->orderBy('tickets.status', 'asc')
-            ->orderBy('tickets.created_at', 'asc')
+            ->orderBy('tickets.scheduled_date', 'desc')
             ->join('companies', 'companies.id', '=', 'tickets.company_id')
             ->get();
 
