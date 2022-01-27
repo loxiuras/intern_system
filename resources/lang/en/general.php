@@ -2,6 +2,31 @@
 
 return [
 
+    "weekdays" => [
+        "1" => "Maandag",
+        "2" => "Dinsdag",
+        "3" => "Woensdag",
+        "4" => "Donderdag",
+        "5" => "Vrijdag",
+        "6" => "Zaterdag",
+        "7" => "Zondag",
+    ],
+
+    "months" => [
+      "1" => "januari",
+      "2" => "februari",
+      "3" => "maart",
+      "4" => "april",
+      "5" => "mei",
+      "6" => "juni",
+      "7" => "juli",
+      "8" => "augustus",
+      "9" => "september",
+      "10" => "oktober",
+      "11" => "november",
+      "12" => "december",
+    ],
+
     "email"               => "E-mailaddress",
     "telephone"           => "Telephone",
     "password"            => "Password",
@@ -75,4 +100,6 @@ return [
     "status"              => "Status",
     "hours"               => "Hours",
     "minutes"             => "Minutes",
+    "date"                => "Date",
+    "scheduled_date"      => "Scheduled date",
 ];

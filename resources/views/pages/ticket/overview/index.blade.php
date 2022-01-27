@@ -38,8 +38,7 @@
                                 <tr>
                                     <th>{{ __("general.company") }}</th>
                                     <th>{{ __("general.title") }}</th>
-                                    <th>{{ __("general.description") }}</th>
-                                    <th>{{ __("general.invoice-description") }}</th>
+                                    <th>{{ __("general.scheduled_date") }}</th>
                                     <th>{{ __("general.price") }} / {{ __("general.time") }}</th>
                                     <th>{{ __("general.status") }}</th>
                                     <th data-sortable="false">{{ __("general.actions") }}</th>
@@ -59,13 +58,8 @@
 
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">
-                                                {{ str_replace( ["<p>", "</p>"], "", substr( $ticket->description, 0, 50 ) ) }}
-                                            </span>
-                                        </td>
-
-                                        <td class="text-xs font-weight-bold">
-                                            <span class="my-2 text-xs">
-                                                {{ str_replace( ["<p>", "</p>"], "", substr( $ticket->invoice_description, 0, 50 ) ) }}
+                                                <span class="d-none">{{ $ticket->scheduled_date }}</span>
+                                                {{ (new \App\Services\DateService( $ticket->scheduled_date ))->translate() }}
                                             </span>
                                         </td>
 
@@ -81,6 +75,7 @@
 
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">
+                                                <span class="d-none">{{ $ticket->status }}</span>
                                                 <span class="badge {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">{{ __("pages/ticket.status_". $ticket->status . ".title") }}</span>
                                             </span>
                                         </td>
@@ -127,6 +122,7 @@
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-ticket-list", {
                 searchable: true,
                 perPageSelect: false,
+                perPage: 20,
             });
         }
     </script>
