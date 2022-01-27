@@ -81,7 +81,7 @@ class TicketController extends Controller
         $request->session()->put('notificationText', __("pages/ticket.notification.save.missing-fields.text"));
 
         $this->validate($request, [
-            "company_id" => "required",
+            "company_id" => "required|numeric|min:1",
             "title"      => "required|string",
         ]);
 
