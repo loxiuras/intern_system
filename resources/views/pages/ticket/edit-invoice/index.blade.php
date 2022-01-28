@@ -37,13 +37,13 @@
                                         </div>
 
                                         <div class="row mt-5">
-                                            <div class="col-12 col-sm-3">
+                                            <div class="col-12 col-sm-4">
                                                 <span class="text-dark text-bold">{{ __("general.created-by") }}</span>
                                                 <span class="d-block text-normal">
                                                     {{ $ticketData->createdUserName }}{{ !empty( $ticketData->createdUserInsertion ) ? " {$ticketData->createdUserInsertion} " : " " }}{{ $ticketData->createdUserLastName }}
                                                 </span>
                                             </div>
-                                            <div class="col-12 col-sm-3">
+                                            <div class="col-12 col-sm-4">
                                                 <span class="text-dark text-bold">{{ __("general.updated-by") }}</span>
                                                 <span class="d-block text-normal">
                                                     {{ $ticketData->updatedUserName }}{{ !empty( $ticketData->updatedUserInsertion ) ? " {$ticketData->createdUserInsertion} " : " " }}{{ $ticketData->updatedUserLastName }}
@@ -73,12 +73,12 @@
                                         </div>
 
                                         <div class="row mt-5">
-                                            <div class="col-12 col-sm-3">
+                                            <div class="col-12 col-sm-4">
                                                 <span class="text-dark text-bold">{{ __("general.price") }}</span>
                                                 <span class="d-block text-normal">{!! (new \App\Services\PriceService( $ticketData->invoice_price ))->transform() !!}</span>
                                             </div>
 
-                                            <div class="col-12 col-sm-3">
+                                            <div class="col-12 col-sm-4">
                                                 <span class="text-dark text-bold">{{ __("general.time") }}</span>
                                                 <span class="d-block text-normal">
                                                     {{ (new \App\Services\TimeService( $ticketData->invoice_time ))->transform() }}
