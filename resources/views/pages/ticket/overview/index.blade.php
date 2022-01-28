@@ -139,7 +139,24 @@
                                             @if( 3 === $ticket->status )
                                                 <a href="{{ Route('ticket-edit-invoice', ['id' => $ticket->id]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
                                                     <i class="fas fa-coins text-primary"></i>
-                                                </span>
+                                                </a>
+                                            @endif
+
+                                            @if( 3 !== $ticket->status && 4 !== $ticket->status )
+
+                                                    <form class="mx-3" action="{{ Route('ticket-delete', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
+                                                        @method('delete')
+                                                        @csrf
+
+                                                        <label for="deleteSubmit{{$ticket->id}}">
+                                                            <span data-bs-toggle="tooltip" data-bs-original-title="Delete ticket" style="cursor: pointer;">
+                                                                <i class="fas fa-trash text-secondary"></i>
+                                                            </span>
+                                                        </label>
+
+                                                        <input id="deleteSubmit{{$ticket->id}}" name="deleteSubmit{{$ticket->id}}" type="submit" style="display: none" />
+                                                    </form>
+
                                             @endif
                                         </td>
                                     </tr>
