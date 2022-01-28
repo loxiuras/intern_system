@@ -55,7 +55,7 @@
 
                                 <div class="row mt-3">
 
-                                    <div class="col-12 col-sm-2">
+                                    <div class="col-12 col-sm-12">
 
                                         <label for="title" class="d-block w-100">{{ __("general.status") }}</label>
                                         <div class="d-inline-block">
@@ -71,10 +71,8 @@
                                                 </label>
                                             @endfor
                                         </div>
-                                    </div>
 
-                                    <div class="col-12 col-sm-3 d-flex align-items-end">
-                                        <button type="submit" class="btn btn-sm btn-dark btn-lg mt-0 mb-2 px-6">Filter</button>
+                                        <button type="submit" class="badge bg-dark mt-0 ms-3 mb-2 px-6">Filter</button>
                                     </div>
 
                                 </div>
