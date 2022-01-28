@@ -94,10 +94,9 @@ class DomainController extends Controller
 
         $domainData = Domain::find( $domainId );
 
-        $domainsData = Domain::where([
-            ['name', '!=', ''],
-            ['parent_id', '=', 0],
-        ])->orWhereNull('parent_id')->get();
+        $domainsData = Domain::whereRaw(
+            "name != ? AND ( parent_id = ? OR parent_id IS NULL)  AND id != ?", [ '', 0, $domainId]
+        )->get();
 
         $hostsData = Host::where('name', '!=', '')->orderBy('name', 'asc')->get();
 
