@@ -35,8 +35,6 @@
                             </a>
                         </li>
 
-                        <!--
-                        ToDo: Edit location and translation
                         <li class="mb-1">
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1 d-flex flex-row justify-content-start">
@@ -51,10 +49,9 @@
                                 </div>
                             </a>
                         </li>
-                        -->
 
                         <li class="mb-1">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <div class="dropdown-item border-radius-md">
                                 <div class="d-flex py-1 d-flex flex-row justify-content-start">
                                     <div class="">
                                         <i class="fa fa-sign-out me-1"></i>
@@ -62,14 +59,14 @@
                                     <form action="{{ Route('logout') }}" method="post">
                                         @csrf
                                         <div class="d-flex flex-column justify-content-center ps-2">
-                                            <label for="logout" class="text-sm font-weight-normal mb-0">
+                                            <label for="logout" class="text-sm font-weight-normal mb-0 cursor-pointer">
                                                 <span class="font-weight-bold">{{ __("general.sign-out") }}</span>
                                             </label>
                                             <input type="submit" id="logout" name="logout" style="display: none;">
                                         </div>
                                     </form>
                                 </div>
-                            </a>
+                            </div>
                         </li>
 
                     </ul>

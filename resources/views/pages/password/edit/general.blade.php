@@ -14,8 +14,8 @@
             <div class="row mt-3">
 
                 <div class="col-12 col-sm-4">
-                    <label for="name">{{ __("general.type") }}</label>
-                    <select name="type" id="choices-type-id" class="multisteps-form__input form-control @error('type') is-invalid @enderror">
+                    <label for="type">{{ __("general.type") }}</label>
+                    <select disabled name="type" id="choices-type-id" class="multisteps-form__input form-control @error('type') is-invalid @enderror">
                         <option value="0" disabled selected>{{ __("general.select-item", ["item" => strtolower(__("general.type"))]) }}</option>
                         @foreach( $typesData as $type )
                             <option value="{{ $type->type }}" @if( !empty( $passwordData->type ) && $type->type === $passwordData->type ) selected="selected" @endif>{{ __("general.". $type->type ) }}</option>
@@ -30,8 +30,8 @@
                 </div>
 
                 <div class="col-12 col-sm-4">
-                    <label for="name">{{ __("general.id") }}</label>
-                    <input class="multisteps-form__input form-control @error('record_id') is-invalid @enderror"
+                    <label for="record_id">{{ __("general.id") }}</label>
+                    <input disabled class="multisteps-form__input form-control @error('record_id') is-invalid @enderror"
                            type="number"
                            name="record_id"
                            id="record_id"

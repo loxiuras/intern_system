@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Ticket;
 use App\Services\PriceService;
 use App\Services\TimeService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -130,7 +131,16 @@ class TicketController extends Controller
         ]);
     }
 
-    public function delete() {}
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete( int $id )
+    {
+        DB::table('tickets')->where('id', '=', $id)->delete();
+        return back();
+    }
 
     public function store( Request $request )
     {
