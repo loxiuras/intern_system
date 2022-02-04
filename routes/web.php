@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\ManualController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -72,3 +73,7 @@ Route::delete('/ticket/delete/{id}', [TicketController::class, 'delete'])->middl
 Route::post('/ticket/store', [TicketController::class, 'store'])->middleware('auth')->name('ticket-store');
 Route::get('/ticket/edit-invoice/{id}', [TicketController::class, 'editInvoice'])->middleware('auth')->name('ticket-edit-invoice');
 Route::post('/ticket/store-invoice', [TicketController::class, 'storeInvoice'])->middleware('auth')->name('ticket-store-invoice');
+
+/** MANUALS **/
+Route::get('/manual/overview', [ManualController::class, 'overview'])->middleware('auth')->name('manual-overview');
+Route::get('/manual/item/{reference}', [ManualController::class, 'item'])->middleware('auth')->name('manual-item');

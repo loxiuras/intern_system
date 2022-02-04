@@ -38,4 +38,8 @@ return [
         "overview" => "Overview"
     ],
 
+    "manuals" => [
+        "main" => "Manual",
+        "overview" => "Overview"
+    ],
 ];
