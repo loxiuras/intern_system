@@ -138,7 +138,7 @@
 
                                             @if( 3 === $ticket->status )
                                                 <a href="{{ Route('ticket-edit-invoice', ['id' => $ticket->id]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
-                                                    <i class="fas fa-coins text-primary"></i>
+                                                    <i class="fas fa-paper-plane text-dark"></i>
                                                 </a>
                                             @endif
 
