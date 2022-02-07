@@ -60,7 +60,7 @@ return [
         "className" => "bg-gradient-success",
     ],
     "status_4" => [
-        "title"     => "Invoiced",
+        "title"     => "Archived",
         "className" => "bg-gradient-info",
     ],
 
