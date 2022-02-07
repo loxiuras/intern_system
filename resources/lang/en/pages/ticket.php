@@ -44,24 +44,29 @@ return [
     ],
 
     "status_0" => [
-        "title"     => "All",
-        "className" => "bg-gradient-dark",
+        "title"         => "All",
+        "className"     => "bg-gradient-dark",
+        "iconClassName" => "fas fa-layer-group",
     ],
     "status_1" => [
-        "title"     => "Open",
-        "className" => "bg-gradient-primary",
+        "title"         => "Open",
+        "className"     => "bg-gradient-primary",
+        "iconClassName" => "fas fa-pen-alt",
     ],
     "status_2" => [
-        "title"     => "Started",
-        "className" => "bg-gradient-warning",
+        "title"         => "Started",
+        "className"     => "bg-gradient-warning",
+        "iconClassName" => "fas fa-hammer",
     ],
     "status_3" => [
-        "title"     => "Completed",
-        "className" => "bg-gradient-success",
+        "title"         => "Completed",
+        "className"     => "bg-gradient-success",
+        "iconClassName" => "fas fa-check-double",
     ],
     "status_4" => [
-        "title"     => "Archived",
-        "className" => "bg-gradient-info",
+        "title"         => "Archived",
+        "className"     => "bg-gradient-info",
+        "iconClassName" => "fas fa-box-open",
     ],
 
     "notification" => [

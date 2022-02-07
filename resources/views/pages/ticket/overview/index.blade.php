@@ -67,7 +67,7 @@
                                                        {{ isset( $searchData ) && isset( $searchData->status ) && $searchData->status === $i ? 'checked' : '' }}
                                                        id="status_{{ $i }}" />
                                                 <label for="status_{{ $i }}">
-                                                    <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}">{{ __("pages/ticket.status_". $i . ".title") }}</span>
+                                                    <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}"><i class="{{ __("pages/ticket.status_". $i . ".iconClassName" ) }} mx-1"></i> {{ __("pages/ticket.status_". $i . ".title") }}</span>
                                                 </label>
                                             @endfor
                                         </div>
