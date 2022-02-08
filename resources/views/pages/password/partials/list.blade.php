@@ -1,3 +1,15 @@
+<style>
+    .passwordPopoverText { display: none; min-width: 250px; }
+
+    .passwordPopoverText,
+    .passwordPopoverText p,
+    .passwordPopoverText strong,
+    .passwordPopoverText b,
+    .passwordPopoverText i,
+    .passwordPopoverText li { font-size: .75rem; margin-bottom: 0; }
+
+    .passwordPopoverLink:hover .passwordPopoverText { display: block; }
+</style>
 
 <div class="card p-3 mt-4 border-radius-xl bg-white js-active" data-animation="FadeIn">
 
@@ -10,9 +22,17 @@
 
             <div class="row mt-2 border-bottom pb-1">
 
-                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.name") }}</span></div>
-                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.username") }}</span></div>
-                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.password") }}</span></div>
+                <div class="col-12 col-md-3 mb-1">
+                    <span class="text-sm text-bold text-primary">{{ __("general.name") }}</span>
+                </div>
+
+                <div class="col-12 col-md-3 mb-1">
+                    <span class="text-sm text-bold text-primary">{{ __("general.username") }}</span>
+                </div>
+
+                <div class="col-12 col-md-3 mb-1">
+                    <span class="text-sm text-bold text-primary">{{ __("general.password") }}</span>
+                </div>
 
             </div>
 
@@ -20,8 +40,17 @@
 
                 <div class="row mt-2">
 
-                    <div class="col-12 col-md-3 mb-1">
+                    <div class="col-12 col-md-3 mb-1 position-relative passwordPopoverLink">
                         <a href="{{ Route("password-edit", ["id" => $password->id]) }}" class="text-dark text-sm text-bold">{!! $password->name !!}</a>
+
+                        @if ( $password->description )
+                            <div class="popover fade show bs-popover-top position-absolute" style="top: -100%; z-index: 1000; transform: translateY(-75%)">
+                                <div class="popover-arrow" style="position: absolute; left: 0px; transform: translate3d(130px, 0px, 0px);"></div>
+                                <div class="popover-body passwordPopoverText">
+                                    {!! $password->description !!}
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="col-12 col-md-3 mb-1">
