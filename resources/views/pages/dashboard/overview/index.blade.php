@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="col-4 text-end">
                                             <div class="icon icon-shape bg-gradient-danger shadow-primary text-center rounded-circle">
-                                                <i class="ni ni-app text-lg opacity-10" aria-hidden="true"></i>
+                                                <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -108,6 +108,36 @@
                                         <div class="col-4 text-end">
                                             <div class="icon icon-shape bg-gradient-success shadow-danger text-center rounded-circle">
                                                 <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="card mt-4">
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-uppercase font-weight-bold">
+                                                    {!! __("pages/dashboard.info.ticket.title") !!}
+                                                </p>
+                                                <h5 class="font-weight-bolder">
+                                                    {{ $ticketInfo->totalCount }}
+                                                </h5>
+                                                <p class="mb-0">
+                                                    <span class="@if( $ticketInfo->monthCount > 0 ) text-success @elseif ( $ticketInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
+                                                        @if( $ticketInfo->monthCount > 0 )+@endif{{ $ticketInfo->monthCount }}
+                                                    </span>
+                                                    {!! __("pages/dashboard.info.ticket.subtext") !!}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div class="icon icon-shape bg-gradient-info shadow-danger text-center rounded-circle">
+                                                <i class="ni ni-hat-3 text-lg opacity-10" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>

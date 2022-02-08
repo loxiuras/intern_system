@@ -15,6 +15,8 @@ class TicketFactory extends Factory
     {
         return [
             'company_id'          => 1,
+            'created_at'          => $this->faker->dateTime(),
+            'updated_at'          => $this->faker->dateTime(),
             'created_user_id'     => 1,
             'updated_user_id'     => 2,
             'title'               => $this->faker->text( 50),

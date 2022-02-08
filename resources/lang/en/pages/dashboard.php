@@ -25,6 +25,10 @@ return [
         "domain" => [
             "title"   => "Amount of domains",
             "subtext" => "added this month",
+        ],
+        "ticket" => [
+            "title"   => "Amount of complete tickets",
+            "subtext" => "completed this month",
         ]
     ],
 ];

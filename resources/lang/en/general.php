@@ -106,5 +106,6 @@ return [
     "updated-by"          => "Updated by",
     "reference"           => "Reference",
     "invoice"             => "Invoice",
+    "invoiced"            => "Invoiced",
     "update"              => "Update :item",
 ];

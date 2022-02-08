@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Domain;
@@ -19,6 +20,7 @@ class DashboardController extends Controller
             "userInfo"            => $this->getUserInfo(),
             "companyInfo"         => $this->getCompanyInfo(),
             "domainInfo"          => $this->getDomainInfo(),
+            "ticketInfo"          => $this->getTicketInfo(),
         ]);
     }
 
@@ -75,10 +77,29 @@ class DashboardController extends Controller
         $domainCountMonth = Domain::where([
             ['name', '!=', ''],
             ['created_at', '>=', "{$currentDate->year}-{$currentDate->month}-01 00:00:00"],
-            ['created_at', '<=', "{$currentDate->year}-{$currentDate->month}-21 23:59:59"],
         ])->get()->count();
         $domainInfo->monthCount = $domainCountMonth;
 
         return $domainInfo;
+    }
+
+    /**
+     * @return \stdClass
+     */
+    private function getTicketInfo(): \stdClass
+    {
+        $ticketInfo = new \stdClass();
+
+        $ticketCount = Ticket::where('status', '>=', 3)->get()->count();
+        $ticketInfo->totalCount = $ticketCount;
+
+        $currentDate = Carbon::now();
+        $ticketCountMonth = Ticket::where([
+            ['status', '>=', 3],
+            ['updated_at', '>=', "{$currentDate->year}-{$currentDate->month}-01 00:00:00"],
+        ])->get()->count();
+        $ticketInfo->monthCount = $ticketCountMonth;
+
+        return $ticketInfo;
     }
 }
