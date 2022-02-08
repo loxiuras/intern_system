@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Ticket;
 use App\Services\PriceService;
 use App\Services\TimeService;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -216,8 +217,13 @@ class TicketController extends Controller
         if ( $id ) {
             $ticketData = Ticket::find($id);
 
-            $ticketData->status  = 4;
-            $ticketData->invoice = !empty( $request->invoice ) ? 1 : 0;
+            $loginUserData = $this->getLoginUserData();
+
+            $ticketData->status          = 4;
+            $ticketData->invoice         = !empty( $request->invoice ) ? 1 : 0;
+            $ticketData->invoice_at      = Carbon::now();
+            $ticketData->updated_at      = Carbon::now();
+            $ticketData->updated_user_id = $loginUserData->id;
             $ticketData->save();
         }
 
