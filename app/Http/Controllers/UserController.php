@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Password;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -41,10 +42,13 @@ class UserController extends Controller
 
         if ( empty( $userData ) ) return redirect()->route("user-overview");
 
+        $passwordsData = Password::getAllFromType( 'user', $userId );
+
         return view('pages.user.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "user", "edit" ),
             "userData"      => $userData,
+            "passwordsData" => $passwordsData,
         ]);
     }
 

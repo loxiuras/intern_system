@@ -52,5 +52,6 @@
 
     <script src="{{ url('js/sidebar.js') }}"></script>
     <script src="{{ url('js/plugins/NovaPasswordViewer.js') }}"></script>
+    <script src="{{ url('js/plugins/NovaTextSwitcher.js') }}"></script>
 
 @endsection

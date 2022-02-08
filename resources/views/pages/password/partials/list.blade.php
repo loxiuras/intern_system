@@ -8,15 +8,27 @@
 
         @if ( $passwordsData && $passwordsData->count() )
 
+            <div class="row mt-2 border-bottom pb-1">
+
+                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.name") }}</span></div>
+                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.username") }}</span></div>
+                <div class="col-12 col-md-3 mb-1"><span class="text-sm text-bold text-primary">{{ __("general.password") }}</span></div>
+
+            </div>
+
             @foreach( $passwordsData as $password )
 
                 <div class="row mt-2">
 
-                    <div class="col-12 col-md-5 mb-1">
+                    <div class="col-12 col-md-3 mb-1">
                         <a href="{{ Route("password-edit", ["id" => $password->id]) }}" class="text-dark text-sm text-bold">{!! $password->name !!}</a>
                     </div>
 
-                    <div class="col-12 col-md-7 mb-1">
+                    <div class="col-12 col-md-3 mb-1">
+                        <span class="text-dark text-sm">{!! $password->username !!}</span>
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-1">
                         <span class="NovaTextSwitcher"
                               data-icon="fas fa-eye"
                               data-close-icon="fas fa-eye-slash"

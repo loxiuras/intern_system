@@ -42,8 +42,8 @@ class PasswordTableSeeder extends Seeder {
         Password::create([
             'type'      => 'user',
             'record_id' => '1',
-            'name'      => 'API information',
-            'username'  => 'user123',
+            'name'      => 'Portal settings',
+            'username'  => 'user456',
             'password'  => 'Test123!Test123!',
             'active'    => 1,
         ]);

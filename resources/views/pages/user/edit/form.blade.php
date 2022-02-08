@@ -9,6 +9,7 @@
                         @include("pages.user.edit.general")
                         @if( isset($userData->id) )
                             @include("pages.user.edit.password")
+                            @include("pages.password.partials.list", [ 'addType' => 'user', 'addRecordId' => $userData->id ])
                         @endif
 
                     </div>
