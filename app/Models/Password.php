@@ -41,22 +41,6 @@ class Password extends Model
      */
     protected $casts = [];
 
-
-    /**
-     * Encrypting the password value in an SQL store;
-     *
-     * @param $key
-     * @throws BadFormatException
-     * @throws EnvironmentIsBrokenException
-     */
-    public function setPasswordAttribute($key)
-    {
-        $type     = $this->attributes['type'] ?: null;
-        $recordId = $this->attributes['record_id'] ?: null;
-
-        $this->attributes['password'] = (new PasswordService( $type, $recordId ))->encrypt( $key );
-    }
-
     /**
      * Decrypting the password value in an SQL select;
      *
@@ -67,6 +51,7 @@ class Password extends Model
     {
         $type     = $this->attributes['type'] ?: null;
         $recordId = $this->attributes['record_id'] ?: null;
+
         return !empty( $type ) && !empty( $recordId ) ? (new PasswordService( $type, $recordId ))->decrypt( $key ) : "";
     }
 

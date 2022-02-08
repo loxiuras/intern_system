@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Password;
 use App\Services\PasswordService;
+use Defuse\Crypto\Exception\BadFormatException;
+use Defuse\Crypto\Exception\EnvironmentIsBrokenException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -106,12 +108,9 @@ class PasswordController extends Controller
         $request->session()->put('notificationText', __("pages/password.notification.save.missing-fields.text"));
 
         $this->validate($request, [
-            "id"        => "integer",
-            "type"      => "required",
-            "record_id" => "required",
-            "name"      => "required",
-            "username"  => "required",
-            "password"  => "required",
+           "type"      => "required",
+           "record_id" => "required",
+           "name"      => "required",
         ]);
 
         $id = $request->id;
@@ -123,7 +122,6 @@ class PasswordController extends Controller
             $passwordData->record_id   = $request->record_id;
             $passwordData->name        = $request->name;
             $passwordData->username    = $request->username;
-            $passwordData->password    = $request->password;
             $passwordData->description = $request->description;
             $passwordData->active      = !empty( $request->active ) ? 1 : 0;
             $passwordData->save();
@@ -135,14 +133,15 @@ class PasswordController extends Controller
                     "record_id"   => $request->record_id,
                     "name"        => $request->name,
                     "username"    => $request->username,
-                    "password"    => $request->password,
                     "description" => $request->description,
                     "active"      => !empty( $request->active ) ? 1 : 0,
                 ]
             );
         }
 
-        return back()->with([
+        $this->updatePassword( $id, $request->password );
+
+        return Redirect( Route('password-edit', ['id' => $id]) )->with([
             "notificationActive"    => true,
             "notificationType"      => "success",
             "notificationIconClass" => "fas fa-bell",
@@ -172,5 +171,19 @@ class PasswordController extends Controller
         $types[] = $user;
 
         return $types;
+    }
+
+    /**
+     * @param int $id
+     * @param string $password
+     * @throws BadFormatException
+     * @throws EnvironmentIsBrokenException
+     */
+    private function updatePassword( int $id, string $password ): void
+    {
+        $passwordData = Password::find($id);
+
+        $passwordData->password = (new PasswordService( $passwordData->type, $passwordData->record_id ))->encrypt( $password );
+        $passwordData->save();
     }
 }

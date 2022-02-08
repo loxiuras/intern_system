@@ -20,7 +20,7 @@ class CreatePasswordsTable extends Migration
             $table->integer('record_id');
             $table->string('name');
             $table->string('username');
-            $table->longText('password');
+            $table->longText('password')->nullable();
             $table->longText('description')->nullable();
             $table->tinyInteger('active')->default(0);
         });
