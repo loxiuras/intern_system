@@ -216,7 +216,8 @@ class TicketController extends Controller
         if ( $id ) {
             $ticketData = Ticket::find($id);
 
-            $ticketData->status = 4;
+            $ticketData->status  = 4;
+            $ticketData->invoice = !empty( $request->invoice ) ? 1 : 0;
             $ticketData->save();
         }
 

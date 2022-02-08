@@ -86,6 +86,21 @@
                                             </div>
                                         </div>
 
+                                        <div class="row mt-5">
+
+                                            <div class="col-12 col-sm-4">
+                                                <span class="text-dark text-bold">{{ __("general.invoice") }}?</span>
+                                                <p class="form-text text-muted text-xs">
+                                                    {!! __("pages/ticket.invoice--subtext") !!}
+                                                </p>
+                                                <div class="form-check form-switch ms-1">
+                                                    <input class="form-check-input" type="checkbox" id="invoice" name="invoice" {{ isset( $ticketData->invoice ) && 1 === $ticketData->invoice ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="invoice"></label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                         <div class="row mt-3">
 
                                             <div class="button-row d-flex mt-4">
@@ -96,7 +111,7 @@
 
                                                 <button class="btn bg-gradient-dark ms-2 mb-0 js-btn-next"
                                                         type="submit"
-                                                        title="Next">{{ __("pages/ticket.update-to-invoiced") }}</button>
+                                                        title="Next">{{ __("general.update", ["item" => strtolower( __("general.ticket") )]) }}</button>
                                             </div>
 
                                         </div>

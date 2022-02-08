@@ -23,7 +23,7 @@ class TicketFactory extends Factory
             'invoice_price'       => $this->faker->numberBetween( 1000, 10000 ),
             'invoice_time'        => $this->faker->numberBetween( 60, 600 ),
             'scheduled_date'      => $this->faker->date(),
-            'status'              => $this->faker->numberBetween( 1, 4 ),
+            'status'              => $this->faker->numberBetween( 1, 3 ),
         ];
     }
 }

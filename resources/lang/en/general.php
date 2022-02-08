@@ -105,4 +105,6 @@ return [
     "created-by"          => "Created by",
     "updated-by"          => "Updated by",
     "reference"           => "Reference",
+    "invoice"             => "Invoice",
+    "update"              => "Update :item",
 ];
