@@ -59,7 +59,7 @@ class PasswordController extends Controller
         if ( !empty( $_GET["type"] ) ) $passwordData->type = $_GET["type"];
         if ( !empty( $_GET["recordId"] ) ) $passwordData->record_id = $_GET["recordId"];
 
-        $typesData = Password::select('type')->distinct()->get();
+        $typesData = $this->getPasswordTypes();
 
         return view('pages.password.add.index', [
             "loginUserData" => $this->getLoginUserData(),
@@ -73,7 +73,7 @@ class PasswordController extends Controller
     {
         $passwordData = Password::find($passwordId);
 
-        $typesData = Password::select('type')->distinct()->get();
+        $typesData = $this->getPasswordTypes();
 
         return view('pages.password.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
@@ -150,5 +150,27 @@ class PasswordController extends Controller
             "notificationSubTitle"  => null,
             "notificationText"      => __("pages/password.notification.save.success.text"),
         ]);
+    }
+
+    /**
+     * @return array
+     */
+    private function getPasswordTypes(): array
+    {
+        $types = [];
+
+        $company = new \stdClass();
+        $company->type = "company";
+        $types[] = $company;
+
+        $domain = new \stdClass();
+        $domain->type = "domain";
+        $types[] = $domain;
+
+        $user = new \stdClass();
+        $user->type = "user";
+        $types[] = $user;
+
+        return $types;
     }
 }
