@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-6 m-auto">
 
-                                <form method="POST" action="{{ Route("ticket-store-invoice") }}" class="multisteps-form__form mb-1">
+                                <form method="POST" action="{{ Route("ticket-small-store") }}" class="multisteps-form__form mb-1">
                                     @csrf
 
                                     <input type="hidden" name="id" id="id" value="{{ isset($ticketData->id) ? $ticketData->id : 0 }}">

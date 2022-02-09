@@ -127,32 +127,48 @@
                                                 <span class="d-none">{{ $ticket->status }}</span>
                                                 <span class="badge {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">{{ __("pages/ticket.status_". $ticket->status . ".title") }}</span>
 
-                                                @if( 4 === $ticket->status && 1 === (int)$ticket->invoice )
+                                                @if( 1 === (int)$ticket->invoice )
                                                     <span class="badge bg-gradient-light ms-2 text-dark">{{ __("general.invoiced") }}</span>
                                                 @endif
                                             </span>
                                         </td>
 
                                         <td class="text-xs">
-                                            @if( 4 !== $ticket->status )
+                                            @if( 4 > $ticket->status )
                                                 <a href="{{ Route('ticket-edit', ['id' => $ticket->id]) }}" data-bs-toggle="tooltip">
                                                     <i class="fas fa-edit text-secondary"></i>
                                                 </a>
                                             @endif
 
                                             @if( 3 === $ticket->status )
-                                                <a href="{{ Route('ticket-edit-invoice', ['id' => $ticket->id]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
+                                                <a href="{{ Route('ticket-small-edit', ['id' => $ticket->id]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
                                                     <i class="fas fa-paper-plane text-dark"></i>
                                                 </a>
                                             @endif
 
                                             @if( 4 === $ticket->status && 0 === (int)$ticket->invoice )
-                                                <a href="{{ Route('ticket-edit-invoice', ['id' => $ticket->id]) }}" class="mx-3">
+                                                <a href="{{ Route('ticket-small-edit', ['id' => $ticket->id]) }}" class="@if(3 >= $ticket->status) mx-3 @endif">
                                                     <i class="fas fa-paper-plane text-dark"></i>
                                                 </a>
                                             @endif
 
-                                            @if( 3 !== $ticket->status && 4 !== $ticket->status )
+                                            @if( 4 === $ticket->status )
+
+                                                <form class="mx-3" action="{{ Route('ticket-reset', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
+                                                    @csrf
+
+                                                    <label for="resetSubmit{{$ticket->id}}">
+                                                        <span data-bs-toggle="tooltip" data-bs-original-title="Delete ticket" style="cursor: pointer;">
+                                                            <i class="fas fa-undo text-dark"></i>
+                                                        </span>
+                                                    </label>
+
+                                                    <input type="hidden" value="1" name="status" id="status" />
+                                                    <input id="resetSubmit{{$ticket->id}}" name="resetSubmit{{$ticket->id}}" type="submit" style="display: none" />
+                                                </form>
+                                            @endif
+
+                                            @if( 3 > $ticket->status )
 
                                                     <form class="mx-3" action="{{ Route('ticket-delete', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
                                                         @method('delete')

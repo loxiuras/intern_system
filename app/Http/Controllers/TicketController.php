@@ -92,7 +92,7 @@ class TicketController extends Controller
      * @param int $ticketId
      * @return Application|Factory|View|RedirectResponse|Redirector
      */
-    public function editInvoice( int $ticketId ): View|Factory|Redirector|RedirectResponse|Application
+    public function smallEdit( int $ticketId ): View|Factory|Redirector|RedirectResponse|Application
     {
         $ticketData = Ticket::select([
                 "tickets.id",
@@ -125,7 +125,7 @@ class TicketController extends Controller
             return Redirect( Route( "ticket-edit", ["id" => $ticketId] ) );
         }
 
-        return view('pages.ticket.edit-invoice.index', [
+        return view('pages.ticket.small-edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "ticket", "edit" ),
             "ticketData"    => $ticketData,
@@ -210,7 +210,7 @@ class TicketController extends Controller
         }
     }
 
-    public function storeInvoice( Request $request )
+    public function smallStore( Request $request )
     {
         $id = $request->id;
 
@@ -228,6 +228,22 @@ class TicketController extends Controller
         }
 
         return Redirect( Route( "ticket-overview", ["status" => 3] ) );
+    }
+
+    public function reset( int $id, Request $request )
+    {
+        if ( !empty( $id ) && !empty( $request ) ) {
+
+            $ticketData = Ticket::find($id);
+
+            if ( $ticketData ) {
+
+                $ticketData->status = (int)$request->status;
+                $ticketData->save();
+            }
+        }
+
+        return Redirect( Route( "ticket-overview", ["status" => 4] ) );
     }
 
     /**

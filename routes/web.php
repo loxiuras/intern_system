@@ -71,8 +71,9 @@ Route::get('/ticket/add', [TicketController::class, 'add'])->middleware('auth')-
 Route::get('/ticket/edit/{id}', [TicketController::class, 'edit'])->middleware('auth')->name('ticket-edit');
 Route::delete('/ticket/delete/{id}', [TicketController::class, 'delete'])->middleware('auth')->name('ticket-delete');
 Route::post('/ticket/store', [TicketController::class, 'store'])->middleware('auth')->name('ticket-store');
-Route::get('/ticket/edit-invoice/{id}', [TicketController::class, 'editInvoice'])->middleware('auth')->name('ticket-edit-invoice');
-Route::post('/ticket/store-invoice', [TicketController::class, 'storeInvoice'])->middleware('auth')->name('ticket-store-invoice');
+Route::get('/ticket/small-edit/{id}', [TicketController::class, 'smallEdit'])->middleware('auth')->name('ticket-small-edit');
+Route::post('/ticket/store-invoice', [TicketController::class, 'smallStore'])->middleware('auth')->name('ticket-small-store');
+Route::post('/ticket/reset/{id}', [TicketController::class, 'reset'])->middleware('auth')->name('ticket-reset');
 
 /** MANUALS **/
 Route::get('/manual/overview', [ManualController::class, 'overview'])->middleware('auth')->name('manual-overview');
