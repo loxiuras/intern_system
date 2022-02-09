@@ -69,7 +69,7 @@
         <li class="nav-item">
             <a data-bs-toggle="collapse" href="#companiesModule" class="nav-link" aria-controls="companiesModule" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                    <i class="ni ni-world text-danger text-sm opacity-10"></i>
+                    <i class="ni ni-building text-danger text-sm opacity-10"></i>
                 </div>
                 <span class="nav-link-text ms-1">{{ __('sidebar.companies.main') }}</span>
             </a>
@@ -92,7 +92,7 @@
         <li class="nav-item">
             <a data-bs-toggle="collapse" href="#domainsModule" class="nav-link" aria-controls="domainsModule" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                    <i class="ni ni-laptop text-success text-sm opacity-10"></i>
+                    <i class="ni ni-world text-success text-sm opacity-10"></i>
                 </div>
                 <span class="nav-link-text ms-1">{{ __('sidebar.domains.main') }}</span>
             </a>

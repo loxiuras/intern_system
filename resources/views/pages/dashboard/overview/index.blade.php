@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="col-4 text-end">
                                             <div class="icon icon-shape bg-gradient-info shadow-danger text-center rounded-circle">
-                                                <i class="ni ni-hat-3 text-lg opacity-10" aria-hidden="true"></i>
+                                                <i class="ni ni-book-bookmark text-lg opacity-10" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
