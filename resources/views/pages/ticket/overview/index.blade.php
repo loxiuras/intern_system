@@ -128,7 +128,7 @@
                                                 <span class="badge {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">{{ __("pages/ticket.status_". $ticket->status . ".title") }}</span>
 
                                                 @if( 4 === $ticket->status && 1 === (int)$ticket->invoice )
-                                                    <span class="badge bg-gradient-light ms-2 text-dark">Invoiced</span>
+                                                    <span class="badge bg-gradient-light ms-2 text-dark">{{ __("general.invoiced") }}</span>
                                                 @endif
                                             </span>
                                         </td>
