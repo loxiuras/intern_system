@@ -77,4 +77,9 @@ Route::post('/ticket/reset/{id}', [TicketController::class, 'reset'])->middlewar
 
 /** MANUALS **/
 Route::get('/manual/overview', [ManualController::class, 'overview'])->middleware('auth')->name('manual-overview');
+Route::post('/manual/overview', [ManualController::class, 'overview'])->middleware('auth');
+Route::get('/manual/add', [ManualController::class, 'add'])->middleware('auth')->name('manual-add');
+Route::get('/manual/edit/{id}', [ManualController::class, 'edit'])->middleware('auth')->name('manual-edit');
+Route::delete('/manual/delete', [ManualController::class, 'delete'])->middleware('auth')->name('manual-delete');
+Route::post('/manual/store', [ManualController::class, 'store'])->middleware('auth')->name('manual-store');
 Route::get('/manual/item/{reference}', [ManualController::class, 'item'])->middleware('auth')->name('manual-item');

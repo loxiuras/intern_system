@@ -40,6 +40,7 @@ return [
 
     "manuals" => [
         "main" => "Manual",
-        "overview" => "Overview"
+        "overview" => "Overview",
+        "new-item" => "Add new",
     ],
 ];

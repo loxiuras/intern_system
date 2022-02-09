@@ -38,6 +38,29 @@
             </div>
         </li>
 
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#manualsModule" class="nav-link" aria-controls="manualsModule" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                    <i class="ni ni-hat-3 text-danger text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">{{ __('sidebar.manuals.main') }}</span>
+            </a>
+            <div class="collapse" id="manualsModule">
+                <ul class="nav ms-4">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('manual-overview') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.manuals.overview') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="{{ Route('manual-add') }}">
+                            <span class="sidenav-normal">{{ __('sidebar.manuals.new-item') }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
 
         <li class="nav-item mt-3">
             <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">{{ __("sidebar.settings") }}</h6>
