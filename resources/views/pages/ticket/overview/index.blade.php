@@ -146,6 +146,12 @@
                                                 </a>
                                             @endif
 
+                                            @if( 4 === $ticket->status && 0 === (int)$ticket->invoice )
+                                                <a href="{{ Route('ticket-edit-invoice', ['id' => $ticket->id]) }}" class="mx-3">
+                                                    <i class="fas fa-paper-plane text-dark"></i>
+                                                </a>
+                                            @endif
+
                                             @if( 3 !== $ticket->status && 4 !== $ticket->status )
 
                                                     <form class="mx-3" action="{{ Route('ticket-delete', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">

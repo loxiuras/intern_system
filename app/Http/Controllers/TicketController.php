@@ -120,7 +120,7 @@ class TicketController extends Controller
 
         if (
             !$ticketData
-            || ( !empty( $ticketData ) && $ticketData->status !== 3 )
+            || ( !empty( $ticketData ) && $ticketData->status < 3 )
         ) {
             return Redirect( Route( "ticket-edit", ["id" => $ticketId] ) );
         }
