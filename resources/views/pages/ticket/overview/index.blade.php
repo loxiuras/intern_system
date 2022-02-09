@@ -154,7 +154,7 @@
 
                                             @if( 4 === $ticket->status )
 
-                                                <form class="mx-3" action="{{ Route('ticket-reset', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
+                                                <form class="@if(4 === $ticket->status && 0 === (int)$ticket->invoice) mx-3 @endif" action="{{ Route('ticket-reset', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
                                                     @csrf
 
                                                     <label for="resetSubmit{{$ticket->id}}">
