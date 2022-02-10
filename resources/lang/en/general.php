@@ -83,6 +83,7 @@ return [
     "type"                => "Type",
     "id"                  => "Id",
     "not-available"       => "Not available",
+    "not-available-short" => "N/A",
     "sign-out"            => "Sign out",
     "profile"             => "Profile",
     "hello"               => "Hello",

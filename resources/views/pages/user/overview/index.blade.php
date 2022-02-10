@@ -57,7 +57,7 @@
                                                 <span class="my-2 text-xs">{{ $user->email }}</span>
                                             </td>
                                             <td class="text-xs">
-                                                {{ \Carbon\Carbon::parse($user->last_login)->diffForHumans() }}
+                                                {{ $user->last_login ? \Carbon\Carbon::parse($user->last_login)->diffForHumans() : __("general.not-available-short") }}
                                             </td>
                                             <td class="text-xs font-weight-bold">
                                                 @if( $user->active )
