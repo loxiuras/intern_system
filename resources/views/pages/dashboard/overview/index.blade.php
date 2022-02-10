@@ -5,6 +5,15 @@
     <link rel="stylesheet" href="{{ url('css/plugins/NovaPreloadSpinner.css') }}">
 @endsection
 
+@section('css')
+
+    .fc .fc-daygrid-day.fc-day-today {
+        background-color: #F1F1F1;
+        background-image: linear-gradient(310deg, #F1F1F1 0%, #EAEAEA 100%);
+    }
+
+@endsection
+
 @section('pageContent')
 
     @include('layout.banner')
