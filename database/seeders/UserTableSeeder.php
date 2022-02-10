@@ -39,6 +39,18 @@ class UserTableSeeder extends Seeder {
             'active'             => 1,
             'picture_default_id' => 3,
         ]);
+
+        User::create([
+            'name'               => 'Carel',
+            'last_name'          => 'Worst',
+            'date_of_birth'      => '1964-11-24',
+            'email'              => 'carel@suilichem.com',
+            'telephone'          => '0385993650640',
+            'password'           => Hash::make(self::defaultPassword),
+            'is_admin'           => 1,
+            'active'             => 1,
+            'picture_default_id' => 2,
+        ]);
     }
 
 }
