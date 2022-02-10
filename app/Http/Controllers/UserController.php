@@ -117,7 +117,7 @@ class UserController extends Controller
             );
         }
 
-        return back()->with([
+        return Redirect( Route('user-edit', ['id' => $id]) )->with([
             "notificationActive"    => true,
             "notificationType"      => "success",
             "notificationIconClass" => "fas fa-bell",
