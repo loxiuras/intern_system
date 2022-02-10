@@ -154,12 +154,6 @@
                     <div class="card widget-calendar h-100">
                         <div class="card-header p-3 pb-0">
                             <h6 class="mb-0">Calendar</h6>
-                            <div class="d-flex">
-                                <div class="p text-sm font-weight-bold mb-0 widget-calendar-day"></div>
-                                <span>,&nbsp;</span>
-                                <div class="p text-sm font-weight-bold mb-1 widget-calendar-year d-none"></div>
-                                <div class="p text-sm font-weight-bold mb-0 widget-calendar-month"></div>
-                            </div>
                         </div>
                         <div class="card-body p-3">
                             <div data-toggle="widget-calendar"></div>
@@ -184,7 +178,41 @@
             let calendarEl = document.querySelector('[data-toggle="widget-calendar"]');
             let today = new Date();
 
-            
+            const weekday = [ @for( $i = 1; $i <= 7; $i++) '{{ __("general.weekdays.". $i) }}', @endfor ];
+            const months = [ @for( $i = 1; $i <= 12; $i++) '{{ __("general.months.". $i) }}', @endfor ];
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                contentHeight: 'auto',
+                initialView: 'dayGridMonth',
+                selectable: true,
+                initialDate: new Date(),
+                editable: true,
+                headerToolbar: false,
+                events: [
+                    @if( $calendarInfo && count( $calendarInfo->birthdays ) > 0 )
+                        @foreach( $calendarInfo->birthdays as $birthday )
+                            {
+                                title: '🎁 {{ $birthday->name }} ({{ $birthday->year }})',
+                                start: '{{ $birthday->date }}',
+                                end: '{{ $birthday->date }}',
+                                className: 'bg-gradient-dark'
+                            },
+                        @endforeach
+                    @endif
+
+                    @if( $calendarInfo && count( $calendarInfo->tickets ) > 0 )
+                        @foreach( $calendarInfo->tickets as $ticket )
+                            {
+                                title: '{{ $ticket->status >= 3 ? '✔' : '' }} {{ $ticket->companyName }} - {{ $ticket->title }}',
+                                start: '{{ $ticket->date }}',
+                                end: '{{ $ticket->date }}',
+                                className: '{{ $ticket->status >= 3 ? 'bg-gradient-success mb-1' : 'bg-gradient-primary mb-1' }}'
+                            },
+                        @endforeach
+                    @endif
+                ],
+            });
+            calendar.render();
         }
 
         /*

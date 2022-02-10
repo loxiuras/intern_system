@@ -21,6 +21,7 @@ class DashboardController extends Controller
             "companyInfo"         => $this->getCompanyInfo(),
             "domainInfo"          => $this->getDomainInfo(),
             "ticketInfo"          => $this->getTicketInfo(),
+            "calendarInfo"        => $this->getCalendarInfo(),
         ]);
     }
 
@@ -101,5 +102,64 @@ class DashboardController extends Controller
         $ticketInfo->monthCount = $ticketCountMonth;
 
         return $ticketInfo;
+    }
+
+    /**
+     * @return \stdClass
+     */
+    private function getCalendarInfo(): \stdClass
+    {
+        $calendarInfo = new \stdClass();
+
+        $calendarInfo->birthdays = [];
+        $calendarInfo->tickets   = [];
+
+        $currentDate = Carbon::now();
+
+        $users = User::selectRaw(
+            "*, year(date_of_birth) as 'dateOfBirthYear'"
+        )
+        ->whereRaw(
+            'month(date_of_birth) = ?', [$currentDate->month]
+        )->get();
+
+        if ( $users and $users->count() ) {
+            foreach ( $users as $user ) {
+                $date = $user->date_of_birth ?: null;
+                $year = $user->dateOfBirthYear ?: null;
+
+                $birthday = new \stdClass();
+                $birthday->id          = $user->id ?: 0;
+                $birthday->dateOfBirth = $date;
+                $birthday->date        = str_replace( $year, $currentDate->year, $date );
+                $birthday->year        = $year;
+                $birthday->name        = str_replace( "  ", " ", ($user->name ?: null) . " " . ($user->insertion ?: null) . " " . ($user->last_name ?: null));
+
+                $calendarInfo->birthdays[] = $birthday;
+            }
+        }
+
+        $tickets = Ticket::selectRaw(
+            "*, companies.name as companyName , year(scheduled_date) as 'scheduledDateYear', month(scheduled_date) as 'scheduledDateMonth', day(scheduled_date) as 'scheduledDateDay'"
+        )
+            ->whereRaw('year(scheduled_date) = ? AND month(scheduled_date) = ?', [$currentDate->year, $currentDate->month])
+            ->join('companies', 'companies.id', '=', 'tickets.company_id')
+            ->get();
+
+        if ( $tickets and $tickets->count() ) {
+            foreach ($tickets as $ticket) {
+
+                $ticketData = new \stdClass();
+                $ticketData->date         = $ticket->scheduled_date ?: null;
+                $ticketData->title        = $ticket->title ?: null;
+                $ticketData->companyName  = $ticket->companyName ?: null;
+                $ticketData->time         = $ticket->invoice_time ?: null;
+                $ticketData->status       = (int)$ticket->status ?: 1;
+
+                $calendarInfo->tickets[] = $ticketData;
+            }
+        }
+
+        return $calendarInfo;
     }
 }
