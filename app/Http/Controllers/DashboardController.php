@@ -120,27 +120,39 @@ class DashboardController extends Controller
             "*, year(date_of_birth) as 'dateOfBirthYear'"
         )
         ->whereRaw(
-            'month(date_of_birth) = ?', [$currentDate->month]
+            'month(date_of_birth) = ? || month(date_of_birth) = ?', [$currentDate->month, ( ( $currentDate->month === 12 ) ? 1 : ($currentDate->month + 1) )]
         )->get();
 
         if ( $users and $users->count() ) {
             foreach ( $users as $user ) {
-                $date = $user->date_of_birth ?: null;
+                $dateOfBirth = $user->date_of_birth ?: null;
                 $year = $user->dateOfBirthYear ?: null;
 
+                $date = str_replace( $year, $currentDate->year, $dateOfBirth );
+
+                $dateWeekDay = (int)date('w', strtotime($date));
+
+                $isMoved = false;
+                if ( $dateWeekDay === 6 || $dateWeekDay === 0 ) {
+                    $date    = date('Y-m-d', strtotime($date . ' -'. ( $dateWeekDay === 6 ? 1 : 2 ) .' day'));
+                    $isMoved = true;
+                }
+
                 $birthday = new \stdClass();
-                $birthday->id          = $user->id ?: 0;
-                $birthday->dateOfBirth = $date;
-                $birthday->date        = str_replace( $year, $currentDate->year, $date );
-                $birthday->year        = $year;
-                $birthday->name        = str_replace( "  ", " ", ($user->name ?: null) . " " . ($user->insertion ?: null) . " " . ($user->last_name ?: null));
+                $birthday->id           = $user->id ?: 0;
+                $birthday->dateOfBirth  = $dateOfBirth;
+                $birthday->date         = $date;
+                $birthday->isMoved      = $isMoved;
+                $birthday->birthDayDate = (int)date('d', strtotime($dateOfBirth) );
+                $birthday->year         = $year;
+                $birthday->name         = str_replace( "  ", " ", ($user->name ?: null) . " " . ($user->insertion ?: null) . " " . ($user->last_name ?: null));
 
                 $calendarInfo->birthdays[] = $birthday;
             }
         }
 
         $tickets = Ticket::selectRaw(
-            "*, companies.name as companyName , year(scheduled_date) as 'scheduledDateYear', month(scheduled_date) as 'scheduledDateMonth', day(scheduled_date) as 'scheduledDateDay'"
+            "*, tickets.id as id, companies.name as companyName , year(scheduled_date) as 'scheduledDateYear', month(scheduled_date) as 'scheduledDateMonth', day(scheduled_date) as 'scheduledDateDay'"
         )
             ->whereRaw('year(scheduled_date) = ? AND month(scheduled_date) = ?', [$currentDate->year, $currentDate->month])
             ->join('companies', 'companies.id', '=', 'tickets.company_id')
@@ -148,8 +160,8 @@ class DashboardController extends Controller
 
         if ( $tickets and $tickets->count() ) {
             foreach ($tickets as $ticket) {
-
                 $ticketData = new \stdClass();
+                $ticketData->id           = $ticket->id ?: 0;
                 $ticketData->date         = $ticket->scheduled_date ?: null;
                 $ticketData->title        = $ticket->title ?: null;
                 $ticketData->companyName  = $ticket->companyName ?: null;
