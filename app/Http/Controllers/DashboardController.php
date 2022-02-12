@@ -115,11 +115,23 @@ class DashboardController extends Controller
         $calendarInfo->tickets   = [];
 
         $currentDate = Carbon::now();
+        if ( !empty( $_GET['date'] ) ) {
+            $currentDate = new Carbon($_GET['date']);
+            $calendarInfo->prevMonthDate = (new Carbon($_GET['date']))->subMonth()->toDateString();
+            $calendarInfo->nextMonthDate = (new Carbon($_GET['date']))->addMonth()->toDateString();
+        }
+        else {
+            $calendarInfo->prevMonthDate = Carbon::now()->subMonth()->toDateString();
+            $calendarInfo->nextMonthDate = Carbon::now()->addMonth()->toDateString();
+        }
+
+        $calendarInfo->date  = $currentDate->toDateString();
+        $calendarInfo->month = $currentDate->month;
+        $calendarInfo->year  = $currentDate->year;
 
         $users = User::selectRaw(
             "*, year(date_of_birth) as 'dateOfBirthYear'"
-        )
-        ->whereRaw(
+        )->whereRaw(
             'month(date_of_birth) = ? || month(date_of_birth) = ?', [$currentDate->month, ( ( $currentDate->month === 12 ) ? 1 : ($currentDate->month + 1) )]
         )->get();
 

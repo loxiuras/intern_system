@@ -160,7 +160,20 @@
 
             <div class="row mt-4">
                 <div class="col-12">
-                    <div class="card widget-calendar h-100 pt-3">
+                    <div class="card widget-calendar h-100">
+                        <div class="card-header p-3 pb-0 mt-2 mb-2 position-relative w-100 d-flex justify-content-center">
+                            <h6 class="mb-0 text-dark ">{{ __("general.months.". $calendarInfo->month) }} {{ $calendarInfo->year }}</h6>
+                            <a class="arrow position-absolute cursor-pointer info-hover-info"
+                               href="{{ Route('dashboard', ['date' => $calendarInfo->prevMonthDate ]) }}"
+                               style="top: 10px;left: 30px;">
+                                <i class="fas fa-arrow-left mx-1"></i>{{ __("general.prev-month") }}
+                            </a>
+                            <a class="arrow position-absolute cursor-pointer info-hover-info"
+                               href="{{ Route('dashboard', ['date' => $calendarInfo->nextMonthDate]) }}"
+                               style="top: 10px;right: 30px;">
+                                {{ __("general.next-month") }}<i class="fas fa-arrow-right mx-1"></i>
+                            </a>
+                        </div>
                         <div class="card-body p-3">
                             <div data-toggle="widget-calendar"></div>
                         </div>
@@ -187,7 +200,7 @@
                 contentHeight: 'auto',
                 initialView: 'dayGridMonth',
                 selectable: true,
-                initialDate: new Date(),
+                initialDate: '{{ $calendarInfo->date }}',
                 editable: true,
                 headerToolbar: false,
                 weekends: false,

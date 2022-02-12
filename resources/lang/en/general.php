@@ -109,4 +109,7 @@ return [
     "invoice"             => "Invoice",
     "invoiced"            => "Invoiced",
     "update"              => "Update :item",
+    "prev-month"          => "Previous month",
+    "next-month"          => "Next month",
+    "week"                => "Week",
 ];
