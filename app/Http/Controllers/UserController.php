@@ -18,7 +18,10 @@ class UserController extends Controller
     {
         $usersData = User::where([
             ['email', '!=', ''],
-        ])->get();
+        ])
+            ->orderBy('active', 'desc')
+            ->orderBy('name', 'asc')
+            ->get();
 
         return view('pages.user.overview.index', [
             "loginUserData" => $this->getLoginUserData(),
