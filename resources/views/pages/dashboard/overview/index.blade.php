@@ -47,7 +47,7 @@
                                                     <span class="@if( $userInfo->monthCount > 0 ) text-success @elseif ( $userInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
                                                         {{ $userInfo->monthCount }}
                                                     </span>
-                                                    {!! __("pages/dashboard.info.user.subtext") !!}
+                                                    <span class="text-sm text-normal">{!! __("pages/dashboard.info.user.subtext") !!}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@
                                                     <span class="@if( $companyInfo->monthCount > 0 ) text-success @elseif ( $companyInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
                                                         @if( $companyInfo->monthCount > 0 )+@endif{{ $companyInfo->monthCount }}
                                                     </span>
-                                                    {!! __("pages/dashboard.info.company.subtext") !!}
+                                                    <span class="text-sm text-normal">{!! __("pages/dashboard.info.company.subtext") !!}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -110,7 +110,7 @@
                                                     <span class="@if( $domainInfo->monthCount > 0 ) text-success @elseif ( $domainInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
                                                         @if( $domainInfo->monthCount > 0 )+@endif{{ $domainInfo->monthCount }}
                                                     </span>
-                                                    {!! __("pages/dashboard.info.domain.subtext") !!}
+                                                    <span class="text-sm text-normal">{!! __("pages/dashboard.info.domain.subtext") !!}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -140,7 +140,7 @@
                                                     <span class="@if( $ticketInfo->monthCount > 0 ) text-success @elseif ( $ticketInfo->monthCount < 0 ) text-danger @else text-dark @endif text-sm font-weight-bolder">
                                                         @if( $ticketInfo->monthCount > 0 )+@endif{{ $ticketInfo->monthCount }}
                                                     </span>
-                                                    {!! __("pages/dashboard.info.ticket.subtext") !!}
+                                                    <span class="text-sm text-normal">{!! __("pages/dashboard.info.ticket.subtext") !!}</span>
                                                 </p>
                                             </div>
                                         </div>
