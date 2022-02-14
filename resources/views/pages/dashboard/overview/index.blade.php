@@ -161,16 +161,20 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card widget-calendar h-100">
-                        <div class="card-header p-3 pb-0 mt-2 mb-2 position-relative w-100 d-flex justify-content-center">
-                            <h6 class="mb-0 text-dark ">{{ __("general.months.". $calendarInfo->month) }} {{ $calendarInfo->year }}</h6>
+                        <div class="card-header p-3 pb-0 mt-2 mb-2 position-relative w-100 d-flex justify-content-center align-items-start">
+                            <h6 class="mb-0 text-dark d-block text-center">
+                                {{ __("general.months.". $calendarInfo->month) }} {{ $calendarInfo->year }}
+                                <a class="d-block w-100 text-sm text-normal"
+                                   href='{{ Route('dashboard', ['date' => $calendarInfo->currentDate ]) }}'><i class="fas fa-undo" style="font-size: 10px;"></i> {{ __('general.back-to-current-month') }}</a>
+                            </h6>
                             <a class="arrow position-absolute cursor-pointer info-hover-info"
                                href="{{ Route('dashboard', ['date' => $calendarInfo->prevMonthDate ]) }}"
-                               style="top: 10px;left: 30px;">
+                               style="top: 20px;left: 30px;">
                                 <i class="fas fa-arrow-left mx-1"></i>{{ __("general.prev-month") }}
                             </a>
                             <a class="arrow position-absolute cursor-pointer info-hover-info"
                                href="{{ Route('dashboard', ['date' => $calendarInfo->nextMonthDate]) }}"
-                               style="top: 10px;right: 30px;">
+                               style="top: 20px;right: 30px;">
                                 {{ __("general.next-month") }}<i class="fas fa-arrow-right mx-1"></i>
                             </a>
                         </div>

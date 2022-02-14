@@ -112,4 +112,5 @@ return [
     "prev-month"          => "Previous month",
     "next-month"          => "Next month",
     "week"                => "Week",
+    "back-to-current-month" => "Back to current month",
 ];

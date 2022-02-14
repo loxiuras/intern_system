@@ -125,9 +125,10 @@ class DashboardController extends Controller
             $calendarInfo->nextMonthDate = Carbon::now()->addMonth()->toDateString();
         }
 
-        $calendarInfo->date  = $currentDate->toDateString();
-        $calendarInfo->month = $currentDate->month;
-        $calendarInfo->year  = $currentDate->year;
+        $calendarInfo->date         = $currentDate->toDateString();
+        $calendarInfo->currentDate  = (Carbon::now())->toDateString();
+        $calendarInfo->month        = $currentDate->month;
+        $calendarInfo->year         = $currentDate->year;
 
         $users = User::selectRaw(
             "*, year(date_of_birth) as 'dateOfBirthYear'"
