@@ -12,6 +12,16 @@ return [
         "7" => "Zondag",
     ],
 
+    "weekdays-short" => [
+        "1" => "Ma",
+        "2" => "Di",
+        "3" => "Wo",
+        "4" => "Do",
+        "5" => "Vr",
+        "6" => "Za",
+        "7" => "Zo",
+    ],
+
     "months" => [
       "1" => "januari",
       "2" => "februari",
@@ -25,6 +35,21 @@ return [
       "10" => "oktober",
       "11" => "november",
       "12" => "december",
+    ],
+
+    "months-short" => [
+        "1" => "jan",
+        "2" => "feb",
+        "3" => "mrt",
+        "4" => "apr",
+        "5" => "mei",
+        "6" => "jun",
+        "7" => "jul",
+        "8" => "aug",
+        "9" => "sep",
+        "10" => "okt",
+        "11" => "nov",
+        "12" => "dec",
     ],
 
     "email"               => "E-mailaddress",

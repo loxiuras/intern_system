@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Ticket;
+use App\Services\DateService;
 use App\Services\PriceService;
 use App\Services\TimeService;
 use Illuminate\Support\Carbon;
@@ -170,9 +171,9 @@ class TicketController extends Controller
             $ticketData->invoice_price       = (new PriceService( $request->invoice_price ))->transformDatabase();
             $ticketData->invoice_time        = $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes );
 
-            $scheduledDate = !empty( $request->scheduled_date ) ? $request->scheduled_date : "";
+            $scheduledDate = !empty( $request->scheduled_date ) ? (new DateService($request->scheduled_date))->transformDatabase() : "";
             $ticketData->scheduled_date      = $scheduledDate;
-            $ticketData->scheduled_end_date  = !empty( $request->scheduled_end_date ) ? $request->scheduled_end_date : ( !empty( $scheduledDate ) ? $scheduledDate : "" );
+            $ticketData->scheduled_end_date  = !empty( $request->scheduled_end_date ) ? (new DateService($request->scheduled_end_date))->transformDatabase() : ( !empty( $scheduledDate ) ? $scheduledDate : "" );
             $ticketData->status              = (int)$request->status;
             $ticketData->updated_user_id     = (int)$loginUserData->id;
             $ticketData->save();
@@ -188,7 +189,7 @@ class TicketController extends Controller
         }
         else {
 
-            $scheduledDate = !empty( $request->scheduled_date ) ? $request->scheduled_date : "";
+            $scheduledDate = !empty( $request->scheduled_date ) ? (new DateService($request->scheduled_date))->transformDatabase() : "";
 
             $id = Ticket::insertGetId(
                 [
@@ -199,7 +200,7 @@ class TicketController extends Controller
                     "invoice_price"       => (new PriceService( $request->invoice_price ))->transformDatabase(),
                     "invoice_time"        => $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes ),
                     "scheduled_date"      => $scheduledDate,
-                    "scheduled_end_date"  => !empty( $request->scheduled_end_date ) ? $request->scheduled_end_date : ( !empty( $scheduledDate ) ? $scheduledDate : '' ),
+                    "scheduled_end_date"  => !empty( $request->scheduled_end_date ) ? (new DateService($request->scheduled_end_date))->transformDatabase() : ( !empty( $scheduledDate ) ? $scheduledDate : '' ),
                     "created_user_id"     => $loginUserData->id,
                     "updated_user_id"     => $loginUserData->id,
                     "status"              => 1,

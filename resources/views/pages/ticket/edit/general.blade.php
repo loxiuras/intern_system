@@ -171,10 +171,11 @@
                         {!! __("pages/ticket.scheduled_date--subtext") !!}
                     </p>
                     <input class="multisteps-form__input form-control @error('scheduled_date') is-invalid @enderror"
-                           type="date"
+                           type="text"
                            name="scheduled_date"
                            id="scheduled_date"
-                           value="{{ old('scheduled_date', (isset($ticketData->scheduled_date) ? $ticketData->scheduled_date : ""))  }}"
+                           data-date="{{ old('scheduled_date', (isset($ticketData->scheduled_date) ? $ticketData->scheduled_date : "")) }}"
+                           value="{{ old('scheduled_date', (isset($ticketData->scheduled_date) ? $ticketData->scheduled_date : "")) }}"
                            placeholder="" />
 
                     @error('scheduled_date')
@@ -190,7 +191,7 @@
                         {!! __("pages/ticket.scheduled_end_date--subtext") !!}
                     </p>
                     <input class="multisteps-form__input form-control @error('scheduled_end_date') is-invalid @enderror"
-                           type="date"
+                           type="text"
                            name="scheduled_end_date"
                            id="scheduled_end_date"
                            value="{{ old('scheduled_end_date', (isset($ticketData->scheduled_end_date) ? $ticketData->scheduled_end_date : ""))  }}"

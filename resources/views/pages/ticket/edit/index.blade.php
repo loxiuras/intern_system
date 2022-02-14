@@ -1,7 +1,8 @@
 
 @extends('layout.system')
 
-@section('css')
+@section('styles')
+    <link rel="stylesheet" href="{{ url('css/plugins/datepicker.css') }}">
 @endsection
 
 @section('pageContent')
@@ -89,6 +90,78 @@
                 shouldSort: false,
             });
         };
+    </script>
+
+    <script src="{{ url('js/plugins/datepicker.js') }}"></script>
+    <script>
+
+        let days = [
+            '{{ __('general.weekdays.7') }}',
+            @for($i = 1; $i < 7; $i++) '{{ __('general.weekdays.'. $i) }}', @endfor
+        ];
+        let daysShort = [
+            '{{ __('general.weekdays-short.7') }}',
+            @for($i = 1; $i < 7; $i++) '{{ __('general.weekdays-short.'. $i) }}', @endfor
+        ];
+        let months = [
+            @for($i = 1; $i <= 12; $i++) '{{ __('general.months.'. $i) }}', @endfor
+        ];
+        let monthsShort = [
+            @for($i = 1; $i <= 12; $i++) '{{ __('general.months-short.'. $i) }}', @endfor
+        ];
+
+        const elem2 = document.querySelector('input[name="scheduled_end_date"]');
+        const datepicker2 = new Datepicker(elem2, {
+            format: {
+                toValue(date, format, locale) {
+                    locale.days = days;
+                    locale.daysMin = daysShort;
+                    locale.daysShort = daysShort;
+                    locale.months = months;
+                    locale.monthsShort = monthsShort;
+                    return new Date(date);
+                },
+                toDisplay(date, format, locale) {
+                    let dateObject = (new Date(date));
+                    let day = String(dateObject.getDate());
+                    let month = String(dateObject.getMonth() + 1);
+                    return ( day.length === 1 ? "0" + day : day ) + "-" + ( month.length === 1 ? "0" + month : month ) + "-" + dateObject.getFullYear();
+                },
+            },
+
+        });
+
+        const elem = document.querySelector('input[name="scheduled_date"]');
+        const datepicker = new Datepicker(elem, {
+            format: {
+                toValue(date, format, locale) {
+                    locale.days = days;
+                    locale.daysMin = daysShort;
+                    locale.daysShort = daysShort;
+                    locale.months = months;
+                    locale.monthsShort = monthsShort;
+                    return new Date(date);
+                },
+                toDisplay(date, format, locale) {
+                    let endDate = elem2.value;
+                    let endDateParts = endDate.split("-");
+                    endDateParts.reverse();
+                    endDate = endDateParts.join("-");
+
+                    let dateObject = (new Date(date));
+                    let day = String(dateObject.getDate());
+                    let month = String(dateObject.getMonth() + 1);
+                    let completeDate = ( day.length === 1 ? "0" + day : day ) + "-" + ( month.length === 1 ? "0" + month : month ) + "-" + dateObject.getFullYear();
+
+                    if ( date > new Date( endDate ) ) {
+                        elem2.value = completeDate;
+                    }
+                    return completeDate;
+                },
+            },
+
+        });
+
     </script>
 
 @endsection
