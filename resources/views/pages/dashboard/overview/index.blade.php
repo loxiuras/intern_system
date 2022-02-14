@@ -203,9 +203,7 @@
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 contentHeight: 'auto',
                 initialView: 'dayGridMonth',
-                selectable: true,
                 initialDate: '{{ $calendarInfo->date }}',
-                editable: true,
                 headerToolbar: false,
                 weekends: false,
                 eventClick: function( element ) {
