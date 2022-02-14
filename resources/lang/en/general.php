@@ -103,6 +103,7 @@ return [
     "minutes"             => "Minutes",
     "date"                => "Date",
     "scheduled_date"      => "Scheduled date",
+    "scheduled_end_date"  => "Scheduled end date",
     "created-by"          => "Created by",
     "updated-by"          => "Updated by",
     "reference"           => "Reference",

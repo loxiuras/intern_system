@@ -169,7 +169,10 @@ class TicketController extends Controller
             $ticketData->invoice_description = $request->invoice_description;
             $ticketData->invoice_price       = (new PriceService( $request->invoice_price ))->transformDatabase();
             $ticketData->invoice_time        = $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes );
-            $ticketData->scheduled_date      = !empty( $request->scheduled_date ) ? $request->scheduled_date : "";
+
+            $scheduledDate = !empty( $request->scheduled_date ) ? $request->scheduled_date : "";
+            $ticketData->scheduled_date      = $scheduledDate;
+            $ticketData->scheduled_end_date  = !empty( $request->scheduled_end_date ) ? $request->scheduled_end_date : ( !empty( $scheduledDate ) ? $scheduledDate : "" );
             $ticketData->status              = (int)$request->status;
             $ticketData->updated_user_id     = (int)$loginUserData->id;
             $ticketData->save();
@@ -185,6 +188,8 @@ class TicketController extends Controller
         }
         else {
 
+            $scheduledDate = !empty( $request->scheduled_date ) ? $request->scheduled_date : "";
+
             $id = Ticket::insertGetId(
                 [
                     "company_id"          => $request->company_id,
@@ -193,7 +198,8 @@ class TicketController extends Controller
                     "invoice_description" => $request->invoice_description,
                     "invoice_price"       => (new PriceService( $request->invoice_price ))->transformDatabase(),
                     "invoice_time"        => $this->mergeTimes( (int)$request->invoice_time_hours, (int)$request->invoice_time_minutes ),
-                    "scheduled_date"      => !empty( $request->scheduled_date ) ? $request->scheduled_date : "",
+                    "scheduled_date"      => $scheduledDate,
+                    "scheduled_end_date"  => !empty( $request->scheduled_end_date ) ? $request->scheduled_end_date : ( !empty( $scheduledDate ) ? $scheduledDate : '' ),
                     "created_user_id"     => $loginUserData->id,
                     "updated_user_id"     => $loginUserData->id,
                     "status"              => 1,

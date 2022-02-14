@@ -33,7 +33,8 @@ return [
     ],
 
     "price--subtext" => "Complete price for this ticket. Leave this field empty if price is unknown.",
-    "scheduled_date--subtext"  => "Scheduled date from this ticket, leave this field empty if no date is necessary.",
+    "scheduled_date--subtext"  => "Scheduled date for this ticket, leave this field empty if no date is necessary.",
+    "scheduled_end_date--subtext"  => "Scheduled end date for this ticket, leave this field empty if no end date is necessary.",
     "time--subtext"  => "Spent/estimated time of ticket. Leave this field empty if no work has been done.",
     "invoice--subtext" => "Is this ticket going to be invoiced?",
 

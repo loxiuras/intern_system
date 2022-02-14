@@ -13,6 +13,8 @@ class TicketFactory extends Factory
      */
     public function definition()
     {
+        $scheduledDate = $this->faker->date();
+
         return [
             'company_id'          => 1,
             'created_at'          => $this->faker->dateTime(),
@@ -24,7 +26,8 @@ class TicketFactory extends Factory
             'invoice_description' => $this->faker->text( 150 ),
             'invoice_price'       => $this->faker->numberBetween( 1000, 10000 ),
             'invoice_time'        => $this->faker->numberBetween( 60, 600 ),
-            'scheduled_date'      => $this->faker->date(),
+            'scheduled_date'      => $scheduledDate,
+            'scheduled_end_date'  => $scheduledDate,
             'status'              => $this->faker->numberBetween( 1, 3 ),
         ];
     }

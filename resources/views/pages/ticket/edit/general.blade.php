@@ -124,29 +124,6 @@
                     @enderror
                 </div>
 
-            </div>
-
-            <div class="row mt-3">
-
-                <div class="col-12 col-sm-6">
-                    <label for="scheduled_date">{{ __("general.scheduled_date") }}</label>
-                    <p class="form-text text-muted text-xs ms-1">
-                        {!! __("pages/ticket.scheduled_date--subtext") !!}
-                    </p>
-                    <input class="multisteps-form__input form-control @error('title') is-invalid @enderror"
-                           type="date"
-                           name="scheduled_date"
-                           id="scheduled_date"
-                           value="{{ old('scheduled_date', (isset($ticketData->scheduled_date) ? $ticketData->scheduled_date : ""))  }}"
-                           placeholder="" />
-
-                    @error('scheduled_date')
-                    <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-
                 <div class="col-12 col-sm-6">
                     <label for="invoice_time">{{ __("general.time") }} <span class="text-lowercase">( {{ __("general.hours") }} + {{ __("general.minutes") }} )</span></label>
                     <p class="form-text text-muted text-xs ms-1">
@@ -178,6 +155,48 @@
                     </div>
 
                     @error('time')
+                    <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+
+                <div class="col-12 col-sm-6">
+                    <label for="scheduled_date">{{ __("general.scheduled_date") }}</label>
+                    <p class="form-text text-muted text-xs ms-1">
+                        {!! __("pages/ticket.scheduled_date--subtext") !!}
+                    </p>
+                    <input class="multisteps-form__input form-control @error('scheduled_date') is-invalid @enderror"
+                           type="date"
+                           name="scheduled_date"
+                           id="scheduled_date"
+                           value="{{ old('scheduled_date', (isset($ticketData->scheduled_date) ? $ticketData->scheduled_date : ""))  }}"
+                           placeholder="" />
+
+                    @error('scheduled_date')
+                    <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-12 col-sm-6">
+                    <label for="scheduled_date">{{ __("general.scheduled_end_date") }}</label>
+                    <p class="form-text text-muted text-xs ms-1">
+                        {!! __("pages/ticket.scheduled_end_date--subtext") !!}
+                    </p>
+                    <input class="multisteps-form__input form-control @error('scheduled_end_date') is-invalid @enderror"
+                           type="date"
+                           name="scheduled_end_date"
+                           id="scheduled_end_date"
+                           value="{{ old('scheduled_end_date', (isset($ticketData->scheduled_end_date) ? $ticketData->scheduled_end_date : ""))  }}"
+                           placeholder="" />
+
+                    @error('scheduled_end_date')
                         <span class="invalid-feedback">
                             {{ $message }}
                         </span>
