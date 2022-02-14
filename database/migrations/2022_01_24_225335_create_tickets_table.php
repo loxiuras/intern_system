@@ -28,6 +28,7 @@ class CreateTicketsTable extends Migration
             $table->integer("invoice_price")->default( 0 );
             $table->integer("invoice_time")->default( 0 );
             $table->date("scheduled_date")->nullable();
+            $table->date("scheduled_end_date")->nullable();
             $table->tinyInteger("status")->default( 1 );
             $table->tinyInteger("invoice")->default( 0 );
             $table->dateTime("invoice_at")->nullable();

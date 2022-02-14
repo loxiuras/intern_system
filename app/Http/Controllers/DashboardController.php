@@ -176,6 +176,7 @@ class DashboardController extends Controller
                 $ticketData = new \stdClass();
                 $ticketData->id           = $ticket->id ?: 0;
                 $ticketData->date         = $ticket->scheduled_date ?: null;
+                $ticketData->endDate      = (new Carbon($ticket->scheduled_end_date))->addDay(1)->toDateString();
                 $ticketData->title        = $ticket->title ?: null;
                 $ticketData->companyName  = $ticket->companyName ?: null;
                 $ticketData->time         = $ticket->invoice_time ?: null;
