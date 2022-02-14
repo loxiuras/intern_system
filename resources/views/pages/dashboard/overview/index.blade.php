@@ -167,12 +167,12 @@
                                 <a class="d-block w-100 text-sm text-normal"
                                    href='{{ Route('dashboard', ['date' => $calendarInfo->currentDate ]) }}'><i class="fas fa-undo" style="font-size: 10px;"></i> {{ __('general.back-to-current-month') }}</a>
                             </h6>
-                            <a class="arrow position-absolute cursor-pointer info-hover-info"
+                            <a class="arrow position-absolute cursor-pointer info-hover-info text-sm text-normal"
                                href="{{ Route('dashboard', ['date' => $calendarInfo->prevMonthDate ]) }}"
                                style="top: 20px;left: 30px;">
                                 <i class="fas fa-arrow-left mx-1"></i>{{ __("general.prev-month") }}
                             </a>
-                            <a class="arrow position-absolute cursor-pointer info-hover-info"
+                            <a class="arrow position-absolute cursor-pointer info-hover-info text-sm text-normal"
                                href="{{ Route('dashboard', ['date' => $calendarInfo->nextMonthDate]) }}"
                                style="top: 20px;right: 30px;">
                                 {{ __("general.next-month") }}<i class="fas fa-arrow-right mx-1"></i>
