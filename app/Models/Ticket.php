@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Services\TimeService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
@@ -57,5 +58,13 @@ class Ticket extends Model
         $this->attributes['invoice_time_minutes'] = $minutes;
 
         return $this->attributes['title'];
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function users(): HasMany
+    {
+        return $this->hasMany(TicketUser::class);
     }
 }

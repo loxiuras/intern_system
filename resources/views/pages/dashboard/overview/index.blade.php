@@ -12,6 +12,11 @@
         background-image: linear-gradient(310deg, #F1F1F1 0%, #EAEAEA 100%);
     }
 
+    .fc-daygrid-event {
+        white-space: normal !important;
+        align-items: normal !important;
+    }
+
 @endsection
 
 @section('pageContent')
@@ -205,6 +210,7 @@
                 initialView: 'dayGridMonth',
                 initialDate: '{{ $calendarInfo->date }}',
                 headerToolbar: false,
+
                 weekends: false,
                 eventClick: function( element ) {
                     let ticketEditRoute = '{{ Route('ticket-edit', ['id' => 99999]) }}';
@@ -213,6 +219,12 @@
                     if ( ticketId ) {
                         window.location.href = ticketEditRoute.replace( '99999', ticketId );
                     }
+                },
+                createEvent: function (event) {
+
+                    console.log( event );
+                    console.log( element );
+
                 },
                 events: [
                     @if( $calendarInfo && count( $calendarInfo->birthdays ) > 0 )
@@ -230,7 +242,7 @@
                         @foreach( $calendarInfo->tickets as $ticket )
                             {
                                 ticketId: {{ $ticket->id }},
-                                title: '{{ $ticket->status >= 3 ? '✔' : '' }} {{ $ticket->companyName }} - {{ $ticket->title }}',
+                                title: '{{ $ticket->status >= 3 ? '✔' : '' }} {{ $ticket->companyName }} - {{ $ticket->totalTitle }}',
                                 start: '{{ $ticket->date }}',
                                 end: '{{ $ticket->endDate }}',
                                 className: '{{ $ticket->status >= 3 ? 'bg-gradient-success mb-1' : 'bg-gradient-primary mb-1' }}'

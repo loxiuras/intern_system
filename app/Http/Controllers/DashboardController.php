@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\TicketUser;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Domain;
@@ -173,6 +174,7 @@ class DashboardController extends Controller
 
         if ( $tickets and $tickets->count() ) {
             foreach ($tickets as $ticket) {
+
                 $ticketData = new \stdClass();
                 $ticketData->id           = $ticket->id ?: 0;
                 $ticketData->date         = $ticket->scheduled_date ?: null;
@@ -181,6 +183,40 @@ class DashboardController extends Controller
                 $ticketData->companyName  = $ticket->companyName ?: null;
                 $ticketData->time         = $ticket->invoice_time ?: null;
                 $ticketData->status       = (int)$ticket->status ?: 1;
+
+                $ticketData->users = [];
+
+                $totalTitle = $ticketData->title;
+
+
+                $users = TicketUser::selectRaw("*")
+                    ->whereRaw('ticket_id = ?', [$ticketData->id])
+                    ->join('users', 'users.id', '=', 'ticket_users.user_id')
+                    ->get();
+
+                if ( !empty( $users ) && $users->count() ) {
+                    $totalTitle .= " ";
+                    $userCounter = 0;
+
+                    foreach ( $users as $data ) {
+
+                        $userData = new \stdClass();
+                        $userData->id   = $data->id;
+
+                        $name = str_replace( "  ", " ", ($data->name ?: null) . " " . ($data->insertion ?: null) . " " . ($data->last_name ?: null));
+                        $userData->name = $name;
+
+                        $ticketData->users[] = $userData;
+
+                        if ( !empty( $userCounter ) ) $totalTitle .= " & ";
+                        $totalTitle .= $name;
+
+                        $userCounter++;
+                    }
+                    $totalTitle .= "";
+                }
+
+                $ticketData->totalTitle = $totalTitle;
 
                 $calendarInfo->tickets[] = $ticketData;
             }
