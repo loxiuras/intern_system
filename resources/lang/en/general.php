@@ -139,4 +139,7 @@ return [
     "next-month"          => "Next month",
     "week"                => "Week",
     "back-to-current-month" => "Back to current month",
+    "manual"              => "Manual",
+    "clear"               => "Clear",
+    "filter"              => "Filter",
 ];

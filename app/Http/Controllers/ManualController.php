@@ -10,11 +10,25 @@ use Illuminate\Http\Request;
 class ManualController extends Controller
 {
 
-    public function overview()
+    public function overview(Request $request)
     {
+        $where = [];
+        $where[] = ['manuals.reference', '!=', ''];
+        $where[] = ['manuals.title', '!=', ''];
+
+        $searchData = new \stdClass();
+        if( $request->title ) {
+            $where[] = ['manuals.title', 'like', '%'.$request->title.'%'];
+            $searchData->title = $request->title;
+        };
+
+        $manualsData = Manual::where($where)->get();
+
         return view('pages.manual.overview.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "manual", "overview" ),
+            "manualsData"   => $manualsData,
+            "searchData"    => $searchData,
         ]);
     }
 
