@@ -86,4 +86,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/manual/delete', [ManualController::class, 'delete'])->name('manual-delete');
     Route::post('/manual/store', [ManualController::class, 'store'])->name('manual-store');
     Route::get('/manual/item/{reference}', [ManualController::class, 'item'])->name('manual-item');
+
+    /** CONTENTS **/
+    Route::get('/content/add', [ContentController::class, 'add'])->name('content-add');
+    Route::get('/content/edit/{id}', [ContentController::class, 'edit'])->name('content-edit');
+    Route::post('/content/delete', [ContentController::class, 'delete'])->name('content-delete');
+    Route::post('/content/store', [ContentController::class, 'store'])->name('content-store');
 });

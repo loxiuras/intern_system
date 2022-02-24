@@ -18,7 +18,7 @@
 
     <div class="multisteps-form__content mt-4">
 
-        @if ( $passwordsData && $passwordsData->count() )
+        @if ( isset($passwordsData) && $passwordsData && $passwordsData->count() )
 
             <div class="row mt-2 border-bottom pb-1">
 

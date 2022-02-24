@@ -32,6 +32,31 @@ class ManualController extends Controller
         ]);
     }
 
+    public function add()
+    {
+        $manualData = new \stdClass();
+
+        return view('pages.manual.add.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "manual", "add" ),
+            "manualData"   => $manualData,
+        ]);
+    }
+
+    public function edit( int $id )
+    {
+        $manualData = Manual::find( $id );
+
+        $contentsData = Content::getAllFromType( 'manual', $id, false );
+
+        return view('pages.manual.edit.index', [
+            "loginUserData" => $this->getLoginUserData(),
+            "sidebarData"   => $this->getSidebarData( "manual", "edit" ),
+            "manualData"    => $manualData,
+            "contentsData"  => $contentsData,
+        ]);
+    }
+
     public function item( string $reference )
     {
          $manualData = Manual::select([

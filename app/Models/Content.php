@@ -35,4 +35,21 @@ class Content extends Model
      * @var array<string, string>
      */
     protected $casts = [];
+
+    /**
+     * @param string $type
+     * @param int    $recordId
+     * @param bool   $onlyActive
+     *
+     * @return mixed
+     */
+    public static function getAllFromType( string $type, int $recordId, bool $onlyActive = true )
+    {
+        $where = [];
+        $where[] = ['type', '=', $type];
+        $where[] = ['record_id', '=', $recordId];
+        if ( $onlyActive ) $where[] = ['active', '=', 1];
+
+        return Content::where($where)->orderBy('id')->get();
+    }
 }

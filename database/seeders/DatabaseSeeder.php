@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PasswordTableSeeder::class);
         $this->call(TicketTableSeeder::class);
         $this->call(ManualTableSeeder::class);
+        $this->call(ContentTableSeeder::class);
     }
 }

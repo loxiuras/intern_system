@@ -8,9 +8,24 @@ return [
         "actions"    => [
             "overview" => [
                 "name"  => "Overview",
-                "title" => "manual overview",
+                "title" => "Manual overview",
+            ],
+            "add" => [
+                "name"  => "Add",
+                "title" => "Add manual",
+            ],
+            "edit" => [
+                "name"  => "Edit",
+                "title" => "Edit manual",
             ],
         ]
+    ],
+
+    "content" => [
+      "add" => [
+          "title"       => "Manual information",
+          "description" => "All manual data is listed below.",
+      ]  ,
     ],
 
     "notification" => [
