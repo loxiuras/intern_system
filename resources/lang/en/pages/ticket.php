@@ -50,20 +50,25 @@ return [
     ],
     "status_1" => [
         "title"         => "Open",
-        "className"     => "bg-gradient-primary",
+        "className"     => "bg-gradient-secondary",
         "iconClassName" => "fas fa-pen-alt",
     ],
     "status_2" => [
         "title"         => "Started",
-        "className"     => "bg-gradient-warning",
+        "className"     => "bg-gradient-primary",
         "iconClassName" => "fas fa-hammer",
     ],
     "status_3" => [
         "title"         => "Completed",
-        "className"     => "bg-gradient-success",
+        "className"     => "bg-gradient-warning",
         "iconClassName" => "fas fa-check-double",
     ],
     "status_4" => [
+        "title"         => "Ready to invoice",
+        "className"     => "bg-gradient-success",
+        "iconClassName" => "fas fa-coins",
+    ],
+    "status_5" => [
         "title"         => "Archived",
         "className"     => "bg-gradient-info",
         "iconClassName" => "fas fa-box-open",

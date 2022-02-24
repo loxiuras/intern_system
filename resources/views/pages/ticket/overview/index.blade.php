@@ -60,7 +60,7 @@
                                         <label for="title" class="d-block w-100">{{ __("general.status") }}</label>
                                         <div class="d-inline-block">
 
-                                            @for( $i = 0; $i <= 4; $i++ )
+                                            @for( $i = 0; $i <= 5; $i++ )
                                                 <input type="radio" class="ticketStatusBadgeElement"
                                                        name="status"
                                                        value="{{ $i }}"
@@ -138,25 +138,25 @@
                                         </td>
 
                                         <td class="text-xs">
-                                            @if( 4 > $ticket->status )
+                                            @if( 5 > $ticket->status )
                                                 <a href="{{ Route('ticket-edit', ['id' => $ticket->id]) }}" data-bs-toggle="tooltip">
                                                     <i class="fas fa-edit text-secondary"></i>
                                                 </a>
                                             @endif
 
-                                            @if( 3 === $ticket->status )
+                                            @if( 4 === $ticket->status )
                                                 <a href="{{ Route('ticket-small-edit', ['id' => $ticket->id]) }}" class="mx-3 NovaModel timeout" data-nova-model-body-class="modal-open" data-nova-model-target="invoiceModel" style="cursor: pointer;">
                                                     <i class="fas fa-paper-plane text-dark"></i>
                                                 </a>
                                             @endif
 
-                                            @if( 4 === $ticket->status && 0 === (int)$ticket->invoice )
+                                            @if( 5 === $ticket->status && 0 === (int)$ticket->invoice )
                                                 <a href="{{ Route('ticket-small-edit', ['id' => $ticket->id]) }}" class="@if(3 >= $ticket->status) mx-3 @endif">
                                                     <i class="fas fa-paper-plane text-dark"></i>
                                                 </a>
                                             @endif
 
-                                            @if( 4 === $ticket->status )
+                                            @if( 5 === $ticket->status )
 
                                                 <form class="@if(4 === $ticket->status && 0 === (int)$ticket->invoice) mx-3 @endif" action="{{ Route('ticket-reset', ['id' => $ticket->id]) }}" method="POST" title="{{ $ticket->id }}" style="display: inline-block;">
                                                     @csrf

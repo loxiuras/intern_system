@@ -88,7 +88,7 @@
                     <div class="col-12 col-sm-6">
                         <label for="status">{{ __("general.status") }}</label>
                         <select name="status" id="choices-status" class="multisteps-form__input form-control @error('status') is-invalid @enderror">
-                            @for( $i = 1; $i <= 3; $i++ )
+                            @for( $i = 1; $i <= 4; $i++ )
                                 <option value="{{ $i }}" {{ isset( $ticketData->status ) && $i === $ticketData->status ? 'selected' : '' }}>{{ __("pages/ticket.status_". $i . ".title") }}</option>
                             @endfor
                         </select>

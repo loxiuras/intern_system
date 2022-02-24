@@ -226,7 +226,7 @@ class TicketController extends Controller
 
             $loginUserData = $this->getLoginUserData();
 
-            $ticketData->status          = 4;
+            $ticketData->status          = 5;
             $ticketData->invoice         = !empty( $request->invoice ) ? 1 : 0;
             $ticketData->invoice_at      = Carbon::now();
             $ticketData->updated_at      = Carbon::now();
