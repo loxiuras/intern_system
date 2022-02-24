@@ -125,7 +125,7 @@
             const dataTableSearch = new simpleDatatables.DataTable("#datatable-company-list", {
                 searchable: true,
                 perPageSelect: false,
-
+                perPage: 15,
             });
         }
     </script>
