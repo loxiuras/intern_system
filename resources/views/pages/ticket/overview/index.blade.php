@@ -86,6 +86,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>{{ __("general.company") }}</th>
+                                    <th>{{ __("general.user") }}</th>
                                     <th>{{ __("general.title") }}</th>
                                     <th>{{ __("general.scheduled_date") }}</th>
                                     <th>{{ __("general.price") }} / {{ __("general.time") }}</th>
@@ -99,6 +100,26 @@
                                     <tr style="{{ $ticket->status === 4 ? 'background-color: #FAFAFA;' : '' }}">
                                         <td class="text-xs font-weight-bold">
                                             <span class="my-2 text-xs">{{ $ticket->companyName }}</span>
+                                        </td>
+
+                                        <td class="text-xs font-weight-bold">
+
+                                            @if( $ticket->users && $ticket->users->count() )
+
+                                                @foreach( $ticket->users as $userData )
+
+                                                    <div class="badge bg-gradient-primary mx-1">
+                                                        {{ $userData->user->name }} {{ $userData->user->insertion }} {{ $userData->user->last_name }}
+                                                    </div>
+
+                                                @endforeach
+
+                                            @else
+
+                                                {{ __("general.not-available-short") }}
+
+                                            @endif
+
                                         </td>
 
                                         <td class="text-xs font-weight-bold">
