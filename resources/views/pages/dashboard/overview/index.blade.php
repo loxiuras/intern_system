@@ -17,6 +17,10 @@
         align-items: normal !important;
     }
 
+    .ticketElement:hover .ticketView {
+        display: block !important;
+    }
+
 @endsection
 
 @section('pageContent')
@@ -162,6 +166,84 @@
                     </div>
                 </div>
             </div>
+
+            @if( isset( $planningRows ) && count( $planningRows ) > 0 )
+                <div class="row mt-6 mb-6">
+
+                    @foreach( $planningRows as $row )
+
+                        <div class="col-3">
+
+                            <div class="card widget-calendar h-100">
+
+                                <div class="card-header position-relative">
+                                    <div class="position-absolute top-0 bottom-0 z-index-0 opacity-2" style="border-radius: 1rem 1rem 0 0; left: 0; right: 0; background-image: url({{ url( "img/banners/banner-". $row->pictureDefaultId .".png" ) }}); background-size: cover;"></div>
+
+                                    <span class="d-block text-dark text-center w-100 z-index-3 position-relative">
+                                        <b>{{ $row->fullName }}</b>
+                                    </span>
+                                </div>
+
+                                <div class="card-body p-3">
+                                    @if( !empty( $row->tickets ) && $row->tickets->count() )
+                                        @foreach( $row->tickets as $ticket )
+
+                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">
+
+                                                <span class="d-block w-100 text-left">
+                                                    <span class="mb-3 d-block">
+                                                        {{ $ticket->companyName }}
+                                                    </span>
+                                                    <span class="d-block text-capitalize">
+                                                        {{ $ticket->title }}
+                                                    </span>
+                                                </span>
+
+                                                <hr>
+
+                                                <span class="d-block" style="text-transform: initial;">
+                                                    @if( $ticket->scheduled_date === $ticket->scheduled_end_date || empty( $ticket->scheduled_end_date ) )
+                                                        {{ __("general.start-from") }}
+                                                    @endif
+
+                                                    {{ (new \App\Services\DateService( $ticket->scheduled_date ))->translate() }}
+                                                    @if( $ticket->scheduled_date !== $ticket->scheduled_end_date )
+                                                        - {{ (new \App\Services\DateService( $ticket->scheduled_end_date ))->translate() }}
+                                                    @endif
+                                                </span>
+
+                                                <a href="{{ Route("ticket-edit", ["id" => $ticket->id]) }}" class="ticketView position-absolute d-none" style="bottom: 10px; right: 20px;">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+
+                                            </div>
+
+                                        @endforeach
+                                    @endif
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    @endforeach
+
+                    <div class="col-12">
+
+                        <div class="d-flex justify-content-center mt-4">
+
+                            @for( $i = 1; $i <= 5; $i++ )
+                                <label class="ms-2">
+                                    <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}"><i class="{{ __("pages/ticket.status_". $i . ".iconClassName" ) }} mx-1"></i> {{ __("pages/ticket.status_". $i . ".title") }}</span>
+                                </label>
+                            @endfor
+
+                        </div>
+
+                    </div>
+
+                </div>
+            @endif
 
             <div class="row mt-4">
                 <div class="col-12">

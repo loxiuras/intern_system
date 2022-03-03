@@ -15,6 +15,7 @@ class DashboardController extends Controller
 
     public function overview()
     {
+
         return view('pages.dashboard.overview.index', [
             "loginUserData"       => $this->getLoginUserData(),
             "sidebarData"         => $this->getSidebarData( "dashboard", "overview" ),
@@ -23,6 +24,7 @@ class DashboardController extends Controller
             "domainInfo"          => $this->getDomainInfo(),
             "ticketInfo"          => $this->getTicketInfo(),
             "calendarInfo"        => $this->getCalendarInfo(),
+            "planningRows"        => $this->getPlanningRows(),
         ]);
     }
 
@@ -223,5 +225,34 @@ class DashboardController extends Controller
         }
 
         return $calendarInfo;
+    }
+
+    private function getPlanningRows(): array
+    {
+        $planningRows = [];
+
+        $users = User::where([
+            ["show_in_planning_rows", 1],
+            ["active", 1],
+        ])->orderBy("name")->get();
+
+        if ( !empty( $users ) && $users->count() ) {
+            foreach ( $users as $user ) {
+                $rowData = new \stdClass();
+
+                $rowData->user_id = (int)$user->id;
+                $rowData->fullName = $user->name . (!empty($user->insertion) ? " {$user->insertion} " : " ") . $user->last_name;
+                $rowData->pictureDefaultId = (int)$user->picture_default_id;
+
+                $rowData->tickets = null;
+
+                $userTickets = (new TicketUser())->getAllUserTickets( $user->id, maxStatus: 4 );
+                if ( !empty( $userTickets ) && $userTickets->count() ) $rowData->tickets = $userTickets;
+
+                $planningRows[] = $rowData;
+            }
+        }
+
+        return $planningRows;
     }
 }

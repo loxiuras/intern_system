@@ -41,4 +41,20 @@ class TicketUser extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function getAllUserTickets( int $userId, int $minStatus = 0, int $maxStatus = 0 )
+    {
+        $where = [];
+        $where[] = ["ticket_users.user_id", "=", $userId];
+        if ( !empty( $minStatus ) ) $where[] = ["tickets.status", ">=", $minStatus];
+        if ( !empty( $maxStatus ) ) $where[] = ["tickets.status", "<=", $maxStatus];
+
+        return TicketUser::select(
+            ["*", "companies.name as companyName"]
+        )
+            ->where($where)
+            ->join('tickets', 'tickets.id', '=', 'ticket_users.ticket_id')
+            ->join('companies', 'companies.id', '=', 'tickets.company_id')
+            ->get();
+    }
 }

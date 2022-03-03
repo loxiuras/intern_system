@@ -144,4 +144,5 @@ return [
     "filter"              => "Filter",
     "delete"              => "Delete",
     "show-in-planning-rows" => "Show in planning rows",
+    "start-from"          => "Start from",
 ];
