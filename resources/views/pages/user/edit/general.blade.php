@@ -117,6 +117,31 @@
                 <div class="col-12 col-sm-7">
                     <div class="form-group">
                         <label>
+                            {{ __("general.show-in-planning-rows") }}?
+                        </label>
+                        <p class="form-text text-muted text-xs ms-1">
+                            {!! __("pages/user.show-in-planning-rows--subtext") !!}
+                        </p>
+                        <div class="form-check form-switch ms-1">
+                            <input class="form-check-input" type="checkbox" id="show_in_planning_rows" name="show_in_planning_rows" {{ isset( $userData->show_in_planning_rows ) && 1 === $userData->show_in_planning_rows ? 'checked' : '' }}>
+                            <label class="form-check-label" for="show_in_planning_rows"></label>
+                        </div>
+                    </div>
+
+                    @error('show_in_planning_rows')
+                    <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12 col-sm-7">
+                    <div class="form-group">
+                        <label>
                             {{ __("general.active") }}?
                         </label>
                         <p class="form-text text-muted text-xs ms-1">

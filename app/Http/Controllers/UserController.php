@@ -103,6 +103,7 @@ class UserController extends Controller
             $userData->telephone          = $request->telephone;
             $userData->picture_default_id = (int)$request->picture_default_id;
             $userData->active             = !empty( $request->active ) ? 1 : 0;
+            $userData->show_in_planning_rows = !empty( $request->show_in_planning_rows ) ? 1 : 0;
             $userData->save();
         }
         else {
@@ -116,6 +117,7 @@ class UserController extends Controller
                     "telephone"          => $request->telephone,
                     "picture_default_id" => (int)$request->picture_default_id,
                     "active"             => !empty( $request->active ) ? 1 : 0,
+                    "show_in_planning_rows" => !empty( $request->show_in_planning_rows ) ? 1 : 0,
                 ]
             );
         }

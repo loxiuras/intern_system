@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger("is_admin")->default(0);
             $table->tinyInteger("active")->default(0);
             $table->integer("picture_default_id")->default(0);
+            $table->tinyInteger("show_in_planning_rows")->default(0);
         });
     }
 

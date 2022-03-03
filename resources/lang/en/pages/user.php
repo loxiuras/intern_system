@@ -26,6 +26,7 @@ return [
     ],
 
     "active--subtext" => "Is the user active? If not, it won't be possible to login with this account or connect to a company e.g.",
+    "show-in-planning-rows--subtext" => "If this user is in the planning rows on the dashboard overview.",
 
     "content" => [
         "add" => [

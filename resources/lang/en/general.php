@@ -143,4 +143,5 @@ return [
     "clear"               => "Clear",
     "filter"              => "Filter",
     "delete"              => "Delete",
+    "show-in-planning-rows" => "Show in planning rows",
 ];
