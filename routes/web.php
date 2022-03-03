@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/company/delete/{id}', [CompanyController::class, 'delete'])->name('company-delete');
     Route::post('/company/store', [CompanyController::class, 'store'])->name('company-store');
     Route::post('/company/connect-user', [CompanyController::class, 'connectUser'])->name('company-connect-user');
+    Route::get('/company/delete-connected-user/{company}/{user}', [CompanyController::class, 'deleteConnectedUser'])->name('company-delete-connected-user');
     Route::post('/company/import', [CompanyController::class, 'import'])->name('company-import');
 
     /** DOMAINS **/

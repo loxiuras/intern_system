@@ -21,7 +21,13 @@
 
                         @foreach( $companyUsers as $user )
 
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
+                            <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center position-relative userElement">
+
+                                <a href="{{ Route( "company-delete-connected-user", [ 'company' => $companyData->id, 'user' => $user->id ] ) }}"
+                                   class="badge bg-gradient-danger text-white userElementDelete position-absolute">
+                                    <i class="fas fa-times"></i> {{ __("general.delete") }}
+                                </a>
+
                                 <div class="avatar avatar-lg rounded-circle border border-primary">
                                     <!-- ToDo: Add user image; -->
                                     <img alt="Image placeholder" class="p-1" src="https://picsum.photos/400/400?random={{ $user->user_id }}">
