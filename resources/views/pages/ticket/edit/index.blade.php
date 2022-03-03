@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="{{ url('css/plugins/datepicker.css') }}">
 @endsection
 
+@section('css')
+
+    .choices {
+        width: 100%;
+    }
+
+@endsection
+
 @section('pageContent')
 
     @include("layout.banner")
@@ -17,6 +25,10 @@
 
         @include("pages.ticket.edit.form")
 
+        @if( isset($ticketData->id) )
+            @include("pages.ticket.edit.connect-user")
+        @endif
+
     </main>
 
 @endsection
@@ -24,6 +36,19 @@
 @section('js')
 
     <script src="{{ url('js/sidebar.js') }}"></script>
+
+    <script src="{{ url('js/plugins/NovaModel.js') }}"></script>
+    <script src="{{ url('js/plugins/choices.js') }}"></script>
+    <script >
+        if (document.getElementById('choices-user-id')) {
+            var element = document.getElementById('choices-user-id');
+            const example = new Choices(element, {
+                searchEnabled: true,
+                searchPlaceholderValue: '{{ __("general.search-for", ["item" => __("general.name")]) }}',
+                shouldSort: false,
+            });
+        };
+    </script>
 
     <script src="{{ url('js/plugins/quill.js') }}"></script>
     <script>

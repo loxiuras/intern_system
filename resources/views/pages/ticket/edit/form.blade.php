@@ -8,6 +8,10 @@
 
                         @include("pages.ticket.edit.general")
 
+                        @if( isset($ticketData->id) )
+                            @include("pages.ticket.edit.users")
+                        @endif
+
                     </div>
                 </div>
             </div>

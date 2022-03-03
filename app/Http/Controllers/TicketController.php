@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Ticket;
+use App\Models\TicketUser;
+use App\Models\User;
 use App\Services\DateService;
 use App\Services\PriceService;
 use App\Services\TimeService;
@@ -15,6 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Validation\ValidationException;
 
 class TicketController extends Controller
 {
@@ -81,11 +84,27 @@ class TicketController extends Controller
 
         $companiesData = Company::where([['name', '!=', ''], ['active', '=', 1]])->get();
 
+        $ticketUsers = TicketUser::where( "ticket_id", "=", $ticketId )
+            ->join('users', 'users.id', '=', 'ticket_users.user_id')
+            ->orderBy('users.name', 'asc')
+            ->get();
+
+        $connectedTicketUserIds = [];
+        if ( $ticketUsers ) {
+            foreach( $ticketUsers as $user ) {
+                $connectedTicketUserIds[] = $user->id;
+            }
+        }
+
+        $connectUsers = User::whereRaw('!FIND_IN_SET(id,"'. implode(",", $connectedTicketUserIds) .'")')->orderBy('name')->get();
+
         return view('pages.ticket.edit.index', [
             "loginUserData" => $this->getLoginUserData(),
             "sidebarData"   => $this->getSidebarData( "ticket", "edit" ),
             "ticketData"    => $ticketData,
             "companiesData" => $companiesData,
+            "ticketUsers"   => $ticketUsers,
+            "connectUsers"  => $connectUsers,
         ]);
     }
 
@@ -136,7 +155,7 @@ class TicketController extends Controller
     /**
      * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function delete( int $id )
     {
@@ -261,5 +280,25 @@ class TicketController extends Controller
     private function mergeTimes( int $hours, int $minutes ): int
     {
         return (int)(( $hours * 60 ) + $minutes);
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function connectUser(Request $request): RedirectResponse
+    {
+        $this->validate($request, [
+            'id'      => 'required',
+            'user_id' => 'required',
+        ]);
+
+        TicketUser::insertGetId([
+            'ticket_id' => $request->id,
+            'user_id'   => $request->user_id,
+        ]);
+
+        return back();
     }
 }

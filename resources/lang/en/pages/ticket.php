@@ -29,7 +29,15 @@ return [
         "add" => [
             "title"       => "Ticket details",
             "description" => "Please enter all ticket information below.",
+
+            "title--users"       => "Users overview",
+            "description--users" => "All users connected to this ticket",
         ],
+    ],
+
+    "connect-user" => [
+        "title"       => "Connect a new user",
+        "description" => "Select your new user in the selectbox below.",
     ],
 
     "price--subtext" => "Complete price for this ticket. Leave this field empty if price is unknown.",
