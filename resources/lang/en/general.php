@@ -142,4 +142,5 @@ return [
     "manual"              => "Manual",
     "clear"               => "Clear",
     "filter"              => "Filter",
+    "delete"              => "Delete",
 ];

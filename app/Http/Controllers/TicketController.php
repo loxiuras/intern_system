@@ -301,4 +301,14 @@ class TicketController extends Controller
 
         return back();
     }
+
+    public function deleteConnectedUser( int $ticketId, int $userId ): RedirectResponse
+    {
+        DB::table('ticket_users')->where([
+            ['ticket_id', '=', $ticketId],
+            ['user_id', '=', $userId],
+        ])->delete();
+
+        return back();
+    }
 }

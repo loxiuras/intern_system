@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/ticket/store-invoice', [TicketController::class, 'smallStore'])->name('ticket-small-store');
     Route::post('/ticket/reset/{id}', [TicketController::class, 'reset'])->name('ticket-reset');
     Route::post('/ticket/connect-user', [TicketController::class, 'connectUser'])->name('ticket-connect-user');
+    Route::get('/ticket/delete-connected-user/{ticket}/{user}', [TicketController::class, 'deleteConnectedUser'])->name('ticket-delete-connected-user');
 
     /** MANUALS **/
     Route::get('/manual/overview', [ManualController::class, 'overview'])->name('manual-overview');

@@ -11,6 +11,18 @@
         width: 100%;
     }
 
+    .userElement .userElementDelete {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: .6rem;
+        display: none;
+    }
+
+    .userElement:hover .userElementDelete {
+        display: block;
+    }
+
 @endsection
 
 @section('pageContent')
