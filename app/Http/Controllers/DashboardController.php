@@ -246,7 +246,7 @@ class DashboardController extends Controller
 
                 $rowData->tickets = null;
 
-                $userTickets = (new TicketUser())->getAllUserTickets( $user->id, maxStatus: 4 );
+                $userTickets = (new TicketUser())->getAllUserTickets( $user->id, maxStatus: 3 );
                 if ( !empty( $userTickets ) && $userTickets->count() ) $rowData->tickets = $userTickets;
 
                 $planningRows[] = $rowData;

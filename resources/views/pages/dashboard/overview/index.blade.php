@@ -188,7 +188,7 @@
                                     @if( !empty( $row->tickets ) && $row->tickets->count() )
                                         @foreach( $row->tickets as $ticket )
 
-                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative {{ __("pages/ticket.status_". $ticket->status . ".className" ) }}">
+                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative text-dark border-1 border-success">
 
                                                 <span class="d-block w-100 text-left">
                                                     <span class="mb-3 d-block">
@@ -202,6 +202,8 @@
                                                 <hr>
 
                                                 <span class="d-block" style="text-transform: initial;">
+                                                    <i class="fas fa-calendar-alt mx-1"></i>
+
                                                     @if( $ticket->scheduled_date === $ticket->scheduled_end_date || empty( $ticket->scheduled_end_date ) )
                                                         {{ __("general.start-from") }}
                                                     @endif
@@ -212,7 +214,7 @@
                                                     @endif
                                                 </span>
 
-                                                <a href="{{ Route("ticket-edit", ["id" => $ticket->id]) }}" class="ticketView position-absolute d-none" style="bottom: 10px; right: 20px;">
+                                                <a href="{{ Route("ticket-edit", ["id" => $ticket->ticket_id]) }}" class="ticketView position-absolute d-none" style="bottom: 10px; right: 20px;">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
 
@@ -232,7 +234,7 @@
 
                         <div class="d-flex justify-content-center mt-4">
 
-                            @for( $i = 1; $i <= 5; $i++ )
+                            @for( $i = 1; $i <= 3; $i++ )
                                 <label class="ms-2">
                                     <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}"><i class="{{ __("pages/ticket.status_". $i . ".iconClassName" ) }} mx-1"></i> {{ __("pages/ticket.status_". $i . ".title") }}</span>
                                 </label>
