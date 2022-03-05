@@ -81,22 +81,18 @@
 
             </div>
 
-            @if( isset($ticketData->id) && $ticketData->id > 0 )
+            <div class="row mt-3">
 
-                <div class="row mt-3">
-
-                    <div class="col-12 col-sm-6">
-                        <label for="status">{{ __("general.status") }}</label>
-                        <select name="status" id="choices-status" class="multisteps-form__input form-control @error('status') is-invalid @enderror">
-                            @for( $i = 1; $i <= 4; $i++ )
-                                <option value="{{ $i }}" {{ isset( $ticketData->status ) && $i === $ticketData->status ? 'selected' : '' }}>{{ __("pages/ticket.status_". $i . ".title") }}</option>
-                            @endfor
-                        </select>
-                    </div>
-
+                <div class="col-12 col-sm-6">
+                    <label for="status">{{ __("general.status") }}</label>
+                    <select name="status" id="choices-status" class="multisteps-form__input form-control @error('status') is-invalid @enderror">
+                        @for( $i = 1; $i <= ( ( isset($ticketData->id) && $ticketData->id > 0 ) ? ( 4 === (int)$ticketData->status ? 4 : 3 ) : 2 ); $i++ )
+                            <option value="{{ $i }}" {{ isset( $ticketData->status ) && $i === $ticketData->status ? 'selected' : '' }}>{{ __("pages/ticket.status_". $i . ".title") }}</option>
+                        @endfor
+                    </select>
                 </div>
 
-            @endif
+            </div>
 
             <div class="row mt-5">
 

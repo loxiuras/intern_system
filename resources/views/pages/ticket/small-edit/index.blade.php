@@ -67,8 +67,8 @@
 
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-12">
-                                                <span class="text-dark text-bold">{{ __("general.invoice-description") }}</span>
-                                                <span class="d-block text-normal">{!! $ticketData->invoice_description !!}</span>
+                                                <span class="text-primary text-bold">{{ __("general.invoice-description") }}</span>
+                                                <span class="d-block text-primary">{!! $ticketData->invoice_description !!}</span>
                                             </div>
                                         </div>
 

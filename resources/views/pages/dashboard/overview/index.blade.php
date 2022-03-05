@@ -188,7 +188,7 @@
                                     @if( !empty( $row->tickets ) && $row->tickets->count() )
                                         @foreach( $row->tickets as $ticket )
 
-                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative text-dark border-1 border-success">
+                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative text-white border-2 {{ __("pages/ticket.status_". $ticket->status . ".className" ) }} {{ __("pages/ticket.status_". $ticket->status . ".borderClassName" ) }}" style="border: solid;">
 
                                                 <span class="d-block w-100 text-left">
                                                     <span class="mb-3 d-block">
