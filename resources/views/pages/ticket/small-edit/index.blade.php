@@ -109,7 +109,7 @@
                                             <div class="button-row d-flex mt-4">
                                                 <button class="btn bg-gradient-light ms-auto mb-0 js-btn-next"
                                                         type="button"
-                                                        onclick="window.location = '{{ Route('ticket-overview') }}'"
+                                                        onclick="window.location = '{{ Route('ticket-overview', ["status" => $ticketData->status]) }}'"
                                                         title="Prev">{{ __( "general.back-to", ["location" => strtolower( __("general.overview") )] ) }}</button>
 
                                                 <button class="btn bg-gradient-dark ms-2 mb-0 js-btn-next"

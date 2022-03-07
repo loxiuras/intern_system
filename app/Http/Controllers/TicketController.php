@@ -245,8 +245,11 @@ class TicketController extends Controller
     {
         $id = $request->id;
 
+        $currentStatus= 3;
         if ( $id ) {
             $ticketData = Ticket::find($id);
+
+            $currentStatus = $ticketData->status;
 
             $loginUserData = $this->getLoginUserData();
 
@@ -258,7 +261,7 @@ class TicketController extends Controller
             $ticketData->save();
         }
 
-        return Redirect( Route( "ticket-overview", ["status" => 3] ) );
+        return Redirect( Route( "ticket-overview", ["status" => $currentStatus] ) );
     }
 
     public function reset( int $id, Request $request )
