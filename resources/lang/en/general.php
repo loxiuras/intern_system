@@ -131,6 +131,7 @@ return [
     "scheduled_end_date"  => "Scheduled end date",
     "created-by"          => "Created by",
     "updated-by"          => "Updated by",
+    "done-by"             => "Done by",
     "reference"           => "Reference",
     "invoice"             => "Invoice",
     "invoiced"            => "Invoiced",

@@ -36,20 +36,23 @@
                                             </div>
                                         </div>
 
-                                        <div class="row mt-5">
-                                            <div class="col-12 col-sm-4">
-                                                <span class="text-dark text-bold">{{ __("general.created-by") }}</span>
-                                                <span class="d-block text-normal">
-                                                    {{ $ticketData->createdUserName }}{{ !empty( $ticketData->createdUserInsertion ) ? " {$ticketData->createdUserInsertion} " : " " }}{{ $ticketData->createdUserLastName }}
-                                                </span>
+                                        @if ( isset( $ticketData->users ) && !empty( $ticketData->users ) )
+                                            <div class="row mt-5">
+                                                @foreach ( $ticketData->users as $user )
+
+                                                    <div class="col-lg-2 col-md-3 col-sm-3 col-4 text-center position-relative userElement">
+
+                                                        <div class="avatar avatar-lg rounded-circle border border-primary">
+                                                            <img alt="Image placeholder" class="p-1" src="https://picsum.photos/400/400?random={{ rand( 0, 100) }}">
+                                                        </div>
+                                                        <p class="mb-0 text-sm">
+                                                            <span class="text-dark text-bold">{!! $user->user->name !!}</span><br><small>{!! $user->user->insertion !!} {!! $user->user->last_name !!}</small>
+                                                        </p>
+                                                    </div>
+
+                                                @endforeach
                                             </div>
-                                            <div class="col-12 col-sm-4">
-                                                <span class="text-dark text-bold">{{ __("general.updated-by") }}</span>
-                                                <span class="d-block text-normal">
-                                                    {{ $ticketData->updatedUserName }}{{ !empty( $ticketData->updatedUserInsertion ) ? " {$ticketData->createdUserInsertion} " : " " }}{{ $ticketData->updatedUserLastName }}
-                                                </span>
-                                            </div>
-                                        </div>
+                                        @endif
 
                                         <div class="row mt-5">
                                             <div class="col-12 col-sm-12">
