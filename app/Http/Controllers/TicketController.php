@@ -195,6 +195,7 @@ class TicketController extends Controller
             $ticketData->scheduled_end_date  = !empty( $request->scheduled_end_date ) ? (new DateService($request->scheduled_end_date))->transformDatabase() : ( !empty( $scheduledDate ) ? $scheduledDate : "" );
             $ticketData->status              = (int)$request->status;
             $ticketData->updated_user_id     = (int)$loginUserData->id;
+            $ticketData->urgent_level        = (int)$request->urgent_level;
             $ticketData->save();
 
             return back()->with([
@@ -223,6 +224,7 @@ class TicketController extends Controller
                     "created_user_id"     => $loginUserData->id,
                     "updated_user_id"     => $loginUserData->id,
                     "status"              => 1,
+                    "urgent_level"        => (int)$request->urgent_level,
                 ]
             );
 

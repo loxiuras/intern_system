@@ -26,6 +26,7 @@ class Ticket extends Model
         'invoice_price',
         'invoice_time',
         'status',
+        'urgent_level',
     ];
 
     /**

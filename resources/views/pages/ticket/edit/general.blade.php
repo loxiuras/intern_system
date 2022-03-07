@@ -92,6 +92,24 @@
                     </select>
                 </div>
 
+                <div class="col-12 col-sm-6">
+
+                    <label for="urgency">{{ __("general.urgency") }}</label>
+
+                    <div class="row">
+                        @for( $i = 1; $i <= 4; $i++ )
+                            <div class="col-12 col-sm-3">
+
+                                <input type="radio" class="urgentLevelInput" id="urgent_level_{{ $i }}" value="{{ $i }}" name="urgent_level" {{ isset( $ticketData->urgent_level ) && $i === $ticketData->urgent_level ? 'checked' : '' }} />
+                                <label for="urgent_level_{{ $i }}" class="urgentLevelLabel badge w-100 cursor-pointer {{ __("pages/ticket.urgent_level_". $i . ".className") }}">
+                                    {{ __("pages/ticket.urgent_level_". $i . ".title") }}
+                                </label>
+                            </div>
+                        @endfor
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="row mt-5">

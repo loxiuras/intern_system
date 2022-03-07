@@ -88,6 +88,23 @@ return [
         "borderClassName" => "border-info",
     ],
 
+    "urgent_level_1" => [
+        "title"     => "Low",
+        "className" => "bg-gradient-dark",
+    ],
+    "urgent_level_2" => [
+        "title"     => "Medium",
+        "className" => "bg-gradient-primary",
+    ],
+    "urgent_level_3" => [
+        "title"     => "High",
+        "className" => "bg-gradient-warning",
+    ],
+    "urgent_level_4" => [
+        "title"     => "Urgent",
+        "className" => "bg-gradient-danger",
+    ],
+
     "notification" => [
         "save" => [
             "success" => [

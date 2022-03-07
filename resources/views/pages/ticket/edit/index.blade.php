@@ -23,6 +23,18 @@
         display: block;
     }
 
+    .urgentLevelInput {
+        display: none;
+    }
+    .urgentLevelInput + .urgentLevelLabel {
+        opacity: .4;
+        padding: 13px 0;
+    }
+    .urgentLevelInput:checked + .urgentLevelLabel {
+        opacity: 1;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+    }
+
 @endsection
 
 @section('pageContent')
