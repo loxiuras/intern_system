@@ -186,6 +186,19 @@ class DashboardController extends Controller
                 $ticketData->time         = $ticket->invoice_time ?: null;
                 $ticketData->status       = (int)$ticket->status ?: 1;
 
+                $className = "bg-gradient-secondary mb-1";
+                if ( $ticketData->status >= 3 ) {
+                    $className = "bg-gradient-success mb-1";
+                } else {
+                    if ( (int)$ticket->urgent_level === 3 ) {
+                        $className = "bg-gradient-warning mb-1";
+                    }
+                    elseif ( (int)$ticket->urgent_level === 4 ) {
+                        $className = "bg-gradient-danger mb-1";
+                    }
+                }
+                $ticketData->className = $className;
+
                 $ticketData->users = [];
 
                 $totalTitle = $ticketData->title;

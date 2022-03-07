@@ -316,7 +316,7 @@
                                 title: '{{ $ticket->status >= 3 ? '✔' : '' }} {{ $ticket->companyName }} - {{ $ticket->totalTitle }}',
                                 start: '{{ $ticket->date }}',
                                 end: '{{ $ticket->endDate }}',
-                                className: '{{ $ticket->status >= 3 ? 'bg-gradient-success mb-1' : 'bg-gradient-primary mb-1' }}'
+                                className: '{{ $ticket->className }}',
                             },
                         @endforeach
                     @endif
