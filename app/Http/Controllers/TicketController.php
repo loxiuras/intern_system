@@ -243,25 +243,39 @@ class TicketController extends Controller
 
     public function smallStore( Request $request )
     {
-        $id = $request->id;
+        $id = !empty( $request->id ) ? (int)$request->id : 0;
 
-        $currentStatus= 3;
+        $returnStatus = 3;
         if ( $id ) {
-            $ticketData = Ticket::find($id);
+            $currentTicketData = Ticket::find($id);
+            $loginUserData     = $this->getLoginUserData();
 
-            $currentStatus = $ticketData->status;
+            $currentStatus = $currentTicketData->status;
 
-            $loginUserData = $this->getLoginUserData();
+            if ( $currentStatus === 3 ) {
+                $invoice = !empty( $request->invoice );
 
-            $ticketData->status          = 5;
-            $ticketData->invoice         = !empty( $request->invoice ) ? 1 : 0;
-            $ticketData->invoice_at      = Carbon::now();
-            $ticketData->updated_at      = Carbon::now();
-            $ticketData->updated_user_id = $loginUserData->id;
-            $ticketData->save();
+                if ( $invoice ) {
+                    $currentTicketData->status = ($currentStatus + 1);
+                }
+                else {
+                    $currentTicketData->status = ($currentStatus + 2);
+                }
+            }
+            else {
+                $returnStatus = 4;
+                $currentTicketData->status = ($currentStatus + 1);
+                $currentTicketData->invoice = 1;
+                $currentTicketData->invoice_at = Carbon::now();
+            }
+
+            $currentTicketData->updated_at      = Carbon::now();
+            $currentTicketData->updated_user_id = $loginUserData->id;
+
+            $currentTicketData->save();
         }
 
-        return Redirect( Route( "ticket-overview", ["status" => $currentStatus] ) );
+        return Redirect( Route( "ticket-overview", ["status" => $returnStatus] ) );
     }
 
     public function reset( int $id, Request $request )

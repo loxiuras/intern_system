@@ -89,20 +89,22 @@
                                             </div>
                                         </div>
 
-                                        <div class="row mt-5">
+                                        @if( $ticketData->status === 3 )
+                                            <div class="row mt-5">
 
-                                            <div class="col-12 col-sm-4">
-                                                <span class="text-dark text-bold">{{ __("general.invoice") }}?</span>
-                                                <p class="form-text text-muted text-xs">
-                                                    {!! __("pages/ticket.invoice--subtext") !!}
-                                                </p>
-                                                <div class="form-check form-switch ms-1">
-                                                    <input class="form-check-input" type="checkbox" id="invoice" name="invoice" {{ isset( $ticketData->invoice ) && 1 === $ticketData->invoice ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="invoice"></label>
+                                                <div class="col-12 col-sm-4">
+                                                    <span class="text-dark text-bold">{{ __("general.invoice") }}?</span>
+                                                    <p class="form-text text-muted text-xs">
+                                                        {!! __("pages/ticket.invoice--subtext") !!}
+                                                    </p>
+                                                    <div class="form-check form-switch ms-1">
+                                                        <input class="form-check-input" type="checkbox" id="invoice" name="invoice" {{ isset( $ticketData->invoice ) && 1 === $ticketData->invoice ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="invoice"></label>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                        </div>
+                                            </div>
+                                        @endif
 
                                         <div class="row mt-3">
 
