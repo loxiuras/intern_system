@@ -55,6 +55,7 @@ class TicketUser extends Model
             ->where($where)
             ->join('tickets', 'tickets.id', '=', 'ticket_users.ticket_id')
             ->join('companies', 'companies.id', '=', 'tickets.company_id')
+            ->orderBy("tickets.urgent_level", "desc")->orderBy("tickets.scheduled_date", "asc")
             ->get();
     }
 }

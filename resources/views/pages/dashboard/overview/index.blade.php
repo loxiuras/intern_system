@@ -188,7 +188,7 @@
                                     @if( !empty( $row->tickets ) && $row->tickets->count() )
                                         @foreach( $row->tickets as $ticket )
 
-                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative text-white border-2 {{ __("pages/ticket.status_". $ticket->status . ".className" ) }} {{ __("pages/ticket.status_". $ticket->status . ".borderClassName" ) }}" style="border: solid;">
+                                            <div class="ticketElement w-100 badge mb-2 p-3 position-relative text-white border-2 {{ __("pages/ticket.urgent_level_". $ticket->urgent_level . ".className" ) }} {{ __("pages/ticket.urgent_level_". $ticket->urgent_level . ".borderClassName" ) }}" style="border: solid;">
 
                                                 <span class="d-block w-100 text-left">
                                                     <span class="mb-3 d-block">
@@ -208,6 +208,7 @@
                                                         {{ __("general.start-from") }}
                                                     @endif
 
+                                                    {{ $ticket->scheduled_date }}
                                                     {{ (new \App\Services\DateService( $ticket->scheduled_date ))->translate() }}
                                                     @if( $ticket->scheduled_date !== $ticket->scheduled_end_date )
                                                         - {{ (new \App\Services\DateService( $ticket->scheduled_end_date ))->translate() }}
@@ -229,20 +230,6 @@
                         </div>
 
                     @endforeach
-
-                    <div class="col-12">
-
-                        <div class="d-flex justify-content-center mt-4">
-
-                            @for( $i = 1; $i <= 3; $i++ )
-                                <label class="ms-2">
-                                    <span class="ticketStatusBadge badge badge-lg {{ __("pages/ticket.status_". $i . ".className" ) }}"><i class="{{ __("pages/ticket.status_". $i . ".iconClassName" ) }} mx-1"></i> {{ __("pages/ticket.status_". $i . ".title") }}</span>
-                                </label>
-                            @endfor
-
-                        </div>
-
-                    </div>
 
                 </div>
             @endif
