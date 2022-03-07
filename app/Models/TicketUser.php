@@ -42,12 +42,13 @@ class TicketUser extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function getAllUserTickets( int $userId, int $minStatus = 0, int $maxStatus = 0 )
+    public function getAllUserTickets( int $userId, int $minStatus = 0, int $maxStatus = 0, $usePlanningRows = true )
     {
         $where = [];
         $where[] = ["ticket_users.user_id", "=", $userId];
         if ( !empty( $minStatus ) ) $where[] = ["tickets.status", ">=", $minStatus];
         if ( !empty( $maxStatus ) ) $where[] = ["tickets.status", "<=", $maxStatus];
+        if ( !empty( $usePlanningRows ) ) $where[] = ["tickets.show_in_planning_rows", "1"];
 
         return TicketUser::select(
             ["*", "companies.name as companyName"]

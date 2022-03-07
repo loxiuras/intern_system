@@ -33,6 +33,7 @@ class CreateTicketsTable extends Migration
             $table->tinyInteger("invoice")->default( 0 );
             $table->dateTime("invoice_at")->nullable();
             $table->tinyInteger("urgent_level")->default( 1 );
+            $table->tinyInteger("show_in_planning_rows")->default(0);
         });
     }
 

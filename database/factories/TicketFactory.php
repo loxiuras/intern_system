@@ -32,6 +32,7 @@ class TicketFactory extends Factory
             'scheduled_end_date'  => $startDate->addDays( rand( 1, 3 ) ),
             'status'              => $this->faker->numberBetween( 1, 4 ),
             'urgent_level'        => rand( 1, 4 ),
+            'show_in_planning_rows' => rand( 0, 1 ),
         ];
     }
 }

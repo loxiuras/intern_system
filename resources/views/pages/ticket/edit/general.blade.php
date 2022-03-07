@@ -81,7 +81,7 @@
 
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-6">
 
                 <div class="col-12 col-sm-6">
                     <label for="status">{{ __("general.status") }}</label>
@@ -110,9 +110,30 @@
 
                 </div>
 
+                <div class="col-12 col-sm-12 mt-3">
+                    <div class="form-group">
+                        <label>
+                            {{ __("general.show-in-planning-rows") }}?
+                        </label>
+                        <p class="form-text text-muted text-xs ms-1">
+                            {!! __("pages/ticket.show-in-planning-rows--subtext") !!}
+                        </p>
+                        <div class="form-check form-switch ms-1">
+                            <input class="form-check-input" type="checkbox" id="show_in_planning_rows" name="show_in_planning_rows" {{ isset( $ticketData->show_in_planning_rows ) && 1 === $ticketData->show_in_planning_rows ? 'checked' : '' }}>
+                            <label class="form-check-label" for="show_in_planning_rows"></label>
+                        </div>
+                    </div>
+
+                    @error('show_in_planning_rows')
+                        <span class="invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
             </div>
 
-            <div class="row mt-5">
+            <div class="row mt-6">
 
                 <div class="col-12 col-sm-6">
                     <label for="invoice_price">{{ __("general.price") }}</label>

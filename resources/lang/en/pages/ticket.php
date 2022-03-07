@@ -45,6 +45,7 @@ return [
     "scheduled_end_date--subtext"  => "Scheduled end date for this ticket, leave this field empty if no end date is necessary.",
     "time--subtext"  => "Spent/estimated time of ticket. Leave this field empty if no work has been done.",
     "invoice--subtext" => "Is this ticket going to be invoiced?",
+    "show-in-planning-rows--subtext" => "If this ticket is in the planning rows on the dashboard overview.",
 
     "invoice" => [
         "title"       => "Invoice information",

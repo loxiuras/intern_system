@@ -196,6 +196,8 @@ class TicketController extends Controller
             $ticketData->status              = (int)$request->status;
             $ticketData->updated_user_id     = (int)$loginUserData->id;
             $ticketData->urgent_level        = (int)$request->urgent_level;
+            $ticketData->show_in_planning_rows = !empty( $request->show_in_planning_rows ) ? 1 : 0;
+
             $ticketData->save();
 
             return back()->with([
@@ -225,6 +227,7 @@ class TicketController extends Controller
                     "updated_user_id"     => $loginUserData->id,
                     "status"              => 1,
                     "urgent_level"        => (int)$request->urgent_level,
+                    "show_in_planning_rows" => (!empty( $request->show_in_planning_rows ) ? 1 : 0),
                 ]
             );
 

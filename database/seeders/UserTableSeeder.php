@@ -26,6 +26,7 @@ class UserTableSeeder extends Seeder {
             'is_admin'           => 1,
             'active'             => 1,
             'picture_default_id' => 1,
+            'show_in_planning_rows' => 1,
         ]);
 
         User::create([
@@ -38,6 +39,7 @@ class UserTableSeeder extends Seeder {
             'is_admin'           => 1,
             'active'             => 1,
             'picture_default_id' => 3,
+            'show_in_planning_rows' => 1,
         ]);
 
         User::create([
@@ -50,6 +52,7 @@ class UserTableSeeder extends Seeder {
             'is_admin'           => 1,
             'active'             => 1,
             'picture_default_id' => 2,
+            'show_in_planning_rows' => 0,
         ]);
     }
 
