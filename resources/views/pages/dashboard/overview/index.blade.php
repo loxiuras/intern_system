@@ -208,7 +208,6 @@
                                                         {{ __("general.start-from") }}
                                                     @endif
 
-                                                    {{ $ticket->scheduled_date }}
                                                     {{ (new \App\Services\DateService( $ticket->scheduled_date ))->translate() }}
                                                     @if( $ticket->scheduled_date !== $ticket->scheduled_end_date )
                                                         - {{ (new \App\Services\DateService( $ticket->scheduled_end_date ))->translate() }}
