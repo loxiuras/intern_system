@@ -65,7 +65,7 @@ return [
         "borderClassName" => "border-secondary",
     ],
     "status_2" => [
-        "title"           => "Started",
+        "title"           => "In progress",
         "className"       => "bg-gradient-warning",
         "iconClassName"   => "fas fa-hammer",
         "borderClassName" => "border-warning",
@@ -91,7 +91,7 @@ return [
 
     "urgent_level_1" => [
         "title"     => "Low",
-        "className" => "bg-gradient-secondary",
+        "className" => "bg-gradient-secondary opacity-7",
         "borderClassName" => "border-secondary",
     ],
     "urgent_level_2" => [

@@ -210,7 +210,7 @@ class DashboardController extends Controller
                     ->get();
 
                 if ( !empty( $users ) && $users->count() ) {
-                    $totalTitle .= " ";
+                    $totalTitle .= " - ";
                     $userCounter = 0;
 
                     foreach ( $users as $data ) {
@@ -223,7 +223,7 @@ class DashboardController extends Controller
 
                         $ticketData->users[] = $userData;
 
-                        if ( !empty( $userCounter ) ) $totalTitle .= " & ";
+                        if ( !empty( $userCounter ) ) $totalTitle .= " | ";
                         $totalTitle .= $name;
 
                         $userCounter++;
