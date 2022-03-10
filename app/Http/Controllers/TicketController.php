@@ -17,6 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 class TicketController extends Controller
@@ -231,6 +232,10 @@ class TicketController extends Controller
                 ]
             );
 
+            if ( 4 === (int)$request->urgent_level ) {
+                $this->sendUrgentEmailNotification( $id );
+            }
+
             $request->session()->put('notificationActive', true);
             $request->session()->put('notificationType', "success");
             $request->session()->put('notificationIconClass', "fas fa-bell");
@@ -332,5 +337,48 @@ class TicketController extends Controller
         ])->delete();
 
         return back();
+    }
+
+    /**
+     * @param int $ticketId
+     *
+     * @return void
+     */
+    private function sendUrgentEmailNotification( int $ticketId ): void
+    {
+        $ticketData  = Ticket::find( $ticketId );
+        $userData    = User::find( $ticketData->created_user_id );
+        $companyData = Company::find( $ticketData->company_id );
+
+        $userFirstName = !empty( $userData->name ) ? trim( (string)$userData->name ) : "";
+        $userInsertion = !empty( $userData->insertion ) ? " ". trim( (string)$userData->insertion ). " " : "";
+        $userLastName = !empty( $userData->last_name ) ? trim( (string)$userData->last_name ) : "";
+        $userFullName = "{$userFirstName}{$userInsertion}{$userLastName}";
+
+        $details = [
+            "from" => [
+                "name"  => __("emails/ticket-urgent.from.name"),
+                "email" => __("emails/ticket-urgent.from.email"),
+            ],
+            "to" => [
+                "name"  => __("emails/ticket-urgent.to.name"),
+                "email" => __("emails/ticket-urgent.to.email"),
+            ],
+            "subject"   => __("emails/ticket-urgent.subject", ["name" => $userFullName]),
+            "structure" => [
+                "style"  => "",
+                "header" => __("emails/ticket-urgent.structure.header", ["logo" => __("emails/ticket-urgent.data.logo-location")]),
+                "body"   => __("emails/ticket-urgent.structure.body", [
+                    "name"       => $userFullName,
+                    "click-here" => "<a href='". Route("ticket-edit", ["id" => $ticketData->id]) ."'>". strtolower( __("general.click-here") ) ."</a>",
+                    "company"    => $companyData->name,
+                    "title"      => $ticketData->title,
+                ]),
+                "footer" => __("emails/ticket-urgent.structure.footer"),
+            ],
+            "view" => "emails.ticket-urgent",
+        ];
+
+        Mail::send(new \App\Mail\SendInBlue($details));
     }
 }

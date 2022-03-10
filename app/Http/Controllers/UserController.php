@@ -196,7 +196,7 @@ class UserController extends Controller
                 "name"  => $userFullName,
                 "email" => $userEmail,
             ],
-            "subject"   => __("emails/reset-password.subject"),
+            "subject"   => __("emails/password-notification.subject"),
             "structure" => [
                 "style"  => "",
                 "header" => __("emails/password-notification.structure.header", ["logo" => $logo, "fullName" => $userFullName]),

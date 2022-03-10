@@ -43,8 +43,10 @@ class ForgotPasswordController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-            $userFullName = "{$user->name} {$user->last_name}";
-            $logo         = "<img class='image' src='https://www.suilichem.com/assets/systems/email-logo.png' style='height: 30px;' height='30px' alt='Van Suilichem Online Logo'>";
+            $userFirstName = !empty( $userData->name ) ? trim( (string)$userData->name ) : "";
+            $userInsertion = !empty( $userData->insertion ) ? " ". trim( (string)$userData->insertion ). " " : "";
+            $userLastName = !empty( $userData->last_name ) ? trim( (string)$userData->last_name ) : "";
+            $userFullName = "{$userFirstName}{$userInsertion}{$userLastName}";
             $resetButton  = "<a class='btn' style='border: 5px solid #3498db; background-color: #3498db; color: #ffffff; text-decoration: none;' href='". Route("reset-password", ["email" => $request->email, "token" => $token]) ."'>". __("general.reset-password") ."</a>";
 
             $details = [
@@ -59,7 +61,7 @@ class ForgotPasswordController extends Controller
                 "subject"   => __("emails/reset-password.subject"),
                 "structure" => [
                     "style"  => ".image { height: 30px; } img { height: 30px; } a { border: 5px solid #3498db; background-color: #3498db; color: #ffffff; text-decoration: none; } .btn { border: 5px solid #3498db; background-color: #3498db; color: #ffffff; text-decoration: none; }",
-                    "header" => __("emails/reset-password.structure.header", ["logo" => $logo, "fullName" => $userFullName]),
+                    "header" => __("emails/reset-password.structure.header", ["logo" => __("emails/reset-password.data.logo-location"), "fullName" => $userFullName]),
                     "body"   => __("emails/reset-password.structure.body", ["email" => $request->email, "resetButton" => $resetButton]),
                     "footer" => __("emails/reset-password.structure.footer"),
                 ],
